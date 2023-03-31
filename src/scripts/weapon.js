@@ -18,7 +18,7 @@ class Weapon {
 
     addProjectile(){
         if(this.randomPos) return this.addRandomPosProjectile();
-        return this.addDefinedProjectile;
+        return this.addDefinedProjectile();
     }
 
     addDefinedProjectile(){
@@ -27,6 +27,7 @@ class Weapon {
             console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
+                    duration: this.duration,
                     x: this.x,
                     y: this.y,
                     radius: this.radius,
@@ -45,6 +46,7 @@ class Weapon {
             console.log(this.hero.game.projectiles.length, "randompos")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
+                    duration: this.duration,
                     x: Math.random() * this.x,
                     y: Math.random() * this.y,
                     radius: this.radius,

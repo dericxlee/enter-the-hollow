@@ -1,8 +1,9 @@
 import Hero from './hero.js';
 import Monster from './monster.js';
-import RainOfFire from "./rain_of_fire.js";
+import Starfall from "./starfall.js";
 import Weapon from './weapon.js';
 import Projectile from './projectile.js';
+import Consecration from './consecration.js';
 
 class Game{
     static DIM_X = 1000
@@ -42,8 +43,10 @@ class Game{
 
     acquireWeapon(){
         console.log(this.hero.weaponOne)
-        if(!this.hero.weaponOne) this.hero.weaponOne = new RainOfFire({hero: this.hero})
-        console.log(this.hero.weaponOne instanceof RainOfFire)
+        // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
+        if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
+        console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
+        console.log(this.hero.weaponOne instanceof Consecration, "cons?")
     }
 
     addMonster(){
@@ -69,6 +72,8 @@ class Game{
             this.monsters.splice(this.monsters.indexOf(obj), 1);
         } else if (obj instanceof Gem) {
             this.gems.splice(this.gems.indexOf(obj), 1);
+        } else if (obj instanceof Projectile) {
+            this.projectiles.splice(this.projectiles.indexOf(obj), 1);
         } else {
             throw new Error("unknown type of object");
         }

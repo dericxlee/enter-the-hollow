@@ -18,7 +18,7 @@ class GameView {
             this.game.draw(this.ctx);
             // console.log(this.game.hero.experience, "exp")
             // console.log(this.game.hero.level, "level")
-        }, 40);
+        }, 50);
     }
 
     spawn(){

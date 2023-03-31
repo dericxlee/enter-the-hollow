@@ -34,7 +34,7 @@ class Monster extends MovingObject{
     }
 
     collideWith(otherObj){
-        if (otherObj instanceof Hero){
+        if (otherObj instanceof Projectile){
             this.game.add(new Gem({x: this.x, y: this.y, game: this.game}))
             this.remove()
             return true;
