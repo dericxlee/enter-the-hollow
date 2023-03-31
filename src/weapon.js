@@ -1,14 +1,13 @@
-import MovingObject from "./moving_object";
-
-class Weapon extends MovingObject{
-    static FREQ = 1000
-    static RANGE = 50
-    static ECHO = 1
+class Weapon {
     constructor(options){
-        super(options),
-        this.frequency = Weapon.FREQ,
-        // this.range = Weapon.RANGE,
-        this.echo = Weapon.ECHO
+        this.frequency = options.frequency,
+        this.echo = options.echo,
+        this.color = options.color,
+        this.x = options.x,
+        this.y = options.y,
+        this.radius = options.radius,
+        this.xvel = options.xvel,
+        this.yvel = options.yvel
     }
 }
 

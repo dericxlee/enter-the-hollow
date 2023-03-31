@@ -1,5 +1,6 @@
 import MovingObject from "./moving_object.js";
 import RainOfFire from "./rain_of_fire.js";
+import Weapon from "./weapon.js";
 
 class Hero extends MovingObject{
     static START_X = 500

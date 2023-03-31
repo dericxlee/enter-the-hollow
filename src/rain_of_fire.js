@@ -7,7 +7,8 @@ class RainOfFire extends Weapon{
     static RADIUS = 100
     static X_VEL = 0
     static Y_VEL = 0
-    static SPEED = 0
+    static FREQ = 1000
+    static ECHO = 1
     constructor(options){
         super(options),
         this.x = RainOfFire.X_COORD,
@@ -16,7 +17,8 @@ class RainOfFire extends Weapon{
         this.radius = RainOfFire.RADIUS,
         this.xvel = RainOfFire.X_VEL,
         this.yvel = RainOfFire.Y_VEL,
-        this.speed = RainOfFire.SPEED
+        this.frequency = RainOfFire.FREQ,
+        this.echo = RainOfFire.ECHO
     }
 
     attack(){
