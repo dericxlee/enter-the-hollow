@@ -9,8 +9,11 @@ class GameView {
 
     start(){
         this.spawn();
+        this.game.acquireWeapon();
+        this.game.hero.weaponOne.addProjectile()
         setInterval(() => {
             this.game.checkCollisions();
+            // this.hero.weaponOne.addProjectiles();
             this.game.moveObjects();
             this.game.draw(this.ctx);
             // console.log(this.game.hero.experience, "exp")

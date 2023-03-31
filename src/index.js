@@ -58,8 +58,9 @@ const gamev = new GameView(ctx)
 gamev.start()
 gamev.game.allObjects()
 gamev.game.acquireWeapon()
-console.log(gamev.game.hero.WeaponOne === null, "weapon")
-// gamev.hero.WeaponOne.addProjectile()
+// console.log(gamev.game.hero.WeaponOne === null, "weapon")
+gamev.game.hero.weaponOne.addProjectile()
+
 
 const p1 = new Projectile({
     x: 500,
@@ -72,5 +73,5 @@ const p1 = new Projectile({
     speed: 0
 })
 
-gamev.game.add(p1)
-console.log(gamev.game.projectiles.length)
+// gamev.game.add(p1)
+// console.log(gamev.game.projectiles.length)

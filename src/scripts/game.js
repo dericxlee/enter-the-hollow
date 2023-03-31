@@ -18,12 +18,12 @@ class Game{
     }
 
     allObjects(){
-        let objs = [].concat(this.hero, this.monsters, this.gems)
+        let objs = [].concat(this.hero, this.monsters, this.gems, this.projectiles)
         return objs
     }
 
     allMovingObjects(){
-        return [].concat(this.hero, this.monsters, this.weapons)
+        return [].concat(this.hero, this.monsters, this.projectiles)
     }
 
     add(obj){
@@ -43,6 +43,7 @@ class Game{
     acquireWeapon(){
         console.log(this.hero.weaponOne)
         if(!this.hero.weaponOne) this.hero.weaponOne = new RainOfFire({hero: this.hero})
+        console.log(this.hero.weaponOne instanceof RainOfFire)
     }
 
     addMonster(){
