@@ -13,14 +13,14 @@ class GameView {
             this.game.checkCollisions();
             this.game.moveObjects();
             this.game.draw(this.ctx);
-            console.log(this.game.hero.experience, "exp")
-            console.log(this.game.hero.level, "level")
+            // console.log(this.game.hero.experience, "exp")
+            // console.log(this.game.hero.level, "level")
         }, 40);
     }
 
     spawn(){
         setInterval(() => {
-            console.log(this.game.allObjects().length, "obj")
+            // console.log(this.game.allObjects().length, "obj")
             this.game.spawnMonsters();
         }, 5000)
     }

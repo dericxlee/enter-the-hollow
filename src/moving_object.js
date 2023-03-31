@@ -2,7 +2,7 @@ import StaticObject from './static_object.js';
 
 class MovingObject extends StaticObject{
     constructor(options){
-        super(options)
+        super(options),
         this.xvel = options.xvel,
         this.yvel = options.yvel,
         this.speed = options.speed

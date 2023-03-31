@@ -1,4 +1,5 @@
-import MovingObject from "./moving_object";
+import MovingObject from "./moving_object.js";
+import RainOfFire from "./rain_of_fire.js";
 
 class Hero extends MovingObject{
     static START_X = 500
@@ -17,7 +18,8 @@ class Hero extends MovingObject{
         this.speed = Hero.SPEED,
         this.experience = 0,
         this.experienceForLevel = Hero.EXP_REQ,
-        this.level = Hero.START_LVL
+        this.level = Hero.START_LVL,
+        this.weaponOne = null
     }
 
     levelUp(){

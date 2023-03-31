@@ -51,4 +51,7 @@ const ctx = canvas.getContext('2d')
 const gamev = new GameView(ctx)
 gamev.start()
 gamev.game.allObjects()
+gamev.game.acquireWeapon()
+console.log(gamev.game.hero.WeaponOne === null, "weapon")
+gamev.game.hero.WeaponOne.attack()
 

@@ -1,5 +1,6 @@
 import Hero from './hero.js';
 import Monster from './monster.js';
+import RainOfFire from "./rain_of_fire.js";
 
 class Game{
     static DIM_X = 1000
@@ -10,6 +11,7 @@ class Game{
         this.hero = this.addHero();
         this.monsters = [];
         this.gems = [];
+        this.weapons = [];
         this.addMonster();
     }
 
@@ -19,7 +21,7 @@ class Game{
     }
 
     allMovingObjects(){
-        return [].concat(this.hero, this.monsters)
+        return [].concat(this.hero, this.monsters, this.weapons)
     }
 
     add(obj){
@@ -29,9 +31,16 @@ class Game{
             this.monsters.push(obj)
         } else if (obj instanceof Gem) {
             this.gems.push(obj)
+        } else if (obj instanceof Weapon) {
+            this.weapons.push(obj)
         } else {
             throw new Error("unknown type of object");
         }
+    }
+
+    acquireWeapon(){
+        console.log(this.hero.weaponOne)
+        if(!this.hero.weaponOne) this.hero.weaponOne = new RainOfFire({game: this})
     }
 
     addMonster(){
@@ -73,7 +82,7 @@ class Game{
     draw(ctx) {
         ctx.clearRect(0,0,1000,1000)
         const allObjs = this.allObjects()
-        console.log(allObjs.length)
+        // console.log(allObjs.length)
         for(let i = 0; i < allObjs.length; i++){
             let obj = allObjs[i];
             obj.draw(ctx);
