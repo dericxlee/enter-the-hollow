@@ -1,6 +1,8 @@
 import Hero from './hero.js';
 import Monster from './monster.js';
 import RainOfFire from "./rain_of_fire.js";
+import Weapon from './weapon.js';
+import Projectile from './projectile.js';
 
 class Game{
     static DIM_X = 1000
@@ -11,7 +13,7 @@ class Game{
         this.hero = this.addHero();
         this.monsters = [];
         this.gems = [];
-        this.weapons = [];
+        this.projectiles = [];
         this.addMonster();
     }
 
@@ -31,8 +33,8 @@ class Game{
             this.monsters.push(obj)
         } else if (obj instanceof Gem) {
             this.gems.push(obj)
-        } else if (obj instanceof Weapon) {
-            this.weapons.push(obj)
+        } else if (obj instanceof Projectile) {
+            this.projectiles.push(obj)
         } else {
             throw new Error("unknown type of object");
         }
@@ -40,7 +42,7 @@ class Game{
 
     acquireWeapon(){
         console.log(this.hero.weaponOne)
-        if(!this.hero.weaponOne) this.hero.weaponOne = new RainOfFire({game: this})
+        if(!this.hero.weaponOne) this.hero.weaponOne = new RainOfFire({hero: this.hero})
     }
 
     addMonster(){

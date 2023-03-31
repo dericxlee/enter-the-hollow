@@ -1,23 +1,29 @@
-import StaticObject from "./static_object.js";
+import StaticObject from "./scripts/static_object.js";
 window.StaticObject = StaticObject;
 
-import Gem from './gem.js';
+import Gem from './scripts/gem.js';
 window.Gem = Gem;
 
-import MovingObject from "./moving_object.js";
+import MovingObject from "./scripts/moving_object.js";
 window.MovingObject = MovingObject;
 
-import Monster from "./monster.js";
+import Monster from "./scripts/monster.js";
 window.Monster = Monster;
 
-import Hero from "./hero.js";
+import Hero from "./scripts/hero.js";
 window.Hero = Hero;
 
-import Game from "./game.js";
+import Game from "./scripts/game.js";
 window.Game = Game;
 
-import GameView from "./gameview.js";
+import GameView from "./scripts/gameview.js";
 window.GameView = Game;
+
+import Weapon from "./scripts/weapon.js";
+window.Weapon = Weapon;
+
+import Projectile from "./scripts/projectile.js";
+window.Projectile = Projectile; 
 
 const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
@@ -53,5 +59,18 @@ gamev.start()
 gamev.game.allObjects()
 gamev.game.acquireWeapon()
 console.log(gamev.game.hero.WeaponOne === null, "weapon")
-gamev.game.hero.WeaponOne.attack()
+// gamev.hero.WeaponOne.addProjectile()
 
+const p1 = new Projectile({
+    x: 500,
+    y: 500,
+    radius: 100,
+    color: "black",
+    game: gamev.game,
+    xvel: 0,
+    yvel: 0,
+    speed: 0
+})
+
+gamev.game.add(p1)
+console.log(gamev.game.projectiles.length)

@@ -9,6 +9,7 @@ class RainOfFire extends Weapon{
     static Y_VEL = 0
     static FREQ = 1000
     static ECHO = 1
+    static SPEED = 0
     constructor(options){
         super(options),
         this.x = RainOfFire.X_COORD,
@@ -18,17 +19,10 @@ class RainOfFire extends Weapon{
         this.xvel = RainOfFire.X_VEL,
         this.yvel = RainOfFire.Y_VEL,
         this.frequency = RainOfFire.FREQ,
-        this.echo = RainOfFire.ECHO
+        this.echo = RainOfFire.ECHO,
+        this.speed = RainOfFire.SPEED,
+        this.hero = options.hero
     }
-
-    attack(){
-        setInterval(() => {
-            for(let i = 0; i < this.echo; i++){
-                this.game.add(this);
-            }
-        }, this.frequency)
-    }
-
 }
 
 export default RainOfFire;
