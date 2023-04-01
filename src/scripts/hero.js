@@ -25,6 +25,18 @@ class Hero extends MovingObject{
         this.health = Hero.HP
     }
 
+    addWeapon(){
+        console.log(this.weapons.length, "beg, hero")
+        // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
+        // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
+        // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
+        // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
+        this.weapons.push(new Starfall({hero: this}));
+        // console.log(this.hero.weapons.length, "star")
+        this.weapons.push(new Consecration({hero: this}));
+        // console.log(this.weapons.length, "after, hero")
+    }
+
     levelUp(){
         let baseExpReq = this.experienceForLevel
         if(this.experienceForLevel === this.experience){
