@@ -13,7 +13,6 @@ class Starfall extends Weapon{
     static OFFSET = 100
     constructor(options){
         super(options),
-        this.randomPos = Starfall.POS,
         this.duration = Starfall.DUR,
         this.color = Starfall.COLOR,
         this.radius = Starfall.RADIUS,

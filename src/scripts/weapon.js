@@ -4,7 +4,6 @@ class Weapon {
     constructor(options){
         this.frequency = options.frequency,
         this.echo = options.echo,
-        this.randomPos = options.randomPos,
         this.duration = options.duration
         this.color = options.color,
         this.radius = options.radius,
@@ -16,7 +15,7 @@ class Weapon {
     }
 
     addProjectile(){
-        if(this.randomPos) return this.addRandomPosProjectile();
+        if(this.offset) return this.addRandomPosProjectile();
         return this.addDefinedProjectile();
     }
 

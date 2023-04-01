@@ -14,10 +14,7 @@ class Consecration extends Weapon{
     static DUR = 3000
     constructor(options){
         super(options),
-        this.randomPos = Consecration.POS,
         this.duration = Consecration.DUR,
-        this.x = this.hero.x
-        this.y = this.hero.y
         this.color = Consecration.COLOR,
         this.radius = Consecration.RADIUS,
         this.xvel = Consecration.X_VEL,
