@@ -7,13 +7,12 @@ class Weapon {
         this.randomPos = options.randomPos,
         this.duration = options.duration
         this.color = options.color,
-        this.x = options.x,
-        this.y = options.y,
         this.radius = options.radius,
         this.xvel = options.xvel,
         this.yvel = options.yvel,
         this.speed = options.speed,
-        this.hero = options.hero
+        this.hero = options.hero,
+        this.offset = options.offset
     }
 
     addProjectile(){
@@ -28,8 +27,8 @@ class Weapon {
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
                     duration: this.duration,
-                    x: this.x,
-                    y: this.y,
+                    x: this.hero.x,
+                    y: this.hero.y,
                     radius: this.radius,
                     color: this.color,
                     xvel: this.xvel,
@@ -47,8 +46,8 @@ class Weapon {
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
                     duration: this.duration,
-                    x: Math.random() * this.x,
-                    y: Math.random() * this.y,
+                    x: this.findRandomX(),
+                    y: this.findRandomY(),
                     radius: this.radius,
                     color: this.color,
                     xvel: this.xvel,
@@ -59,6 +58,22 @@ class Weapon {
             }
         }, this.frequency)
     }
+
+    findRandomX(){
+        let min = this.hero.x - this.offset
+        let max = this.hero.x + this.offset
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    findRandomY(){
+        let min = this.hero.y - this.offset
+        let max = this.hero.y + this.offset
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    // distance(){
+    //     dist = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+    // }
 }
 
 export default Weapon;

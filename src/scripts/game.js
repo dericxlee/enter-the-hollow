@@ -43,8 +43,8 @@ class Game{
 
     acquireWeapon(){
         console.log(this.hero.weaponOne)
-        // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
-        if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
+        if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
+        // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         console.log(this.hero.weaponOne instanceof Consecration, "cons?")
     }
