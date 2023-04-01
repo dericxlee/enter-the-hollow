@@ -9,8 +9,8 @@ class GameView {
 
     start(){
         this.spawn();
-        this.game.acquireWeapon();
-        this.game.hero.weaponOne.addProjectile()
+        // this.game.acquireWeapon();
+        // this.game.hero.weaponOne.addProjectile()
         setInterval(() => {
             this.game.checkCollisions();
             // this.hero.weaponOne.addProjectiles();

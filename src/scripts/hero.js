@@ -20,7 +20,8 @@ class Hero extends MovingObject{
         this.experience = 0,
         this.experienceForLevel = Hero.EXP_REQ,
         this.level = Hero.START_LVL,
-        this.weaponOne = null
+        this.weaponOne = null,
+        this.weapon = []
     }
 
     levelUp(){

@@ -59,7 +59,7 @@ gamev.start()
 gamev.game.allObjects()
 gamev.game.acquireWeapon()
 // console.log(gamev.game.hero.WeaponOne === null, "weapon")
-gamev.game.hero.weaponOne.addProjectile()
+gamev.game.callWeapons()
 
 
 const p1 = new Projectile({
