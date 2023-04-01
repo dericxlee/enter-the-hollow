@@ -10,6 +10,7 @@ class Hero extends MovingObject{
     static SPEED = 100
     static EXP_REQ = 10
     static START_LVL = 1
+    static HP = 100
     constructor(options){
         super(options)
         this.x = Hero.START_X,
@@ -20,8 +21,8 @@ class Hero extends MovingObject{
         this.experience = 0,
         this.experienceForLevel = Hero.EXP_REQ,
         this.level = Hero.START_LVL,
-        this.weaponOne = null,
-        this.weapon = []
+        this.weapons = [],
+        this.health = Hero.HP
     }
 
     levelUp(){

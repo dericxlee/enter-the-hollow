@@ -12,3 +12,13 @@ Collision checks between (player vs enemies), (player vs experience gems), and(e
 Vector changes for enemy pathing
 Sprite assets for player, enemies, and projectiles
 Canvas for background/map, viewpoint, and levelup pop-up for power-up
+
+
+To-do:
+Level-up screen - object / game pause
+Power-up objects - categorized
+new abilities as a power-up choice - object
+Health and damage parameters
+Player controls
+Magnetism for experience gems - player attribute
+Game over logic

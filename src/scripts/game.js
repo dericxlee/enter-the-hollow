@@ -47,13 +47,13 @@ class Game{
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
-        this.hero.weapon.push(new Starfall({hero: this.hero}));
-        this.hero.weapon.push(new Consecration({hero: this.hero}));
+        this.hero.weapons.push(new Starfall({hero: this.hero}));
+        this.hero.weapons.push(new Consecration({hero: this.hero}));
     }
 
     callWeapons(){
-        for(let i = 0; i < this.hero.weapon.length; i++){
-            let weapon = this.hero.weapon[i]
+        for(let i = 0; i < this.hero.weapons.length; i++){
+            let weapon = this.hero.weapons[i]
             weapon.addProjectile()
         }
     }

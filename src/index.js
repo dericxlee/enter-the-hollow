@@ -25,6 +25,9 @@ window.Weapon = Weapon;
 import Projectile from "./scripts/projectile.js";
 window.Projectile = Projectile; 
 
+import PlayerPowerUp from "./scripts/player_power_up.js"
+window.PlayerPowerUp = PlayerPowerUp;
+
 const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
 
@@ -62,16 +65,24 @@ gamev.game.acquireWeapon()
 gamev.game.callWeapons()
 
 
-const p1 = new Projectile({
-    x: 500,
-    y: 500,
-    radius: 100,
-    color: "black",
-    game: gamev.game,
-    xvel: 0,
-    yvel: 0,
-    speed: 0
-})
+// const p1 = new Projectile({
+//     x: 500,
+//     y: 500,
+//     radius: 100,
+//     color: "black",
+//     game: gamev.game,
+//     xvel: 0,
+//     yvel: 0,
+//     speed: 0
+// })
 
 // gamev.game.add(p1)
 // console.log(gamev.game.projectiles.length)
+
+const pup1 = new PlayerPowerUp({
+    hero: gamev.hero,
+})
+
+console.log(gamev.hero.speed)
+pup1.choose()
+console.log(gamev.hero.speed)
