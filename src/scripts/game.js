@@ -42,13 +42,15 @@ class Game{
     }
 
     acquireWeapon(){
-        console.log(this.hero.weaponOne)
+        console.log(this.hero.weapons.length, "beg")
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
         this.hero.weapons.push(new Starfall({hero: this.hero}));
+        // console.log(this.hero.weapons.length, "star")
         this.hero.weapons.push(new Consecration({hero: this.hero}));
+        // console.log(this.hero.weapons.length, "con")
     }
 
     callWeapons(){

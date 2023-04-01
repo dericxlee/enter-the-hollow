@@ -1,10 +1,8 @@
-// import PowerUp from "./powerup"
-
 class PlayerPowerUp {
     constructor(options){
         this.hero = options.hero
-        // this.id = Math.ceil(Math.random()*2)
-        this.id = 2
+        this.id = Math.ceil(Math.random()*2)
+        // this.id = 2
     }
 
     choose(){
@@ -17,12 +15,12 @@ class PlayerPowerUp {
 
     chooseHealth(){
         this.hero.health = Math.floor(this.hero.health * 1.2)
-        console.log(this.hero.health)
+        console.log(this.hero.health, "health")
     }
 
     chooseSpeed(){
         this.hero.speed = Math.floor(this.hero.speed * 1.2)
-        console.log(this.hero.speed)
+        console.log(this.hero.speed, "speed")
     }
 }
 
