@@ -2,6 +2,9 @@ class LevelUpScreen {
     static RNG = 3
     constructor(options){
         this.hero = options.hero
+        this.firstChoice = this.generateChoice()
+        this.secondChoice = this.generateChoice()
+        this.thirdChoice = this.generateChoice()
     }
 
     generateChoice(){
@@ -18,7 +21,6 @@ class LevelUpScreen {
         } else {
             console.log("starfall")
             return new Starfall({hero: this.hero})
-            
         }
     }
 
