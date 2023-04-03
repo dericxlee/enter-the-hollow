@@ -22,7 +22,7 @@ class Weapon {
     addDefinedProjectile(){
         // console.log("attack")
         setInterval(() => {
-            console.log(this.hero.game.projectiles.length, "define")
+            // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
                     duration: this.duration,
@@ -41,7 +41,7 @@ class Weapon {
 
     addRandomPosProjectile(){
         setInterval(() => {
-            console.log(this.hero.game.projectiles.length, "randompos")
+            // console.log(this.hero.game.projectiles.length, "randompos")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
                     duration: this.duration,

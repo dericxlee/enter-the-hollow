@@ -5,6 +5,7 @@ class LevelUpScreen {
         this.firstChoice = this.generateChoice()
         this.secondChoice = this.generateChoice()
         this.thirdChoice = this.generateChoice()
+        console.log("i leveled")
     }
 
     generateChoice(){
@@ -23,6 +24,16 @@ class LevelUpScreen {
             return new Starfall({hero: this.hero})
         }
     }
+
+    render(ctx){
+        ctx.fillStyle = "blue"
+        ctx.fillRect(300, 300, 700, 700)
+        // ctx.rect(300, 300, 980, 980)
+        // ctx.stroke()
+        console.log("rect")
+    }
+
+
 
 }
 

@@ -9,13 +9,19 @@ class Game{
     static DIM_X = 1000
     static DIM_Y = 1000
     static NUM_MON = 50
-    constructor(){
+    static SPAWN_RATE = 5000
+    constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
         this.monsters = [];
         this.gems = [];
         this.projectiles = [];
         this.addMonster();
+        this.intervalId = null
+        this.moveIntervalId = null
+        this.collisionIntervalId = null
+        // console.log(this.spawning)
+        this.resumePlay()
     }
 
     allObjects(){
@@ -78,6 +84,25 @@ class Game{
         return this.addMonster()
     }
 
+    resumePlay(){
+        this.resumeSpawn()
+        this.resumeMovement()
+        this.resumeCollision()
+    }
+
+    resumeSpawn(){
+        this.intervalId = setInterval(() => {
+            this.spawnMonsters()}
+        , Game.SPAWN_RATE)
+        // console.log(this.intervalId, "interval")
+        return this.intervalId
+    }
+
+    pauseSpawn(){
+        console.log("game paused")
+        return clearInterval(this.intervalId)
+    }
+
     remove(obj) {
         if (obj instanceof Monster) {
             this.monsters.splice(this.monsters.indexOf(obj), 1);
@@ -101,7 +126,6 @@ class Game{
     draw(ctx) {
         ctx.clearRect(0,0,1000,1000)
         const allObjs = this.allObjects()
-        // console.log(allObjs.length)
         for(let i = 0; i < allObjs.length; i++){
             let obj = allObjs[i];
             obj.draw(ctx);
@@ -115,6 +139,18 @@ class Game{
         this.monsters.forEach(mon => mon.chase())
         // console.log(this.monster.xvel, this.monster.yvel)
         this.monsters.forEach( mon => mon.move())
+    }
+
+    resumeMovement(){
+        this.moveIntervalId = setInterval(() => {
+            this.moveObjects()}
+        , 50)
+        // console.log(this.intervalId, "interval")
+        return this.moveIntervalId
+    }
+
+    pauseMovement(){
+        return clearInterval(this.moveIntervalId)
     }
 
     xWrap(pos){ //for testing only
@@ -142,6 +178,18 @@ class Game{
                 }
             }
         }
+    }
+
+    resumeCollision(){
+        this.collisionIntervalId = setInterval(() => {
+            this.checkCollisions()}
+        , 20)
+        // console.log(this.intervalId, "interval")
+        return this.collisionIntervalId
+    }
+
+    pauseCollision(){
+        return clearInterval(this.collisionIntervalId)
     }
 
 }

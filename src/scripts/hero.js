@@ -1,6 +1,7 @@
 import MovingObject from "./moving_object.js";
 import Starfall from "./starfall.js";
 import Weapon from "./weapon.js";
+import LevelUpScreen from "./level_up_screen.js";
 
 class Hero extends MovingObject{
     static START_X = 500
@@ -16,6 +17,7 @@ class Hero extends MovingObject{
         this.x = Hero.START_X,
         this.y = Hero.START_Y,
         this.radius = Hero.RADIUS,
+        this.game = options.game,
         this.color = Hero.COLOR,
         this.speed = Hero.SPEED,
         this.experience = 0,
@@ -23,6 +25,28 @@ class Hero extends MovingObject{
         this.level = Hero.START_LVL,
         this.weapons = [],
         this.health = Hero.HP
+
+        this.sprite = new Image();
+        this.sprite.src = './assets/run.png';
+    }
+
+    draw(ctx) {
+
+        // ctx.drawImage(this.sprite, this.x, this.y)
+
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.radius,
+            0,
+            2 * Math.PI,
+            false
+        );
+
+        ctx.fill();
     }
 
     addWeapon(){
@@ -39,7 +63,13 @@ class Hero extends MovingObject{
 
     levelUp(){
         let baseExpReq = this.experienceForLevel
-        if(this.experienceForLevel === this.experience){
+        if(baseExpReq === this.experience){
+            console.log(this.level, "level up!")
+            this.game.pauseSpawn()
+            this.game.pauseMovement()
+            this.game.pauseCollision()
+            let lvlup = new LevelUpScreen({hero: this})
+            
             this.level += 1;
             this.experienceForLevel = Math.floor(baseExpReq * 1.2)
             this.experience = 0
