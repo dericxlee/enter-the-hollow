@@ -45,6 +45,7 @@ const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
 
 
+
 const gamev = new GameView(ctx)
 // gamev.start()
 // gamev.game.spawn()
@@ -57,6 +58,8 @@ gamev.game.hero.addWeapon()
 // console.log(gamev.game.hero.WeaponOne === null, "weapon")
 // console.log(gamev.hero === gamev.game.hero, "hero")
 gamev.game.callWeapons()
+console.log(gamev.hero === gamev.game.hero)
+console.log(gamev.hero.xvel)
 
 // button.addEventListener("click", (e) => gamev.game.testLog())
 

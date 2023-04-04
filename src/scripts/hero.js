@@ -16,7 +16,7 @@ class Hero extends MovingObject{
     static START_Y = 500
     static RADIUS = 10
     static COLOR = "blue"
-    static SPEED = 100
+    static SPEED = 5
     static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
@@ -34,11 +34,12 @@ class Hero extends MovingObject{
         this.weapons = [],
         this.health = Hero.HP
         this.upgrades = [];
+        this.xvel = options.xvel || 0
+        this.yvel = options.yvel || 0
 
         this.sprite = new Image();
         this.sprite.src = './assets/run.png';
 
-        // const eventListener = new AbortController()
         this.onClickOne = this.onClickOne.bind(this)
         this.onClickTwo = this.onClickTwo.bind(this)
         this.onClickThree = this.onClickThree.bind(this)
@@ -154,6 +155,10 @@ class Hero extends MovingObject{
         buttonOne.removeEventListener("click", this.onClickOne)
         buttonTwo.removeEventListener("click", this.onCLickOne)
         buttonThree.removeEventListener("click", this.onClickThree)
+    }
+
+    testLog(){
+        console.log("hi")
     }
 }
 

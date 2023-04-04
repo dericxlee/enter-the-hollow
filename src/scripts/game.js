@@ -75,7 +75,7 @@ class Game{
 
     addHero(){
         // this.add(new Hero({xvel: 10, yvel: 0, game: this}))
-        return new Hero({xvel: 10, yvel: 0, game: this })
+        return new Hero({xvel: 0, yvel: 0, game: this })
     }
 
     spawnMonsters(){
