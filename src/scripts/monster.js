@@ -4,7 +4,7 @@ import MovingObject from "./moving_object";
 class Monster extends MovingObject{
     static RADIUS = 10
     static COLOR = 'green'
-    static SPEED = 10
+    static SPEED = 3
     constructor(options){
         super(options),
         this.radius = Monster.RADIUS,
