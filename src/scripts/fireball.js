@@ -1,16 +1,17 @@
 import Weapon from "./weapon";
 
 class Fireball extends Weapon{
-    static COLOR = "orange"
-    static RADIUS = 10
+    static COLOR = "black"
+    static RADIUS = 40
     static X_VEL = 0
     static Y_VEL = 0
-    static FREQ = 5000
+    static FREQ = 1000
     static ECHO = 1
-    static SPEED = 0
+    static SPEED = 5
     static DUR = 2500
     constructor(options){
         super(options),
+        this.name = "fireball"
         this.duration = Fireball.DUR,
         this.color = Fireball.COLOR,
         this.radius = Fireball.RADIUS,
@@ -28,15 +29,14 @@ class Fireball extends Weapon{
             // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
+                    name: this.name,
                     duration: this.duration,
                     x: this.hero.x,
                     y: this.hero.y,
                     radius: this.radius,
                     color: this.color,
-                    // xvel: this.hero.xvel,
-                    // yvel: this.hero.yvel,
-                    xvel: 5,
-                    yvel: 0,
+                    xvel: (this.hero.xvel * this.speed) || this.hero.lastXVel * this.speed,
+                    yvel: (this.hero.yvel * this.speed) || this.hero.lastYVel * this.speed,
                     speed: this.speed,
                     game: this.hero.game
                 }));

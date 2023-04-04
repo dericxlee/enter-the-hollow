@@ -8,14 +8,14 @@ class GameView {
         this.hero = this.game.hero;
         this.start()
 
-        this.img = new Image();
+        // this.img = new Image();
         
-        this.img.onload = () => {
-            this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
-            // console.log(this.img instanceof Image, "img")
-        };
+        // this.img.onload = () => {
+        //     this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
+        //     // console.log(this.img instanceof Image, "img")
+        // };
 
-        this.img.src = './assets/void.jpg';
+        
 
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
@@ -41,18 +41,30 @@ class GameView {
     bindKeyDown(event){
         const keyName = event.key;
         event.preventDefault()
-        if (keyName == 'a' || keyName == 'A') this.hero.xvel = (-1 * this.hero.speed)
-        if (keyName == 'd' || keyName == 'D') this.hero.xvel = (1 * this.hero.speed)
-        if (keyName == 'w' || keyName == 'W') this.hero.yvel = (-1 * this.hero.speed)
-        if (keyName == 's' || keyName == 'S') this.hero.yvel = (1 * this.hero.speed)
+        if (keyName == 'a' || keyName == 'A') this.hero.xvel = (-1) //* this.hero.speed)
+        if (keyName == 'd' || keyName == 'D') this.hero.xvel = (1) // * this.hero.speed)
+        if (keyName == 'w' || keyName == 'W') this.hero.yvel = (-1) // * this.hero.speed)
+        if (keyName == 's' || keyName == 'S') this.hero.yvel = (1) //* this.hero.speed)
     }
 
     bindKeyUp(event){
         const keyUpName = event.key;
-        if (keyUpName == 'a' || keyUpName == 'A') this.hero.xvel = 0
-        if (keyUpName == 'd' || keyUpName == 'D') this.hero.xvel = 0
-        if (keyUpName == 'w' || keyUpName == 'W') this.hero.yvel = 0
-        if (keyUpName == 's' || keyUpName == 'S') this.hero.yvel = 0
+        if (keyUpName == 'a' || keyUpName == 'A') {
+            this.hero.xvel = 0;
+            this.hero.lastXVel = -1;
+        }
+        if (keyUpName == 'd' || keyUpName == 'D') {
+            this.hero.xvel = 0
+            this.hero.lastXVel = 1;
+        }
+        if (keyUpName == 'w' || keyUpName == 'W') {
+            this.hero.yvel = 0
+            this.hero.lastYVel = -1 
+        }
+        if (keyUpName == 's' || keyUpName == 'S') {
+            this.hero.yvel = 0
+            this.hero.lastYVel = 1
+        }
     }
 
 }

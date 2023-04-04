@@ -38,6 +38,8 @@ class Hero extends MovingObject{
         this.upgrades = [];
         this.xvel = options.xvel || 0
         this.yvel = options.yvel || 0
+        this.lastXVel = 0
+        this.lastYVel = 0
 
         this.sprite = new Image();
         this.sprite.src = './assets/hero.png';
@@ -68,6 +70,14 @@ class Hero extends MovingObject{
         // ctx.fill();
     }
 
+    move(){
+        // let hor = this.x + this.xvel;
+        // let ver = this.y + this.yvel;
+        this.x = this.x + (this.xvel * this.speed)
+        this.y = this.y + (this.yvel * this.speed)
+    }
+    
+
     addWeapon(){
         // console.log(this.weapons.length, "beg, hero")
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
@@ -78,8 +88,8 @@ class Hero extends MovingObject{
         // console.log(this.hero.weapons.length, "star")
         // this.weapons.push(new Consecration({hero: this}));
         // console.log(this.weapons.length, "after, hero")
-        // this.weapons.push(new Fireball({hero: this}));
-        this.weapons.push(new BladeFlurry({hero: this}))
+        this.weapons.push(new Fireball({hero: this}));
+        // this.weapons.push(new BladeFlurry({hero: this}))
     }
 
     levelUp(){
