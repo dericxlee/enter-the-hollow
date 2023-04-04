@@ -21,7 +21,7 @@ class Game{
         this.moveIntervalId = null
         this.collisionIntervalId = null
         // console.log(this.spawning)
-        this.resumePlay()
+        this.resumeGameState()
     }
 
     allObjects(){
@@ -84,7 +84,7 @@ class Game{
         return this.addMonster()
     }
 
-    resumePlay(){
+    resumeGameState(){
         this.resumeSpawn()
         this.resumeMovement()
         this.resumeCollision()
@@ -192,6 +192,11 @@ class Game{
         return clearInterval(this.collisionIntervalId)
     }
 
+    pauseGameState(){ //does not pause draw
+        this.pauseCollision()
+        this.pauseMovement()
+        this.pauseSpawn()
+    }
 }
 
 export default Game;

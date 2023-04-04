@@ -1,15 +1,23 @@
 import MovingObject from "./moving_object.js";
 import Starfall from "./starfall.js";
 import Weapon from "./weapon.js";
-import LevelUpScreen from "./level_up_screen.js";
+import WeaponPowerUp from "./weapon_power_up.js";
+import PlayerPowerUp from "./player_power_up.js";
+
+
+const buttonOne = document.querySelector("#first-upgrade")
+const buttonTwo = document.querySelector("#second-upgrade")
+const buttonThree = document.querySelector("#third-upgrade")
+const buttonOverlay = document.getElementById('button-div')
 
 class Hero extends MovingObject{
+    static RNG = 2
     static START_X = 500
     static START_Y = 500
     static RADIUS = 10
     static COLOR = "blue"
     static SPEED = 100
-    static EXP_REQ = 10
+    static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
     constructor(options){
@@ -25,9 +33,15 @@ class Hero extends MovingObject{
         this.level = Hero.START_LVL,
         this.weapons = [],
         this.health = Hero.HP
+        this.upgrades = [];
 
         this.sprite = new Image();
         this.sprite.src = './assets/run.png';
+
+        // const eventListener = new AbortController()
+        this.onClickOne = this.onClickOne.bind(this)
+        this.onClickTwo = this.onClickTwo.bind(this)
+        this.onClickThree = this.onClickThree.bind(this)
     }
 
     draw(ctx) {
@@ -50,7 +64,7 @@ class Hero extends MovingObject{
     }
 
     addWeapon(){
-        console.log(this.weapons.length, "beg, hero")
+        // console.log(this.weapons.length, "beg, hero")
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
@@ -65,10 +79,13 @@ class Hero extends MovingObject{
         let baseExpReq = this.experienceForLevel
         if(baseExpReq === this.experience){
             console.log(this.level, "level up!")
-            this.game.pauseSpawn()
-            this.game.pauseMovement()
-            this.game.pauseCollision()
-            let lvlup = new LevelUpScreen({hero: this})
+            this.game.pauseGameState()
+            buttonOverlay.style = 'display:block'
+            this.addChoices()
+            buttonOne.addEventListener("click", this.onClickOne)
+            buttonTwo.addEventListener("click", this.onClickTwo)
+            buttonThree.addEventListener("click", this.onClickThree)
+
             
             this.level += 1;
             this.experienceForLevel = Math.floor(baseExpReq * 1.2)
@@ -78,6 +95,12 @@ class Hero extends MovingObject{
         return false;
     }
 
+    addChoices(){
+        for(let i = this.upgrades.length; i < 3; i++){
+            this.upgrades.push(this.generateChoice())
+        }
+    }
+
     gainExp(){
         this.experience += 1
         if(this.levelUp()){
@@ -85,7 +108,53 @@ class Hero extends MovingObject{
         }
     }
 
+    generateChoice(){
+        // let random_number = Math.ceil(Math.random()*Hero.RNG)
+        let random_number = 2
 
+        if(random_number === 1){
+            console.log("player up")
+            return new PlayerPowerUp({hero: this});
+            
+        } else if (random_number === 2){
+            console.log("weapon up")
+            return new WeaponPowerUp({hero: this});
+            
+        } else {
+            console.log("starfall")
+            return new Starfall({hero: this})
+        }
+    }
+
+    onClickOne(){
+        this.upgrades[0].choose();
+        this.upgrades = [];
+        this.game.resumeGameState();
+        buttonOverlay.style = 'display:none';
+        this.toRemoveListener()
+    }
+
+    onClickTwo(){
+        this.upgrades[1].choose();
+        this.upgrades = [];
+        this.game.resumeGameState();
+        buttonOverlay.style = 'display:none';
+        this.toRemoveListener()
+    }
+
+    onClickThree(){
+        this.upgrades[2].choose();
+        this.upgrades = [];
+        this.game.resumeGameState();
+        buttonOverlay.style = 'display:none';
+        this.toRemoveListener()
+    }
+
+    toRemoveListener(){
+        buttonOne.removeEventListener("click", this.onClickOne)
+        buttonTwo.removeEventListener("click", this.onCLickOne)
+        buttonThree.removeEventListener("click", this.onClickThree)
+    }
 }
 
 export default Hero;

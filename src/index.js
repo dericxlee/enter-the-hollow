@@ -37,38 +37,13 @@ window.Starfall = Starfall;
 import Consecration from "./scripts/consecration.js";
 window.Consecration = Consecration;
 
-import LevelUpScreen from "./scripts/level_up_screen.js";
-window.LevelUpScreen = LevelUpScreen;
+// import LevelUpScreen from "./scripts/level_up_screen.js";
+// window.LevelUpScreen = LevelUpScreen;
 
 
 const canvas = document.getElementById('game-canvas')
 const ctx = canvas.getContext('2d')
 
-// const hero = new Hero({
-//     xvel: 600,
-//     yvel: 0,
-// });
-
-
-// const mon = new Monster({
-//     x: 300,
-//     y: 300,
-// });
-
-// // hero.draw(ctx);
-// mon.draw(ctx);
-
-// console.log(mon.distFromHero(), "origin")
-// console.log(mon.xvel)
-// console.log(mon.yvel)
-// hero.move();
-// // hero.draw(ctx);
-// mon.chase();
-// console.log(mon.distFromHero(), "one move")
-// console.log(mon.xvel)
-// console.log(mon.yvel)
-// mon.move();
-// console.log(mon.distFromHero())
 
 const gamev = new GameView(ctx)
 // gamev.start()
@@ -83,6 +58,7 @@ gamev.game.hero.addWeapon()
 // console.log(gamev.hero === gamev.game.hero, "hero")
 gamev.game.callWeapons()
 
+// button.addEventListener("click", (e) => gamev.game.testLog())
 
 // const p1 = new Projectile({
 //     x: 500,
@@ -108,6 +84,6 @@ gamev.game.callWeapons()
 // console.log(pup1.choose())
 // console.log(gamev.hero.speed)
 
-const lvlup = new LevelUpScreen({hero: gamev.game.hero})
-lvlup.generateChoice()
-lvlup.render(ctx)
+// const lvlup = new LevelUpScreen({hero: gamev.game.hero})
+// lvlup.generateChoice()
+// lvlup.render(ctx)

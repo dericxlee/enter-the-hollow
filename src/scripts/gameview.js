@@ -1,5 +1,5 @@
 import Game from "./game.js";
-import LevelUpScreen from "./level_up_screen.js";
+// import LevelUpScreen from "./level_up_screen.js";
 
 class GameView {
     constructor (ctx){
