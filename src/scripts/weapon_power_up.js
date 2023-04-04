@@ -2,6 +2,8 @@ import Consecration from "./consecration"
 import Starfall from "./starfall"
 import Hero from "./hero"
 import Weapon from "./weapon"
+import BladeFlurry from "./blade_flurry"
+import Fireball from "./fireball"
 
 
 class WeaponPowerUp {

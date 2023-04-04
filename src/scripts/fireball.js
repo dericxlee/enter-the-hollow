@@ -1,19 +1,23 @@
 import Weapon from "./weapon";
 
 class Fireball extends Weapon{
-    static FREQ = 5000
-    static ECHO = 1
-    static DURATION = 2500
     static COLOR = "orange"
     static RADIUS = 10
-    static SPEED = 50
+    static X_VEL = 0
+    static Y_VEL = 0
+    static FREQ = 5000
+    static ECHO = 1
+    static SPEED = 0
+    static DUR = 2500
     constructor(options){
         super(options),
-        this.frequency = Fireball.FREQ,
-        this.echo = Fireball.FREQ,
-        this.duration = Fireball.DURATION,
+        this.duration = Fireball.DUR,
         this.color = Fireball.COLOR,
         this.radius = Fireball.RADIUS,
+        this.xvel = Fireball.X_VEL,
+        this.yvel = Fireball.Y_VEL,
+        this.frequency = Fireball.FREQ,
+        this.echo = Fireball.ECHO,
         this.speed = Fireball.SPEED,
         this.hero = options.hero
     }

@@ -1,11 +1,22 @@
 import Game from "./game.js";
 
 class GameView {
-    constructor (ctx){
+    constructor(canvas, ctx){
         this.game = new Game();
+        this.canvas = canvas;
         this.ctx = ctx;
         this.hero = this.game.hero;
         this.start()
+
+        this.img = new Image();
+        
+        this.img.onload = () => {
+            this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
+            // console.log(this.img instanceof Image, "img")
+        };
+
+        this.img.src = './assets/void.jpg';
+
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
@@ -14,8 +25,17 @@ class GameView {
 
     start(){
         setInterval(() => {
+            // this.draw();
             this.game.draw(this.ctx);
         }, 50);
+    }
+
+
+    draw(){
+        this.img.onload = () => {
+            this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
+            // console.log(this.img instanceof Image, "img")
+        };
     }
 
     bindKeyDown(event){

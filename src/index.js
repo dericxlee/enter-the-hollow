@@ -47,13 +47,13 @@ window.BladeFlurry = BladeFlurry;
 // window.LevelUpScreen = LevelUpScreen;
 
 
-const canvas = document.getElementById('game-canvas')
+const canvas = document.getElementById('map')
 const ctx = canvas.getContext('2d')
 
-
-
-const gamev = new GameView(ctx)
-// gamev.start()
+const gamev = new GameView(canvas, ctx)
+// gamev.render()
+// gamev.render(ctx)
+gamev.start()
 // gamev.game.spawn()
 // gamev.game.resumeMovement()
 // gamev.game.resumeCollision()

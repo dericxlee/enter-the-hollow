@@ -2,9 +2,9 @@ import MovingObject from "./moving_object";
 // import Hero from "./hero.js";
 
 class Monster extends MovingObject{
-    static RADIUS = 10
+    static RADIUS = 15
     static COLOR = 'green'
-    static SPEED = 3
+    static SPEED = 2
     constructor(options){
         super(options),
         this.radius = Monster.RADIUS,
@@ -14,6 +14,12 @@ class Monster extends MovingObject{
         this.hero = this.game.hero
         this.updateXVel(),
         this.updateYVel()
+        this.sprite = new Image();
+        this.sprite.src = './assets/enemy.png';
+    }
+
+    draw(ctx){
+        ctx.drawImage(this.sprite, 0, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
     }
 
     distFromHero(){

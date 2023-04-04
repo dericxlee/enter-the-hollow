@@ -16,7 +16,7 @@ class Hero extends MovingObject{
     static RNG = 2
     static START_X = 500
     static START_Y = 500
-    static RADIUS = 10
+    static RADIUS = 15
     static COLOR = "blue"
     static SPEED = 5
     static EXP_REQ = 5
@@ -40,7 +40,9 @@ class Hero extends MovingObject{
         this.yvel = options.yvel || 0
 
         this.sprite = new Image();
-        this.sprite.src = './assets/run.png';
+        this.sprite.src = './assets/hero.png';
+        this.spriteWidth = 96;
+        this.spriteHeight = 128;
 
         this.onClickOne = this.onClickOne.bind(this)
         this.onClickTwo = this.onClickTwo.bind(this)
@@ -49,21 +51,21 @@ class Hero extends MovingObject{
 
     draw(ctx) {
 
-        // ctx.drawImage(this.sprite, this.x, this.y)
+        ctx.drawImage(this.sprite, 0, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
 
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
+        // ctx.fillStyle = this.color;
+        // ctx.beginPath();
 
-        ctx.arc(
-            this.x,
-            this.y,
-            this.radius,
-            0,
-            2 * Math.PI,
-            false
-        );
+        // ctx.arc(
+        //     this.x,
+        //     this.y,
+        //     this.radius,
+        //     0,
+        //     2 * Math.PI,
+        //     false
+        // );
 
-        ctx.fill();
+        // ctx.fill();
     }
 
     addWeapon(){

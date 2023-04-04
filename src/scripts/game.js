@@ -24,6 +24,14 @@ class Game{
         this.collisionIntervalId = null
         // console.log(this.spawning)
         this.resumeGameState()
+        this.img = new Image();
+        
+        // this.img.onload = () => {
+        //     this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
+        //     // console.log(this.img instanceof Image, "img")
+        // };
+
+        this.img.src = './assets/grass.png';
     }
 
     allObjects(){
@@ -126,7 +134,8 @@ class Game{
     }
 
     draw(ctx) {
-        ctx.clearRect(0,0,1000,1000)
+        // ctx.clearRect(0,0,1000,1000)
+        ctx.drawImage(this.img, 0, 0, 1000, 1000)
         const allObjs = this.allObjects()
         for(let i = 0; i < allObjs.length; i++){
             let obj = allObjs[i];

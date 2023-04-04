@@ -14,7 +14,7 @@ class BladeFlurry extends Weapon{
     constructor(options){
         super(options),
         this.frequency = BladeFlurry.FREQ,
-        this.echo = BladeFlurry.FREQ,
+        this.echo = BladeFlurry.ECHO,
         this.duration = BladeFlurry.DURATION,
         this.xvel = BladeFlurry.X_VEL,
         this.yvel = BladeFlurry.Y_VEL,
