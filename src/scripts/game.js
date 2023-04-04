@@ -4,11 +4,13 @@ import Starfall from "./starfall.js";
 import Weapon from './weapon.js';
 import Projectile from './projectile.js';
 import Consecration from './consecration.js';
+import BladeFlurry from './blade_flurry.js';
+import Fireball from './fireball.js';
 
 class Game{
     static DIM_X = 1000
     static DIM_Y = 1000
-    static NUM_MON = 50
+    static NUM_MON = 25
     static SPAWN_RATE = 5000
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
@@ -25,7 +27,7 @@ class Game{
     }
 
     allObjects(){
-        let objs = [].concat(this.hero, this.monsters, this.gems, this.projectiles)
+        let objs = [].concat(this.gems, this.monsters, this.projectiles, this.hero)
         return objs
     }
 
@@ -47,17 +49,17 @@ class Game{
         }
     }
 
-    acquireWeapon(){
-        console.log(this.hero.weapons.length, "beg")
-        // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
-        // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
-        // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
-        // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
-        this.hero.weapons.push(new Starfall({hero: this.hero}));
-        // console.log(this.hero.weapons.length, "star")
-        this.hero.weapons.push(new Consecration({hero: this.hero}));
-        // console.log(this.hero.weapons.length, "con")
-    }
+    // acquireWeapon(){
+    //     console.log(this.hero.weapons.length, "beg")
+    //     // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
+    //     // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
+    //     // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
+    //     // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
+    //     this.hero.weapons.push(new Starfall({hero: this.hero}));
+    //     // console.log(this.hero.weapons.length, "star")
+    //     this.hero.weapons.push(new Consecration({hero: this.hero}));
+    //     // console.log(this.hero.weapons.length, "con")
+    // }
 
     callWeapons(){
         for(let i = 0; i < this.hero.weapons.length; i++){
@@ -139,6 +141,7 @@ class Game{
         this.monsters.forEach(mon => mon.chase())
         // console.log(this.monster.xvel, this.monster.yvel)
         this.monsters.forEach( mon => mon.move())
+        this.projectiles.forEach( proj => proj.move())
     }
 
     resumeMovement(){
@@ -183,7 +186,7 @@ class Game{
     resumeCollision(){
         this.collisionIntervalId = setInterval(() => {
             this.checkCollisions()}
-        , 20)
+        , 40)
         // console.log(this.intervalId, "interval")
         return this.collisionIntervalId
     }

@@ -2,7 +2,6 @@ import Weapon from "./weapon.js";
 
 class Starfall extends Weapon{
     static COLOR = "pink"
-    static POS = true
     static RADIUS = 15
     static X_VEL = 0
     static Y_VEL = 0

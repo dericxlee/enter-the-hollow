@@ -37,6 +37,12 @@ window.Starfall = Starfall;
 import Consecration from "./scripts/consecration.js";
 window.Consecration = Consecration;
 
+import Fireball from "./scripts/fireball.js";
+window.Fireball = Fireball;
+
+import BladeFlurry from "./scripts/blade_flurry.js";
+window.BladeFlurry = BladeFlurry;
+
 // import LevelUpScreen from "./scripts/level_up_screen.js";
 // window.LevelUpScreen = LevelUpScreen;
 

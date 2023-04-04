@@ -1,7 +1,4 @@
 import Game from "./game.js";
-import Hero from "./hero.js";
-
-// window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
 
 class GameView {
     constructor (ctx){

@@ -1,26 +1,20 @@
 import Weapon from "./weapon";
 
-class Consecration extends Weapon{
-    static COLOR = "yellow"
-    // static X_COORD = 1000
-    // static Y_COORD = 1000
-    static RADIUS = 25
-    static X_VEL = 0
-    static Y_VEL = 0
-    static FREQ = 3000
+class Fireball extends Weapon{
+    static FREQ = 5000
     static ECHO = 1
-    static SPEED = 0
-    static DUR = 3000
+    static DURATION = 2500
+    static COLOR = "orange"
+    static RADIUS = 10
+    static SPEED = 50
     constructor(options){
         super(options),
-        this.duration = Consecration.DUR,
-        this.color = Consecration.COLOR,
-        this.radius = Consecration.RADIUS,
-        this.xvel = Consecration.X_VEL,
-        this.yvel = Consecration.Y_VEL,
-        this.frequency = Consecration.FREQ,
-        this.echo = Consecration.ECHO,
-        this.speed = Consecration.SPEED,
+        this.frequency = Fireball.FREQ,
+        this.echo = Fireball.FREQ,
+        this.duration = Fireball.DURATION,
+        this.color = Fireball.COLOR,
+        this.radius = Fireball.RADIUS,
+        this.speed = Fireball.SPEED,
         this.hero = options.hero
     }
 
@@ -35,8 +29,10 @@ class Consecration extends Weapon{
                     y: this.hero.y,
                     radius: this.radius,
                     color: this.color,
-                    xvel: this.xvel,
-                    yvel: this.yvel,
+                    // xvel: this.hero.xvel,
+                    // yvel: this.hero.yvel,
+                    xvel: 5,
+                    yvel: 0,
                     speed: this.speed,
                     game: this.hero.game
                 }));
@@ -45,4 +41,4 @@ class Consecration extends Weapon{
     }
 }
 
-export default Consecration;
+export default Fireball;
