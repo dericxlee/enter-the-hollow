@@ -15,10 +15,13 @@ Canvas for background/map, viewpoint, and levelup pop-up for power-up
 
 
 To-do:
-Level-up screen - object / game pause
-Power-up objects - categorized
 new abilities as a power-up choice - object
 Health and damage parameters
-Player controls
 Magnetism for experience gems - player attribute
-Game over logic
+Game-over logic
+boss?
+
+
+Shuriken Sprite by DK_Happy
+https://dk-happy.itch.io/shuriken-ninja
+

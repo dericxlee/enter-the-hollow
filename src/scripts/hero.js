@@ -84,12 +84,12 @@ class Hero extends MovingObject{
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
-        // this.weapons.push(new Starfall({hero: this}));
+        this.weapons.push(new Starfall({hero: this}));
         // console.log(this.hero.weapons.length, "star")
         // this.weapons.push(new Consecration({hero: this}));
         // console.log(this.weapons.length, "after, hero")
         this.weapons.push(new Fireball({hero: this}));
-        // this.weapons.push(new BladeFlurry({hero: this}))
+        this.weapons.push(new BladeFlurry({hero: this}))
     }
 
     levelUp(){

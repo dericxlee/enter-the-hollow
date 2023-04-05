@@ -6,13 +6,14 @@ class BladeFlurry extends Weapon{
     static FREQ = 5000
     static ECHO = 1
     static DURATION = 2500
-    static COLOR = "black"
+    static COLOR = "white"
     static RADIUS = 15
     static SPEED = 0
     static X_VEL = 0
     static Y_VEL = 0
     constructor(options){
         super(options),
+        this.name = "bladeFlurry",
         this.frequency = BladeFlurry.FREQ,
         this.echo = BladeFlurry.ECHO,
         this.duration = BladeFlurry.DURATION,
@@ -30,6 +31,7 @@ class BladeFlurry extends Weapon{
             for(let i = 0; i < this.echo; i++){
                 for(let j = 0; j < cardinal.length; j++){
                     this.hero.game.add(new Projectile({
+                        name: this.name,
                         duration: this.duration,
                         x: this.hero.x + (cardinal[j][0] * 5),
                         y: this.hero.y + (cardinal[j][1] * 5),
