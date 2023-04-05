@@ -7,8 +7,8 @@ class Fireball extends Weapon{
     static Y_VEL = 0
     static FREQ = 1000
     static ECHO = 1
-    static SPEED = 5
-    static DUR = 2500
+    static SPEED = 10
+    static DUR = 5000
     static DMG = 5
     constructor(options){
         super(options),
@@ -37,8 +37,8 @@ class Fireball extends Weapon{
                     y: this.hero.y,
                     radius: this.radius,
                     color: this.color,
-                    xvel: (this.hero.xvel * this.speed) || this.hero.lastXVel * this.speed,
-                    yvel: (this.hero.yvel * this.speed) || this.hero.lastYVel * this.speed,
+                    xvel: (this.hero.xvel * this.speed * Math.random()) || this.hero.lastXVel * this.speed * Math.random(),
+                    yvel: (this.hero.yvel * this.speed * Math.random()) || this.hero.lastYVel * this.speed * Math.random(),
                     speed: this.speed,
                     game: this.hero.game,
                     damage: this.damage

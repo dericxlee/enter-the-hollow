@@ -15,6 +15,7 @@ import Boss from "./boss.js";
 const buttonOne = document.querySelector("#first-upgrade")
 const buttonTwo = document.querySelector("#second-upgrade")
 const buttonThree = document.querySelector("#third-upgrade")
+const allButtons = document.querySelectorAll(".button")
 const buttonOverlay = document.getElementById('button-div')
 
 class Hero extends MovingObject{
@@ -27,7 +28,7 @@ class Hero extends MovingObject{
     static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
-    static MAGNET = 0
+    static MAGNET = 100
     constructor(options){
         super(options)
         this.x = Hero.START_X,
@@ -122,6 +123,7 @@ class Hero extends MovingObject{
     addChoices(){
         for(let i = this.upgrades.length; i < 3; i++){
             this.upgrades.push(this.generateChoice())
+            allButtons[i].innerHTML = `${this.upgrades[i].weaponName} : ${this.upgrades[i].type}`
         }
     }
 
@@ -133,8 +135,8 @@ class Hero extends MovingObject{
     }
 
     generateChoice(){
-        // let random_number = Math.ceil(Math.random()*Hero.RNG)
-        let random_number = 2
+        let random_number = Math.ceil(Math.random()*Hero.RNG)
+        // let random_number = 2
 
         if(random_number === 1){
             console.log("player up")
