@@ -52,18 +52,22 @@ class GameView {
         if (keyUpName == 'a' || keyUpName == 'A') {
             this.hero.xvel = 0;
             this.hero.lastXVel = -1;
+            this.hero.lastYVel = 0
         }
         if (keyUpName == 'd' || keyUpName == 'D') {
             this.hero.xvel = 0
             this.hero.lastXVel = 1;
+            this.hero.lastYVel = 0;
         }
         if (keyUpName == 'w' || keyUpName == 'W') {
             this.hero.yvel = 0
             this.hero.lastYVel = -1 
+            this.hero.lastXVel = 0
         }
         if (keyUpName == 's' || keyUpName == 'S') {
             this.hero.yvel = 0
             this.hero.lastYVel = 1
+            this.hero.lastXVel = 0
         }
     }
 

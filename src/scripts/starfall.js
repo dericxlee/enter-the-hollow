@@ -10,7 +10,7 @@ class Starfall extends Weapon{
     static SPEED = 0
     static DUR = 1000
     static OFFSET = 100
-    static DMG = 15
+    static DMG = 3
     constructor(options){
         super(options),
         this.name = "starfall",

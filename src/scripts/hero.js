@@ -3,8 +3,9 @@ import Starfall from "./starfall.js";
 import Weapon from "./weapon.js";
 import WeaponPowerUp from "./weapon_power_up.js";
 import PlayerPowerUp from "./player_power_up.js";
-// import Fireball from "./fireball.js";
-// import BladeFlurry from "./blade_flurry.js";
+import Fireball from "./fireball.js";
+import BladeFlurry from "./blade_flurry.js";
+import Bone from "./bubble.js";
 
 
 const buttonOne = document.querySelector("#first-upgrade")
@@ -90,6 +91,7 @@ class Hero extends MovingObject{
         // console.log(this.weapons.length, "after, hero")
         this.weapons.push(new Fireball({hero: this}));
         this.weapons.push(new BladeFlurry({hero: this}))
+        this.weapons.push(new Bone({hero: this}))
     }
 
     levelUp(){
