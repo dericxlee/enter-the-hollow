@@ -16,8 +16,7 @@ Gamestate pause does not include projectile creation (each projectile has its ow
 
 
 To-do:
-new abilities as a power-up choice - object
-Magnetism for experience gems - player attribute
+new abilities as a power-up choice - object (almost)
 Game-over logic (almost)
 boss?
 

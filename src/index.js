@@ -43,6 +43,12 @@ window.Fireball = Fireball;
 import BladeFlurry from "./scripts/blade_flurry.js";
 window.BladeFlurry = BladeFlurry;
 
+import Bone from "./scripts/bone.js";
+window.Bone = Bone;
+
+import BoneProjectile from "./scripts/bone_projectile.js";
+window.BoneProjectile = BoneProjectile;
+
 // import LevelUpScreen from "./scripts/level_up_screen.js";
 // window.LevelUpScreen = LevelUpScreen;
 

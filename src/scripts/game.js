@@ -39,7 +39,7 @@ class Game{
     }
 
     allObjects(){
-        let objs = [].concat(this.gems, this.monsters, this.projectiles, this.hero)
+        let objs = [].concat(this.projectiles, this.monsters, this.gems, this.hero)
         return objs
     }
 
@@ -155,6 +155,8 @@ class Game{
         this.monsters.forEach(mon => mon.chase())
         // console.log(this.monster.xvel, this.monster.yvel)
         this.monsters.forEach( mon => mon.move())
+        this.gems.forEach(gem => gem.chase())
+        this.gems.forEach(gem => gem.move())
         this.projectiles.forEach( proj => proj.move())
     }
 

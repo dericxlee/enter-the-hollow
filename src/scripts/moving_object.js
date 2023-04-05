@@ -1,8 +1,12 @@
-import StaticObject from './static_object.js';
+// import StaticObject from './static_object.js';
 
-class MovingObject extends StaticObject{
+class MovingObject{
     constructor(options){
-        super(options),
+        this.x = options.x,
+        this.y = options.y,
+        this.radius = options.radius,
+        this.color = options.color,
+        this.game = options.game,
         this.xvel = options.xvel,
         this.yvel = options.yvel,
         this.speed = options.speed
@@ -31,21 +35,21 @@ class MovingObject extends StaticObject{
         this.y = this.game.yWrap(ver)
     }
 
-    // distanceFrom(otherObj){
-    //     return Math.sqrt((this.x - otherObj.x)**2 + (this.y - otherObj.y)**2)
-    // }
+    distanceFrom(otherObj){
+        return Math.sqrt((this.x - otherObj.x)**2 + (this.y - otherObj.y)**2)
+    }
 
-    // isCollidedWith(otherObj){
-    //     return ((this.radius + otherObj.radius) > this.distanceFrom(otherObj))
-    // }
+    isCollidedWith(otherObj){
+        return ((this.radius + otherObj.radius) > this.distanceFrom(otherObj))
+    }
 
-    // collideWith(otherObj){
+    collideWith(otherObj){
 
-    // }
+    }
 
-    // remove(){
-    //     this.game.remove(this);
-    // }
+    remove(){
+        this.game.remove(this);
+    }
 }
 
 export default MovingObject;

@@ -5,7 +5,10 @@ import WeaponPowerUp from "./weapon_power_up.js";
 import PlayerPowerUp from "./player_power_up.js";
 import Fireball from "./fireball.js";
 import BladeFlurry from "./blade_flurry.js";
-import Bone from "./bubble.js";
+// import Bone from "./bubble.js";
+import Bubble from "./bubble.js";
+import Bone from "./bone.js";
+import BoneProjectile from "./bone_projectile.js";
 
 
 const buttonOne = document.querySelector("#first-upgrade")
@@ -23,6 +26,7 @@ class Hero extends MovingObject{
     static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
+    static MAGNET = 100
     constructor(options){
         super(options)
         this.x = Hero.START_X,
@@ -41,6 +45,7 @@ class Hero extends MovingObject{
         this.yvel = options.yvel || 0
         this.lastXVel = 0
         this.lastYVel = 0
+        this.magnetism = Hero.MAGNET
 
         this.sprite = new Image();
         this.sprite.src = './assets/hero.png';
@@ -86,12 +91,11 @@ class Hero extends MovingObject{
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
         this.weapons.push(new Starfall({hero: this}));
-        // console.log(this.hero.weapons.length, "star")
         this.weapons.push(new Consecration({hero: this}));
-        // console.log(this.weapons.length, "after, hero")
         this.weapons.push(new Fireball({hero: this}));
         this.weapons.push(new BladeFlurry({hero: this}))
-        this.weapons.push(new Bone({hero: this}))
+        this.weapons.push(new Bubble({hero: this}))
+        // this.weapons.push(new Bone({hero: this}))
     }
 
     levelUp(){

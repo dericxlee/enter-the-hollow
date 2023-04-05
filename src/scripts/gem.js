@@ -1,12 +1,19 @@
+import MovingObject from './moving_object.js';
 import StaticObject from './static_object.js';
 
-class Gem extends StaticObject{
+class Gem extends MovingObject{
     static GEM_RADIUS = 7
     static GEM_COLOR = "white"
+    static GEM_SPEED = 10
     constructor(options){
         super(options)
         this.radius = Gem.GEM_RADIUS;
         this.color = Gem.GEM_COLOR;
+        this.speed = Gem.GEM_SPEED;
+        this.xvel = 0
+        this.yvel = 0
+        this.hero = this.game.hero;
+
         this.sprite = new Image()
         this.sprite.src = './assets/gem.png'
     }
@@ -18,6 +25,25 @@ class Gem extends StaticObject{
             return true;
         }
         return false;
+    }
+
+    distFromHero(){
+        return Math.sqrt((this.hero.x - this.x)**2 + (this.hero.y - this.y)**2)
+    }
+
+    updateXVel(){ //dynamic xvel to 'chase' hero
+        return this.xvel = (this.hero.x - this.x) * (this.speed/this.distFromHero())
+    }
+
+    updateYVel(){ //dynamic yvel to 'chase' hero
+        return this.yvel = (this.hero.y - this.y) * (this.speed/this.distFromHero())
+    }
+
+    chase(){
+        if(this.distFromHero() < this.hero.magnetism){
+            this.xvel = this.updateXVel();
+            this.yvel = this.updateYVel();
+        }
     }
 
     draw(ctx){

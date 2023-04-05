@@ -1,9 +1,10 @@
 {
   "name": "zombie_survivor",
   "version": "1.0.0",
-  "description": "",
+  "description": "Rogue Survivor takes inspiration from Vampire Survivors, a roguelike survival game.",
   "scripts": {
-    "watch": "webpack --watch --mode=development"
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +17,20 @@
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
     "babel-loader": "^9.1.2",
-    "core-js": "^3.29.1",
+    "core-js": "^3.30.0",
     "css-loader": "^6.7.3",
     "mini-css-extract-plugin": "^2.7.5",
     "regenerator-runtime": "^0.13.11",
     "sass": "^1.60.0",
     "sass-loader": "^13.2.2"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dericxlee/hollow-hero.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dericxlee/hollow-hero/issues"
+  },
+  "homepage": "https://github.com/dericxlee/hollow-hero#readme"
 }
