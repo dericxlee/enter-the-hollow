@@ -11,6 +11,7 @@ class BladeFlurry extends Weapon{
     static SPEED = 0
     static X_VEL = 0
     static Y_VEL = 0
+    static DMG = 5
     constructor(options){
         super(options),
         this.name = "bladeFlurry",
@@ -22,7 +23,8 @@ class BladeFlurry extends Weapon{
         this.color = BladeFlurry.COLOR,
         this.radius = BladeFlurry.RADIUS,
         this.speed = BladeFlurry.SPEED,
-        this.hero = options.hero
+        this.hero = options.hero,
+        this.damage = BladeFlurry.DMG
     }
 
     addProjectile(){
@@ -40,7 +42,8 @@ class BladeFlurry extends Weapon{
                         xvel: cardinal[j][0] * 5,
                         yvel: cardinal[j][1] * 5,
                         speed: this.speed,
-                        game: this.hero.game
+                        game: this.hero.game,
+                        damage: this.damage
                     }));
                 }   
             }

@@ -9,6 +9,7 @@ class Fireball extends Weapon{
     static ECHO = 1
     static SPEED = 5
     static DUR = 2500
+    static DMG = 5
     constructor(options){
         super(options),
         this.name = "fireball"
@@ -20,7 +21,8 @@ class Fireball extends Weapon{
         this.frequency = Fireball.FREQ,
         this.echo = Fireball.ECHO,
         this.speed = Fireball.SPEED,
-        this.hero = options.hero
+        this.hero = options.hero,
+        this.damage = Fireball.DMG
     }
 
     addProjectile(){
@@ -38,7 +40,8 @@ class Fireball extends Weapon{
                     xvel: (this.hero.xvel * this.speed) || this.hero.lastXVel * this.speed,
                     yvel: (this.hero.yvel * this.speed) || this.hero.lastYVel * this.speed,
                     speed: this.speed,
-                    game: this.hero.game
+                    game: this.hero.game,
+                    damage: this.damage
                 }));
             }
         }, this.frequency)

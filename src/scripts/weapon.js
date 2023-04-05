@@ -11,7 +11,8 @@ class Weapon {
         this.yvel = options.yvel,
         this.speed = options.speed,
         this.hero = options.hero,
-        this.offset = options.offset
+        this.offset = options.offset,
+        this.damage = options.damage
     }
 
     addProjectile(){

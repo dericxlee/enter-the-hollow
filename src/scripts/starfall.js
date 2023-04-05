@@ -10,6 +10,7 @@ class Starfall extends Weapon{
     static SPEED = 0
     static DUR = 1000
     static OFFSET = 100
+    static DMG = 15
     constructor(options){
         super(options),
         this.name = "starfall",
@@ -22,7 +23,8 @@ class Starfall extends Weapon{
         this.echo = Starfall.ECHO,
         this.speed = Starfall.SPEED,
         this.hero = options.hero,
-        this.offset = Starfall.OFFSET
+        this.offset = Starfall.OFFSET,
+        this.damage = Starfall.DMG
     }
 
     addProjectile(){
@@ -39,7 +41,8 @@ class Starfall extends Weapon{
                     xvel: this.xvel,
                     yvel: this.yvel,
                     speed: this.speed,
-                    game: this.hero.game
+                    game: this.hero.game,
+                    damage: this.damage
                 }));
             }
         }, this.frequency)

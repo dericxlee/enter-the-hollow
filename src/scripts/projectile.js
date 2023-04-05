@@ -12,7 +12,8 @@ class Projectile extends MovingObject{
         this.game = options.game,
         this.xvel = options.xvel,
         this.yvel = options.yvel,
-        this.speed = options.speed
+        this.speed = options.speed,
+        this.damage = options.damage
         setTimeout(()=> {
             this.remove()
         }, this.duration)

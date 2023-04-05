@@ -5,11 +5,13 @@ class Monster extends MovingObject{
     static RADIUS = 15
     static COLOR = 'green'
     static SPEED = 2
+    static HP = 100
     constructor(options){
         super(options),
         this.radius = Monster.RADIUS,
         this.color = Monster.COLOR,
         this.speed = Monster.SPEED,
+        this.health = Monster.HP,
         // this.health = options.health,
         this.hero = this.game.hero
         this.updateXVel(),
@@ -41,8 +43,12 @@ class Monster extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Projectile){
-            this.game.add(new Gem({x: this.x, y: this.y, game: this.game}))
-            this.remove()
+            console.log(otherObj.damage)
+            this.health = this.health - otherObj.damage
+            if(this.health <= 0) {
+                this.game.add(new Gem({x: this.x, y: this.y, game: this.game}))
+                this.remove()
+            }
             return true;
         }
         return false;

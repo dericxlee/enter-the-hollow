@@ -12,6 +12,7 @@ Collision checks between (player vs enemies), (player vs experience gems), and(e
 Vector changes for enemy pathing
 Sprite assets for player, enemies, and projectiles
 Canvas for background/map, viewpoint, and levelup pop-up for power-up
+Gamestate pause does not include projectile creation (each projectile has its own setInterval)
 
 
 To-do:

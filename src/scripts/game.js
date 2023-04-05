@@ -12,6 +12,7 @@ class Game{
     static DIM_Y = 1000
     static NUM_MON = 25
     static SPAWN_RATE = 5000
+    static TIMER = 1800
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -19,9 +20,11 @@ class Game{
         this.gems = [];
         this.projectiles = [];
         this.addMonster();
+        this.timer = Game.TIMER;
         this.intervalId = null
         this.moveIntervalId = null
         this.collisionIntervalId = null
+        this.timerIntervalId = null
         // console.log(this.spawning)
         this.resumeGameState()
         this.img = new Image();
@@ -99,6 +102,7 @@ class Game{
         this.resumeSpawn()
         this.resumeMovement()
         this.resumeCollision()
+        this.resumeTimer()
     }
 
     resumeSpawn(){
@@ -209,6 +213,18 @@ class Game{
         this.pauseCollision()
         this.pauseMovement()
         this.pauseSpawn()
+        this.pauseTimer()
+    }
+
+    resumeTimer(){
+        this.timerIntervalId = setInterval(()=>{
+            this.timer -= 1
+            console.log(this.timer)
+        }, 1000)
+    }
+
+    pauseTimer(){
+        return clearInterval(this.timerIntervalId)
     }
 }
 

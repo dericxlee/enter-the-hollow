@@ -11,6 +11,7 @@ class Consecration extends Weapon{
     static ECHO = 1
     static SPEED = 0
     static DUR = 3000
+    static DMG = 1
     constructor(options){
         super(options),
         this.name = "consecration"
@@ -22,7 +23,8 @@ class Consecration extends Weapon{
         this.frequency = Consecration.FREQ,
         this.echo = Consecration.ECHO,
         this.speed = Consecration.SPEED,
-        this.hero = options.hero
+        this.hero = options.hero,
+        this.damage = Consecration.DMG
     }
 
     addProjectile(){
@@ -40,7 +42,8 @@ class Consecration extends Weapon{
                     xvel: this.xvel,
                     yvel: this.yvel,
                     speed: this.speed,
-                    game: this.hero.game
+                    game: this.hero.game,
+                    damage: this.damage
                 }));
             }
         }, this.frequency)
