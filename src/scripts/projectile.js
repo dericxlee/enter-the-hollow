@@ -23,6 +23,8 @@ class Projectile extends MovingObject{
         this.starfall.src = './assets/starfall.png'
         this.shuriken = new Image();
         this.shuriken.src = './assets/shuriken.png'
+        this.consecration = new Image();
+        this.consecration.src = './assets/light.png'
     }
 
     draw(ctx){
@@ -40,13 +42,16 @@ class Projectile extends MovingObject{
         //     false
         // );
 
-        ctx.fill();
+        // ctx.fill();
+
         if(this.name === "fireball"){
             ctx.drawImage(this.fireball, 24, 24, 72, 72, this.x - (1.5 * this.radius), this.y - (1.5 * this.radius), 4 * this.radius, 4 * this.radius)
         } else if (this.name === "starfall"){
             ctx.drawImage(this.starfall, 0, 0, 32, 32, this.x - (2 * this.radius), this.y - (2 * this.radius), 4 * this.radius, 4 * this.radius)
         } else if (this.name === "bladeFlurry"){
             ctx.drawImage(this.shuriken, 0, 0, 1380, 1380, this.x - (2 * this.radius), this.y - (2 * this.radius), 4 * this.radius, 4 * this.radius)
+        } else if (this.name === "consecration"){
+            ctx.drawImage(this.consecration, 24, 24, 72, 72, this.x - (1.5 * this.radius), this.y - (1.5 * this.radius), 3 * this.radius, 3 * this.radius)
         }
     }
 }

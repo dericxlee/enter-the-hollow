@@ -25,3 +25,11 @@ boss?
 Shuriken Sprite by DK_Happy
 https://dk-happy.itch.io/shuriken-ninja
 
+Pixel-art Effects by CodeManu
+https://codemanu.itch.io/pixelart-effect-pack
+
+Character Sprite by Pipoya
+https://pipoya.itch.io/pipoya-free-rpg-character-sprites-32x32
+
+Gem sprites by Laredgames
+https://laredgames.itch.io/gems-coins-free

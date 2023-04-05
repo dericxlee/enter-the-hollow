@@ -31,7 +31,8 @@ class Game{
         //     // console.log(this.img instanceof Image, "img")
         // };
 
-        this.img.src = './assets/grass.png';
+        // this.img.src = './assets/grass.png';
+        this.img.src = './assets/map2.jpeg'
     }
 
     allObjects(){

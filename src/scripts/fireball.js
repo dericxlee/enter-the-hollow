@@ -2,7 +2,7 @@ import Weapon from "./weapon";
 
 class Fireball extends Weapon{
     static COLOR = "black"
-    static RADIUS = 40
+    static RADIUS = 30
     static X_VEL = 0
     static Y_VEL = 0
     static FREQ = 1000
