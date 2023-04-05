@@ -3,7 +3,7 @@ import Weapon from "./weapon";
 const cardinal = [[1,0], [-1,0], [0,1], [0,-1]]
 
 class BladeFlurry extends Weapon{
-    static FREQ = 5000
+    static FREQ = 3000
     static ECHO = 1
     static DURATION = 2500
     static COLOR = "white"

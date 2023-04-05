@@ -9,6 +9,7 @@ import BladeFlurry from "./blade_flurry.js";
 import Bubble from "./bubble.js";
 import Bone from "./bone.js";
 import BoneProjectile from "./bone_projectile.js";
+import Boss from "./boss.js";
 
 
 const buttonOne = document.querySelector("#first-upgrade")
@@ -26,7 +27,7 @@ class Hero extends MovingObject{
     static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
-    static MAGNET = 100
+    static MAGNET = 0
     constructor(options){
         super(options)
         this.x = Hero.START_X,

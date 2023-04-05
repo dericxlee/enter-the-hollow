@@ -6,13 +6,14 @@ import Projectile from './projectile.js';
 import Consecration from './consecration.js';
 import BladeFlurry from './blade_flurry.js';
 import Fireball from './fireball.js';
+import Boss from './boss.js'
 
 class Game{
-    static DIM_X = 1000
-    static DIM_Y = 1000
-    static NUM_MON = 25
+    static DIM_X = 1400
+    static DIM_Y = 700
+    static NUM_MON = 20
     static SPAWN_RATE = 5000
-    static TIMER = 1800
+    static TIMER = 180
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -25,7 +26,7 @@ class Game{
         this.moveIntervalId = null
         this.collisionIntervalId = null
         this.timerIntervalId = null
-        // console.log(this.spawning)
+
         this.resumeGameState()
         this.img = new Image();
         
@@ -36,6 +37,8 @@ class Game{
 
         // this.img.src = './assets/grass.png';
         this.img.src = './assets/map2.jpeg'
+
+        // this.addBoss()
     }
 
     allObjects(){
@@ -85,6 +88,10 @@ class Game{
             this.add(new Monster({x: this.randomXPosition(), y: this.randomYPosition(), game: this, hero: this.hero}))
         }
         // return new Monster({x: this.randomXPosition(), y: this.randomYPosition(), hero: this.hero, game: this})
+    }
+
+    addBoss(){
+        this.add(new Boss({x: this.randomXPosition(), y: this.randomYPosition(), game: this, hero: this.hero}))
     }
 
     addHero(){
@@ -140,7 +147,7 @@ class Game{
 
     draw(ctx) {
         // ctx.clearRect(0,0,1000,1000)
-        ctx.drawImage(this.img, 0, 0, 1000, 1000)
+        ctx.drawImage(this.img, 0, 0, 1400, 700)
         const allObjs = this.allObjects()
         for(let i = 0; i < allObjs.length; i++){
             let obj = allObjs[i];
@@ -222,6 +229,7 @@ class Game{
         this.timerIntervalId = setInterval(()=>{
             this.timer -= 1
             console.log(this.timer)
+            if(this.timer % 5 === 0) this.addBoss()
         }, 1000)
     }
 
