@@ -17,6 +17,8 @@ const buttonTwo = document.querySelector("#second-upgrade")
 const buttonThree = document.querySelector("#third-upgrade")
 const allButtons = document.querySelectorAll(".button")
 const buttonOverlay = document.getElementById('button-div')
+const experienceBar = document.getElementById('exp')
+const progressLevel = document.getElementById('progress-level')
 
 class Hero extends MovingObject{
     static RNG = 2
@@ -54,9 +56,14 @@ class Hero extends MovingObject{
         this.spriteWidth = 96;
         this.spriteHeight = 128;
 
+        // experienceBar.setAttribute(max: this.experienceForLevel, value: this.experience)
+        // experienceBar.setAttribute(value: this.experience)
+
         this.onClickOne = this.onClickOne.bind(this)
         this.onClickTwo = this.onClickTwo.bind(this)
         this.onClickThree = this.onClickThree.bind(this)
+
+        progressLevel.innerText = `Level: ${this.level}`
     }
 
     draw(ctx) {
@@ -92,11 +99,11 @@ class Hero extends MovingObject{
         // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
         // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
-        this.weapons.push(new Starfall({hero: this}));
-        this.weapons.push(new Consecration({hero: this}));
-        this.weapons.push(new Fireball({hero: this}));
+        // this.weapons.push(new Starfall({hero: this}));
+        // this.weapons.push(new Consecration({hero: this}));
+        // this.weapons.push(new Fireball({hero: this}));
         this.weapons.push(new BladeFlurry({hero: this}))
-        this.weapons.push(new Bubble({hero: this}))
+        // this.weapons.push(new Bubble({hero: this}))
         // this.weapons.push(new Bone({hero: this}))
     }
 
@@ -113,8 +120,9 @@ class Hero extends MovingObject{
 
             
             this.level += 1;
-            this.experienceForLevel = Math.floor(baseExpReq * 1.2)
+            this.experienceForLevel = Math.floor(baseExpReq * 1.8)
             this.experience = 0
+            experienceBar.value = this.experience
             return true;
         }
         return false;
@@ -129,9 +137,13 @@ class Hero extends MovingObject{
 
     gainExp(){
         this.experience += 1
+        experienceBar.max = this.experienceForLevel
+        experienceBar.value = this.experience
         if(this.levelUp()){
+            progressLevel.innerText = `Level: ${this.level}`
             return this.levelUp()
         }
+        // experienceBar.setAttribute(max: this.experienceForLevel, value: this.experience)
     }
 
     generateChoice(){
@@ -193,7 +205,7 @@ class Hero extends MovingObject{
             this.health = this.health - otherObj.damage
             if(this.health <= 0) {
                 this.game.gameOver()
-                this.remove()
+                // this.remove()
             }
             return true;
         }

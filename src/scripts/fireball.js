@@ -5,7 +5,7 @@ class Fireball extends Weapon{
     static RADIUS = 30
     static X_VEL = 0
     static Y_VEL = 0
-    static FREQ = 1000
+    static FREQ = 2000
     static ECHO = 1
     static SPEED = 10
     static DUR = 5000

@@ -14,9 +14,28 @@
     </header>
     <canvas id="map" width="1400px" height="700px" style="border:1px solid #000000;"></canvas>
     <div id="button-div" style="display:none">
-    <button type="button" class="button" id="first-upgrade">First Upgrade</button>
-    <button type="button" class="button" id="second-upgrade" onclick="">Second Upgrade</button>
-    <button type="button" class="button" id="third-upgrade" onclick="">Third Upgrade</button>
+        <button type="button" class="button" id="first-upgrade">First Upgrade</button>
+        <button type="button" class="button" id="second-upgrade" onclick="">Second Upgrade</button>
+        <button type="button" class="button" id="third-upgrade" onclick="">Third Upgrade</button>
+    </div>
+
+    <div id="progressbar">
+        <span id="progress-level"></span>
+        <progress id="exp" max="" value=""></progress>
+    </div>
+
+    <div id="timer">
+        <span id="current-time">timer not working</span>
+    </div>
+
+    <div id="game-over" style="display:none">
+        <p>Game Over!</p>
+        <ul>
+            <li id="mon-kills"></li>
+            <li id="highest-lvl"></li>
+            <li id="damage-done"></li>
+            <li></li>
+        </ul>
     </div>
 </body>
 

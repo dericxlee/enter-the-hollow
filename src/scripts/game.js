@@ -8,6 +8,12 @@ import BladeFlurry from './blade_flurry.js';
 import Fireball from './fireball.js';
 import Boss from './boss.js'
 
+const currentTime = document.getElementById('current-time')
+const youLose = document.getElementById('game-over')
+const monKills = document.getElementById('mon-kills')
+const highLvl = document.getElementById('highest-lvl')
+const dmgDone = document.getElementById('damage-done')
+
 class Game{
     static DIM_X = 1400
     static DIM_Y = 700
@@ -39,6 +45,10 @@ class Game{
         this.img.src = './assets/map2.jpeg'
 
         // this.addBoss()
+        currentTime.innerText = `${this.timer}`
+
+        this.kills = 0
+        this.damageDone = 0
     }
 
     allObjects(){
@@ -128,8 +138,11 @@ class Game{
     remove(obj) {
         if (obj instanceof Monster) {
             this.monsters.splice(this.monsters.indexOf(obj), 1);
+            this.kills += 1
+            this.add(new Gem({x: obj.x, y: obj.y, game: this}))
         } else if (obj instanceof Gem) {
             this.gems.splice(this.gems.indexOf(obj), 1);
+            this.hero.gainExp()
         } else if (obj instanceof Projectile) {
             this.projectiles.splice(this.projectiles.indexOf(obj), 1);
         } else {
@@ -147,7 +160,7 @@ class Game{
 
     draw(ctx) {
         // ctx.clearRect(0,0,1000,1000)
-        ctx.drawImage(this.img, 0, 0, 1400, 700)
+        ctx.drawImage(this.img, 0, 0, Game.DIM_X, Game.DIM_Y)
         const allObjs = this.allObjects()
         for(let i = 0; i < allObjs.length; i++){
             let obj = allObjs[i];
@@ -228,6 +241,7 @@ class Game{
     resumeTimer(){
         this.timerIntervalId = setInterval(()=>{
             this.timer -= 1
+            currentTime.innerText = `${this.timer}`
             console.log(this.timer)
             if(this.timer % 5 === 0) this.addBoss()
         }, 1000)
@@ -239,6 +253,10 @@ class Game{
 
     gameOver(){
         this.pauseGameState()
+        youLose.style = 'display:block'
+        monKills.innerText = `Enemies defeated: ${this.kills}`
+        highLvl.innerText = `Level reached: ${this.hero.level}`
+        dmgDone.innerText = `Damage dealt: ${this.damageDone}`
         console.log("game over")
     }
 }

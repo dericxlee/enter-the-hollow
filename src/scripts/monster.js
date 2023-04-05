@@ -47,8 +47,9 @@ class Monster extends MovingObject{
         if (otherObj instanceof Projectile){
             console.log(otherObj.damage)
             this.health = this.health - otherObj.damage
+            this.game.damageDone += otherObj.damage
             if(this.health <= 0) {
-                this.game.add(new Gem({x: this.x, y: this.y, game: this.game}))
+                // this.game.add(new Gem({x: this.x, y: this.y, game: this.game}))
                 this.remove()
             }
             return true;

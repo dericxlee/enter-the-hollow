@@ -20,7 +20,7 @@ class Gem extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Hero){
-            otherObj.gainExp();
+            // otherObj.gainExp();
             this.remove();
             return true;
         }
