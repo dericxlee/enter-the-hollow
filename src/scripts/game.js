@@ -13,6 +13,8 @@ const youLose = document.getElementById('game-over')
 const monKills = document.getElementById('mon-kills')
 const highLvl = document.getElementById('highest-lvl')
 const dmgDone = document.getElementById('damage-done')
+const endGame = document.getElementById('end-game')
+const endMsg = document.getElementById('end-msg')
 
 class Game{
     static DIM_X = 1400
@@ -244,6 +246,7 @@ class Game{
             currentTime.innerText = `${this.timer}`
             console.log(this.timer)
             if(this.timer % 5 === 0) this.addBoss()
+            if(this.timer === 0) this.gameOver()
         }, 1000)
     }
 
@@ -254,10 +257,19 @@ class Game{
     gameOver(){
         this.pauseGameState()
         youLose.style = 'display:block'
+
+
+        if(this.hero.health > 0){
+            endGame.innerText = "Victory!"
+            endMsg.innerText = "You survived the Endless Hollow"
+        } else {
+            endGame.innerText = "Game Over!"
+            endMsg.innerText = "Better luck next time!"
+        }
+
         monKills.innerText = `Enemies defeated: ${this.kills}`
         highLvl.innerText = `Level reached: ${this.hero.level}`
         dmgDone.innerText = `Damage dealt: ${this.damageDone}`
-        console.log("game over")
     }
 }
 

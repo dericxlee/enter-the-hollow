@@ -6,7 +6,7 @@ class Monster extends MovingObject{
     static COLOR = 'green'
     static SPEED = 2
     static HP = 10
-    static DMG = 20
+    static DMG = 1
     constructor(options){
         super(options),
         this.radius = Monster.RADIUS,

@@ -19,6 +19,10 @@ const allButtons = document.querySelectorAll(".button")
 const buttonOverlay = document.getElementById('button-div')
 const experienceBar = document.getElementById('exp')
 const progressLevel = document.getElementById('progress-level')
+// const hud = document.getElementById('player-hud')
+const playerSpeed = document.getElementById('speed')
+const playerMagnet = document.getElementById('magnet')
+const playerHealth = document.getElementById('health')
 
 class Hero extends MovingObject{
     static RNG = 2
@@ -30,7 +34,7 @@ class Hero extends MovingObject{
     static EXP_REQ = 5
     static START_LVL = 1
     static HP = 100
-    static MAGNET = 100
+    static MAGNET = 20
     constructor(options){
         super(options)
         this.x = Hero.START_X,
@@ -64,6 +68,9 @@ class Hero extends MovingObject{
         this.onClickThree = this.onClickThree.bind(this)
 
         progressLevel.innerText = `Level: ${this.level}`
+        playerSpeed.innerText = `Speed: ${this.speed}`
+        playerHealth.innerText = `Health: ${this.health}`
+        playerMagnet.innerText = `Magnetic: ${this.magnetism}`
     }
 
     draw(ctx) {
@@ -123,6 +130,10 @@ class Hero extends MovingObject{
             this.experienceForLevel = Math.floor(baseExpReq * 1.8)
             this.experience = 0
             experienceBar.value = this.experience
+            playerSpeed.innerText = `Speed: ${this.speed}`
+            playerHealth.innerText = `Health: ${this.health}`
+            playerMagnet.innerText = `Magnetic: ${this.magnetism}`
+
             return true;
         }
         return false;
@@ -203,6 +214,7 @@ class Hero extends MovingObject{
             console.log(otherObj.damage, "take dmg")
             console.log(this.health, "my hp")
             this.health = this.health - otherObj.damage
+            playerHealth.innerText = `Health: ${this.health}`
             if(this.health <= 0) {
                 this.game.gameOver()
                 // this.remove()
