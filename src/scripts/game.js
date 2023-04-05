@@ -226,6 +226,11 @@ class Game{
     pauseTimer(){
         return clearInterval(this.timerIntervalId)
     }
+
+    gameOver(){
+        this.pauseGameState()
+        console.log("game over")
+    }
 }
 
 export default Game;

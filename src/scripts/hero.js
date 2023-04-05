@@ -176,6 +176,20 @@ class Hero extends MovingObject{
     testLog(){
         console.log("hi")
     }
+
+    collideWith(otherObj){
+        if (otherObj instanceof Monster){
+            console.log(otherObj.damage, "take dmg")
+            console.log(this.health, "my hp")
+            this.health = this.health - otherObj.damage
+            if(this.health <= 0) {
+                this.game.gameOver()
+                this.remove()
+            }
+            return true;
+        }
+        return false;
+    }
 }
 
 export default Hero;

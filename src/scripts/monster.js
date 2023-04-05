@@ -6,16 +6,18 @@ class Monster extends MovingObject{
     static COLOR = 'green'
     static SPEED = 2
     static HP = 100
+    static DMG = 20
     constructor(options){
         super(options),
         this.radius = Monster.RADIUS,
         this.color = Monster.COLOR,
         this.speed = Monster.SPEED,
         this.health = Monster.HP,
-        // this.health = options.health,
-        this.hero = this.game.hero
+        this.damage = Monster.DMG,
+        this.hero = this.game.hero,
         this.updateXVel(),
         this.updateYVel()
+
         this.sprite = new Image();
         this.sprite.src = './assets/enemy.png';
     }
