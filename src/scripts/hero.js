@@ -117,16 +117,11 @@ class Hero extends MovingObject{
     }
     
 
-    addWeapon(){
-        // console.log(this.weapons.length, "beg, hero")
-        // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
-        // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
-        // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
-        // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
+    addWeapon(){ //for weapon testing
         // this.weapons.push(new Starfall({hero: this}));
         // this.weapons.push(new Consecration({hero: this}));
         // this.weapons.push(new Fireball({hero: this}));
-        this.weapons.push(new BladeFlurry({hero: this}))
+        // this.weapons.push(new BladeFlurry({hero: this}))
         // this.weapons.push(new Bubble({hero: this}))
         // this.weapons.push(new Bone({hero: this}))
     }
@@ -136,14 +131,15 @@ class Hero extends MovingObject{
         if(baseExpReq === this.experience){
             // console.log(this.level, "level up!")
             this.game.pauseGameState()
+            this.game.pauseProjectiles()
             // buttonOverlay.style = 'display:block'
             // this.addChoices()
             // buttonOne.addEventListener("click", this.onClickOne)
             // buttonTwo.addEventListener("click", this.onClickTwo)
             // buttonThree.addEventListener("click", this.onClickThree)
 
-            this.displayChoices()
             this.level += 1;
+            this.displayChoices()
             this.experienceForLevel = Math.floor(baseExpReq * 1.8)
             this.experience = 0
             experienceBar.value = this.experience
@@ -157,7 +153,8 @@ class Hero extends MovingObject{
     }
 
     displayChoices(){
-        if((this.level + 1) % 3 === 0) {
+        // this.game.pauseGameState()
+        if((this.level - 1) % 3 === 0 && this.weapons.length < 3) {
             this.addWeaponChoices()
         } else {
             this.addChoices()

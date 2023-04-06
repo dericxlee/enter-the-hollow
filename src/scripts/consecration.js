@@ -12,7 +12,7 @@ class Consecration extends Weapon{
     static SPEED = 0
     static DUR = 3000
     static DMG = 1
-    static NAME = "Consecration"
+    static NAME = "Sanctify"
     // static ID = null
     constructor(options){
         super(options),
@@ -54,9 +54,9 @@ class Consecration extends Weapon{
         return this.intervalId
     }
 
-    pauseProjectile(){
-        return clearInterval(this.intervalId)
-    }
+    // pauseProjectile(){
+    //     return clearInterval(this.intervalId)
+    // }
 }
 
 export default Consecration;

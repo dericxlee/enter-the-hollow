@@ -51,9 +51,9 @@ class Bubble extends Weapon{
         return this.intervalId
     }
 
-    pauseProjectile(){
-        return clearInterval(this.intervalId)
-    }
+    // pauseProjectile(){
+    //     return clearInterval(this.intervalId)
+    // }
 }
 
 export default Bubble;

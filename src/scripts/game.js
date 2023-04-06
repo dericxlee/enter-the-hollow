@@ -57,6 +57,8 @@ class Game{
         this.kills = 0
         this.damageDone = 0
         this.reset = this.resetGameState.bind(this)
+        this.pauseGameState()
+        this.hero.displayChoices()
     }
 
     allObjects(){
@@ -82,18 +84,6 @@ class Game{
         }
     }
 
-    // acquireWeapon(){
-    //     console.log(this.hero.weapons.length, "beg")
-    //     // if(!this.hero.weaponOne) this.hero.weaponOne = new Starfall({hero: this.hero})
-    //     // if(!this.hero.weaponOne) this.hero.weaponOne = new Consecration({hero: this.hero})
-    //     // console.log(this.hero.weaponOne instanceof Starfall, "starfall?")
-    //     // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
-    //     this.hero.weapons.push(new Starfall({hero: this.hero}));
-    //     // console.log(this.hero.weapons.length, "star")
-    //     this.hero.weapons.push(new Consecration({hero: this.hero}));
-    //     // console.log(this.hero.weapons.length, "con")
-    // }
-
     resumeProjectiles(){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
@@ -103,18 +93,21 @@ class Game{
     }
 
     pauseProjectiles(){
+        // if(this.hero.weapons.length){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
             console.log(weapon)
             weapon.pauseProjectile()
         }
+        // } else {
+        //     return false
+        // }
     }
 
     addMonster(){
         for (let i = this.monsters.length; i < this.monsterSpawn; i++){
             this.add(new Monster({x: this.randomXPosition(), y: this.randomYPosition(), game: this, hero: this.hero}))
         }
-        // return new Monster({x: this.randomXPosition(), y: this.randomYPosition(), hero: this.hero, game: this})
     }
 
     addBoss(){
@@ -122,13 +115,11 @@ class Game{
     }
 
     addHero(){
-        // this.add(new Hero({xvel: 10, yvel: 0, game: this}))
         return new Hero({xvel: 0, yvel: 0, game: this })
     }
 
     spawnMonsters(){
         this.monsterSpawn += 1
-        // console.log(this.monsterSpawn)
         return this.addMonster()
     }
 
@@ -250,7 +241,7 @@ class Game{
     }
 
     pauseGameState(){ 
-        this.pauseProjectiles()
+        // this.pauseProjectiles()
         this.pauseCollision()
         this.pauseMovement()
         this.pauseSpawn()

@@ -12,7 +12,7 @@ class BladeFlurry extends Weapon{
     static X_VEL = 0
     static Y_VEL = 0
     static DMG = 5
-    static NAME = "Blade Flurry"
+    static NAME = "Bladestorm"
     constructor(options){
         super(options),
         this.name = BladeFlurry.NAME,
