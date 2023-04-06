@@ -37,7 +37,8 @@ Pausing game state is resolved by assigning interval ids from all setInterval fu
 
 Spacebar pauses the game manually. To prevent user override of natural pauses, variables are assigned a loop of addEventListener and removeEventListener. 
 
-``` pauseBySpace(event){
+``` javascript
+    pauseBySpace(event){
         const spacekey = event.key;
         event.preventDefault()
         if(spacekey == ' ' && !this.game.paused){
@@ -58,6 +59,7 @@ Spacebar pauses the game manually. To prevent user override of natural pauses, v
             pauseBox.style.display = "none"
         }
     }
+```
 
 ### Play Again
 
