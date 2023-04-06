@@ -9,7 +9,6 @@ class PlayerPowerUp {
         this.id = Math.ceil(Math.random()*PlayerPowerUp.RNG)
         this.weaponName = ""
         this.type = this.findType()
-        // this.id = 2
     }
 
     choose(){

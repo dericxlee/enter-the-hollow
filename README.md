@@ -11,9 +11,9 @@ Enter the Hollow is a single-player rogue-like survival game which takes inspira
 
 All rendered objects have circle hitboxes. Collision is checked periodically on setInterval using distance comparison against the radius sum of the two objects. The only collisions that return an action are:
 
-*User vs Enemy
-*User vs Experience Gem
-*Enemy vs Projectile
+-User vs Enemy
+-User vs Experience Gem
+-Enemy vs Projectile
 
 ```javascript
     checkCollisions() {
@@ -61,7 +61,53 @@ Enemies and gems (within magnetic radius) have periodically updated vectors on s
 
 Upgrade choices are generated using Math.random() in their individual class constructors. Weapon choices are pulled from an array using Math.random() to prevent duplicates. addEventListener are added upon level-up screen and subsequently removed on event. This prevents overloading an event with an increasing amount of actions being fired. 
 
-(SS)
+```javascript
+    displayChoices(){
+        if((this.level - 1) % 3 === 0 && this.weapons.length < 3) {
+            this.addWeaponChoices()
+        } else {
+            this.addChoices()
+        }
+        buttonOverlay.style = 'display:block'
+        buttonOne.addEventListener("click", this.onClickOne)
+        buttonTwo.addEventListener("click", this.onClickTwo)
+        buttonThree.addEventListener("click", this.onClickThree)
+    }
+
+    generateChoice(){
+        let randomNumber = Math.ceil(Math.random()*Hero.RNG)
+
+        if(randomNumber === 1){
+            return new PlayerPowerUp({hero: this});
+            
+        } else { // adding more weight to weapon upgrades
+            return new WeaponPowerUp({hero: this});
+        }
+    }
+
+    generateWeaponChoice(){
+        let randomNum = Math.floor(Math.random() * this.availableWeapons.length)
+        let weapon = this.availableWeapons[randomNum]
+        this.availableWeapons.splice(randomNum, 1)
+        return weapon;
+    }
+
+    onClickOne(){
+        let newWeap = this.upgrades[0] instanceof Weapon
+        // this.upgrades[0].choose();
+        if(newWeap) {
+            this.weapons.push(this.upgrades[0])
+            this.availableWeapons = this.availableWeapons.concat(this.upgrades[1], this.upgrades[2])
+        } else {
+            this.upgrades[0].choose()
+        }
+        // console.log(this.availableWeapons.length)
+        this.upgrades = [];
+        this.game.resumeGameState();
+        buttonOverlay.style = 'display:none';
+        this.toRemoveListener()
+    }
+```
 
 ### Pause
 
@@ -179,19 +225,19 @@ Game state is reset to constructor values by mass reassignment of class variable
 
 ## Technologies, Libraries, APIs
  
-*DOM from Vanilla JS
-*Canvas, CSS, HTML for rendering
-*Sprites from various sources (credit at the bottom)
+-DOM from Vanilla JS
+-Canvas, CSS, HTML for rendering
+-Sprites from various sources (credit at the bottom)
 
 
 ## Implementation Timeline
 
-*Friday Afternoon: Collision detection and vector updates
-*Weekend: Create classes for core gameplay
-*Monday: Create classes for core gameplay 
-*Tuesday: User controls and sprites implementation
-*Wednesday: Layout styling, additional features
-*Thursday Morning: Minor tweaks on features
+-Friday Afternoon: Collision detection and vector updates
+-Weekend: Create classes for core gameplay
+-Monday: Create classes for core gameplay 
+-Tuesday: User controls and sprites implementation
+-Wednesday: Layout styling, additional features
+-Thursday Morning: Minor tweaks on features
 
 
 ## Assets Used

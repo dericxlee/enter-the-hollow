@@ -33,8 +33,8 @@ class Hero extends MovingObject{
     static SPEED = 5
     static EXP_REQ = 10
     static START_LVL = 1
-    static HP = 50
-    static MAGNET = 20
+    static HP = 5000
+    static MAGNET = 100
     
     constructor(options){
         super(options),
@@ -151,7 +151,6 @@ class Hero extends MovingObject{
     }
 
     displayChoices(){
-        // this.game.pauseGameState()
         if((this.level - 1) % 3 === 0 && this.weapons.length < 3) {
             this.addWeaponChoices()
         } else {
@@ -161,11 +160,6 @@ class Hero extends MovingObject{
         buttonOne.addEventListener("click", this.onClickOne)
         buttonTwo.addEventListener("click", this.onClickTwo)
         buttonThree.addEventListener("click", this.onClickThree)
-        // if((this.level + 1) % 3 === 0) {
-        //     this.addWeaponChoices()
-        // } else {
-        //     this.addChoices()
-        // }
     }
 
     addChoices(){
@@ -197,11 +191,9 @@ class Hero extends MovingObject{
         let randomNumber = Math.ceil(Math.random()*Hero.RNG)
 
         if(randomNumber === 1){
-            // console.log("player up")
             return new PlayerPowerUp({hero: this});
             
         } else { // adding more weight to weapon upgrades
-            // console.log("weapon up")
             return new WeaponPowerUp({hero: this});
         }
     }
@@ -209,10 +201,8 @@ class Hero extends MovingObject{
     generateWeaponChoice(){
         let randomNum = Math.floor(Math.random() * this.availableWeapons.length)
         let weapon = this.availableWeapons[randomNum]
-        // console.log(randomNum)
         this.availableWeapons.splice(randomNum, 1)
         return weapon;
-        // console.log(this.allWeapon.length)
     }
 
     onClickOne(){
