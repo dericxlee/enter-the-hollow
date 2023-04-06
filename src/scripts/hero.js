@@ -31,9 +31,9 @@ class Hero extends MovingObject{
     static RADIUS = 15
     static COLOR = "blue"
     static SPEED = 5
-    static EXP_REQ = 5
+    static EXP_REQ = 10
     static START_LVL = 1
-    static HP = 50
+    static HP = 200
     static MAGNET = 20
     
     constructor(options){
@@ -62,15 +62,11 @@ class Hero extends MovingObject{
         this.lastXVel = 0
         this.lastYVel = 0
         this.magnetism = Hero.MAGNET
-        // this.addWeaponChoices()
 
         this.sprite = new Image();
         this.sprite.src = './assets/hero.png';
         this.spriteWidth = 96;
         this.spriteHeight = 128;
-
-        // experienceBar.setAttribute(max: this.experienceForLevel, value: this.experience)
-        // experienceBar.setAttribute(value: this.experience)
 
         this.onClickOne = this.onClickOne.bind(this)
         this.onClickTwo = this.onClickTwo.bind(this)
@@ -133,7 +129,7 @@ class Hero extends MovingObject{
         if(baseExpReq === this.experience){
             // console.log(this.level, "level up!")
             this.game.pauseGameState()
-            this.game.pauseProjectiles()
+            // this.game.pauseProjectiles()
             // buttonOverlay.style = 'display:block'
             // this.addChoices()
             // buttonOne.addEventListener("click", this.onClickOne)
@@ -142,7 +138,7 @@ class Hero extends MovingObject{
 
             this.level += 1;
             this.displayChoices()
-            this.experienceForLevel = Math.floor(baseExpReq * 1.8)
+            this.experienceForLevel = Math.floor(baseExpReq * 1.5)
             this.experience = 0
             experienceBar.value = this.experience
             playerSpeed.innerText = `Speed: ${this.speed}`
@@ -213,7 +209,7 @@ class Hero extends MovingObject{
     generateWeaponChoice(){
         let randomNum = Math.floor(Math.random() * this.availableWeapons.length)
         let weapon = this.availableWeapons[randomNum]
-        console.log(randomNum)
+        // console.log(randomNum)
         this.availableWeapons.splice(randomNum, 1)
         return weapon;
         // console.log(this.allWeapon.length)
@@ -228,7 +224,7 @@ class Hero extends MovingObject{
         } else {
             this.upgrades[0].choose()
         }
-        console.log(this.availableWeapons.length)
+        // console.log(this.availableWeapons.length)
         this.upgrades = [];
         this.game.resumeGameState();
         buttonOverlay.style = 'display:none';
@@ -270,14 +266,10 @@ class Hero extends MovingObject{
         buttonThree.removeEventListener("click", this.onClickThree)
     }
 
-    // testLog(){
-    //     console.log("hi")
-    // }
-
     collideWith(otherObj){
         if (otherObj instanceof Monster){
-            // console.log(otherObj.damage, "take dmg")
-            // console.log(this.health, "my hp")
+            console.log(otherObj.damage, "take dmg")
+            console.log(this.health, "my hp")
             this.health = this.health - otherObj.damage
             playerHealth.innerText = `Health: ${this.health}`
             if(this.health <= 0) {
@@ -293,7 +285,6 @@ class Hero extends MovingObject{
     resetHeroState(){
         this.weapons = [];
         this.resetWeapons()
-        console.log(this.availableWeapons.length, "5")
         this.health = Hero.HP
         this.magnetism = Hero.MAGNET
         this.level = Hero.START_LVL
@@ -306,6 +297,7 @@ class Hero extends MovingObject{
         playerSpeed.innerText = `Speed: ${this.speed}`
         playerHealth.innerText = `Health: ${this.health}`
         playerMagnet.innerText = `Magnetic: ${this.magnetism}`
+        playerHealth.style.color = "white"
     }
 }
 

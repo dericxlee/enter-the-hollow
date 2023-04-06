@@ -5,8 +5,8 @@ class Boss extends Monster{
     static RADIUS = 40
     static COLOR = 'green'
     static SPEED = 3
-    static HP = 10
-    static DMG = 50
+    static HP = 1000
+    static DMG = 500
     constructor(options){
         super(options),
         this.radius = Boss.RADIUS,
@@ -41,7 +41,6 @@ class Boss extends Monster{
 
     collideWith(otherObj){
         if (otherObj instanceof Projectile){
-            console.log(otherObj.damage)
             this.health = this.health - otherObj.damage
             if(this.health <= 0) {
                 for(let i = 0; i < 10; i++){

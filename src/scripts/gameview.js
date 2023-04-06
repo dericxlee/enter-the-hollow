@@ -4,46 +4,35 @@ const startBtn = document.getElementById('start-btn')
 const instructions = document.getElementById('instruction-div')
 
 class GameView {
+    static FPS = 30
     constructor(canvas, ctx){
         this.game = new Game();
         this.canvas = canvas;
         this.ctx = ctx;
         this.hero = this.game.hero;
-        this.start()
-
-        // this.img = new Image();
-        
-        // this.img.onload = () => {
-        //     this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
-        //     // console.log(this.img instanceof Image, "img")
-        // };
-
-        
+        this.FPS = GameView.FPS
+        // this.render()
 
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
+        this.pauseBySpace = this.pauseBySpace.bind(this)
 
+        window.keyDown = window.addEventListener('keydown', this.pauseBySpace);
+        // window.keyDown = window.addEventListener('keydown', this.unpauseBySpace);
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
         window.keyUp = window.addEventListener('keyup', this.bindKeyUp);
 
         this.hideInstructions = this.hideInstructions.bind(this)
         startBtn.addEventListener("click", this.hideInstructions)
+
     }
 
-    start(){
+    render(){
         setInterval(() => {
             // this.draw();
             this.game.draw(this.ctx);
-        }, 50);
+        }, this.FPS);
     }
-
-
-    // draw(){
-    //     this.img.onload = () => {
-    //         this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
-    //         // console.log(this.img instanceof Image, "img")
-    //     };
-    // }
 
     bindKeyDown(event){
         const keyName = event.key;
@@ -52,6 +41,7 @@ class GameView {
         if (keyName == 'd' || keyName == 'D') this.hero.xvel = (1) // * this.hero.speed)
         if (keyName == 'w' || keyName == 'W') this.hero.yvel = (-1) // * this.hero.speed)
         if (keyName == 's' || keyName == 'S') this.hero.yvel = (1) //* this.hero.speed)
+        // if (keyName == ' ') console.log("hi")
     }
 
     bindKeyUp(event){
@@ -78,7 +68,18 @@ class GameView {
         }
     }
 
+    pauseBySpace(event){
+        const spacekey = event.key;
+        event.preventDefault()
+        if(spacekey == ' ') console.log("testing")
+        // {
+        //     this.game.pauseGameState()
+        //     this.game.pauseProjectiles()
+        // }
+    }
+
     hideInstructions(){
+        this.render()
         instructions.style = 'display:none'
     }
 

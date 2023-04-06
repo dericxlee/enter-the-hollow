@@ -26,7 +26,7 @@ class Game{
     static DIM_Y = 700
     static NUM_MON = 20
     static SPAWN_RATE = 5000
-    static TIMER = 5
+    static TIMER = 60
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -39,26 +39,19 @@ class Game{
         this.moveIntervalId = null
         this.collisionIntervalId = null
         this.timerIntervalId = null
-
-        this.resumeGameState()
+        this.paused = true
+        // this.resumeGameState()
+    
         this.img = new Image();
-        
-        // this.img.onload = () => {
-        //     this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
-        //     // console.log(this.img instanceof Image, "img")
-        // };
-
         // this.img.src = './assets/grass.png';
         this.img.src = './assets/map2.jpeg'
 
-        // this.addBoss()
-        currentTime.innerText = `${this.timer}`
-
+        
         this.kills = 0
         this.damageDone = 0
         this.reset = this.resetGameState.bind(this)
-        this.pauseGameState()
         this.hero.displayChoices()
+        currentTime.innerText = `${this.timer}`
     }
 
     allObjects(){
@@ -87,7 +80,7 @@ class Game{
     resumeProjectiles(){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
-            console.log(weapon)
+            // console.log(weapon)
             weapon.addProjectile()
         }
     }
@@ -96,7 +89,7 @@ class Game{
         // if(this.hero.weapons.length){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
-            console.log(weapon)
+            // console.log(weapon)
             weapon.pauseProjectile()
         }
         // } else {
@@ -119,7 +112,7 @@ class Game{
     }
 
     spawnMonsters(){
-        this.monsterSpawn += 1
+        this.monsterSpawn += 5
         return this.addMonster()
     }
 
@@ -129,6 +122,8 @@ class Game{
         this.resumeMovement()
         this.resumeCollision()
         this.resumeTimer()
+        this.paused = false
+        console.log(this.paused, "NOT PAUSED")
     }
 
     resumeSpawn(){
@@ -168,7 +163,6 @@ class Game{
     }
 
     draw(ctx) {
-        // ctx.clearRect(0,0,1000,1000)
         ctx.drawImage(this.img, 0, 0, Game.DIM_X, Game.DIM_Y)
         const allObjs = this.allObjects()
         for(let i = 0; i < allObjs.length; i++){
@@ -241,11 +235,13 @@ class Game{
     }
 
     pauseGameState(){ 
-        // this.pauseProjectiles()
+        this.pauseProjectiles()
         this.pauseCollision()
         this.pauseMovement()
         this.pauseSpawn()
         this.pauseTimer()
+        this.paused = true
+        console.log(this.paused, "PAUSED")
     }
 
     resumeTimer(){
@@ -264,7 +260,7 @@ class Game{
 
     gameOver(){
         this.pauseGameState()
-        this.pauseProjectiles()
+        // this.pauseProjectiles()
         gameOverPopUp.style = 'display:block'
 
 
@@ -284,14 +280,7 @@ class Game{
     }
 
     resetGameState(){
-        // this.hero.health = Hero.HP
-        // this.hero.magnetism = Hero.MAGNET
-        // this.hero.level = Hero.START_LVL
-        // this.hero.speed = Hero.SPEED
-        // this.hero.experience = 0
-        // this.hero.experienceForLevel = Hero.EXP_REQ
-        // this.hero.x = Hero.START_X
-        // this.hero.y = Hero.START_Y
+        this.monsterSpawn = Game.NUM_MON
         this.hero.resetHeroState()
         this.damageDone = 0
         this.kills = 0
@@ -300,13 +289,8 @@ class Game{
         this.gems = [];
         this.projectiles = [];
         this.timer = Game.TIMER
-        // this.resumeGameState()
         this.hero.displayChoices()
         gameOverPopUp.style = 'display:none'
-        // progressLevel.innerText = `Level: ${this.hero.level}`
-        // playerSpeed.innerText = `Speed: ${this.hero.speed}`
-        // playerHealth.innerText = `Health: ${this.hero.health}`
-        // playerMagnet.innerText = `Magnetic: ${this.hero.magnetism}`
         currentTime.innerText = `${this.timer}`
         resetButton.removeEventListener("click", this.reset)
     }
