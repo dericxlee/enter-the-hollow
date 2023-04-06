@@ -18,11 +18,12 @@ const endMsg = document.getElementById('end-msg')
 const resetButton = document.getElementById('play-again-btn')
 
 class Game{
+    static BOSS_TIMER = 30 //in seconds
     static DIM_X = 1400
     static DIM_Y = 700
     static NUM_MON = 20
-    static SPAWN_RATE = 5000
-    static TIMER = 60
+    static MON_TIMER = 5000
+    static TIMER = 180
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -124,7 +125,7 @@ class Game{
     resumeSpawn(){
         this.intervalId = setInterval(() => {
             this.spawnMonsters()}
-        , Game.SPAWN_RATE)
+        , Game.MON_TIMER)
         // console.log(this.intervalId, "interval")
         return this.intervalId
     }
@@ -244,7 +245,7 @@ class Game{
             this.timer -= 1
             currentTime.innerText = `${this.timer}`
             // console.log(this.timer)
-            if(this.timer % 5 === 0) this.addBoss()
+            if(this.timer % Game.BOSS_TIMER === 0) this.addBoss()
             if(this.timer === 0) this.gameOver()
         }, 1000)
     }
@@ -258,11 +259,14 @@ class Game{
         // this.pauseProjectiles()
         gameOverPopUp.style = 'display:block'
 
-
         if(this.hero.health > 0){
             endGame.innerText = "Victory!"
+            endGame.style.color = "black"
             endMsg.innerText = "You survived the Hollow"
+            endMsg.style.color = "black"
+            gameOverPopUp.style.backgroundColor = "yellow"
         } else {
+            
             endGame.innerText = "Game Over!"
             endMsg.innerText = "Better luck next time!"
         }
@@ -284,10 +288,14 @@ class Game{
         this.gems = [];
         this.projectiles = [];
         this.timer = Game.TIMER
-        this.hero.displayChoices()
         gameOverPopUp.style = 'display:none'
         currentTime.innerText = `${this.timer}`
         resetButton.removeEventListener("click", this.reset)
+        this.intervalId = null
+        this.moveIntervalId = null
+        this.collisionIntervalId = null
+        this.timerIntervalId = null
+        this.hero.displayChoices()
     }
 }
 

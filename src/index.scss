@@ -15,7 +15,7 @@ progress {
 }
 
 progress::-webkit-progress-bar {
-    background-color: white;
+    background-color: yellowgreen;
     // padding: 1px;
     border-radius: 1px;
     border-color: red;
@@ -42,6 +42,8 @@ progress::-webkit-progress-bar {
     color: black;
     font-size: 20px;
     text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
 }
 
 

@@ -33,7 +33,7 @@ class Hero extends MovingObject{
     static SPEED = 5
     static EXP_REQ = 10
     static START_LVL = 1
-    static HP = 200
+    static HP = 50
     static MAGNET = 20
     
     constructor(options){
@@ -293,6 +293,8 @@ class Hero extends MovingObject{
         this.experienceForLevel = Hero.EXP_REQ
         this.x = Hero.START_X
         this.y = Hero.START_Y
+        experienceBar.max = this.experienceForLevel
+        experienceBar.value = this.experience
         progressLevel.innerText = `Level: ${this.level}`
         playerSpeed.innerText = `Speed: ${this.speed}`
         playerHealth.innerText = `Health: ${this.health}`

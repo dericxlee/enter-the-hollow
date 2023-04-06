@@ -3,9 +3,10 @@ const playerMagnet = document.getElementById('magnet')
 const playerHealth = document.getElementById('health')
 
 class PlayerPowerUp {
+    static RNG = 3
     constructor(options){
         this.hero = options.hero
-        this.id = Math.ceil(Math.random()*2)
+        this.id = Math.ceil(Math.random()*PlayerPowerUp.RNG)
         this.weaponName = ""
         this.type = this.findType()
         // this.id = 2
