@@ -1,66 +1,63 @@
-Rogue Survivor takes inspiration from Vampire Survivors, a roguelike survival game.
+## Background
 
-In Rogue Survivor, you defeat enemies and attempt to survive the timer. Game over if you lose all your health points. 
+Enter the Hollow is a single-player rogue-like survival game which takes inspiration from Vampire Survivors. The goal of this game is to survive endless swarms of enemies within the allocated timer on a 2D plane. To assist the user, the user will receive new abilities or upgrades after every level-up. User abilities release projectiles automatically on a time interval and deals damage to enemies on contact. Enemies on death drop experience gems. The user will control its character using W-A-S-D movement keys. Abilities will be chosen in each level-up screen using left-mouse-button.
 
-The player is controlled using WASD/arrow-keys and will navigate around a '2d' plane. Collision with enemies will reduce the player health point. The player weapon is automatic (no keybind) and will "attack" on a set interval, sending projectiles in a unique pattern. Enemies hit by these projectiles will lose health points.
 
-Enemies, when defeated, drop experience gems that level ups the player. Upon level up, the player will be given three choices for power-ups. These power-ups can increase weapon power, speed, and size. The player may also acquire new weapons, holding up to a maximum of three. 
+## Functionality & MVPs
 
-Technical functionalities include:
+### Collision Detection
 
-Collision checks between (player vs enemies), (player vs experience gems), and(enemies vs projectiles). 
-Vector changes for enemy pathing
-Sprite assets for player, enemies, and projectiles
-Canvas for background/map, viewpoint, and levelup pop-up for power-up
-Gamestate pause does not include projectile creation (each projectile has its own setInterval)
+All rendered objects have circle hitboxes. Collision is checked periodically on setInterval using distance comparison against the radius sum of the two objects. 
 
-Background
-Enter the Hollow is a single-player rogue-like survival game which takes inspiration from Vampire Survivors. The goal of this game is to survive endless swarms of enemies within the allocated timer. To assist the user, the user will receive new abilities or upgrades after every level-up. The abilities release projectiles automatically on a time interval and deals damage to enemies on contact. Enemies on death drop experience gems. The user will control its character using W-A-S-D movement keys. Abilities will be chosen in each level-up screen using left-mouse-button.
+(SS)
 
-Functionality & MVPs
-Fill in this template:
+### Vector Update
 
-In { project name }, users will be able to:
+Enemies and gems (within magnetic radius) have periodically updated vectors on setInterval to follow the user. New vectors are calculated using distance from user position and adjusted by their constructor speed attribute. 
 
-{ 4-6 core features or functionalities of your project }
-{ feature }
-{ feature }
-{ feature }
-{ feature }
-In addition, this project will include:
+(SS)
 
-{ 2-4 other aspects of your project, including instructions & README }
-{ other aspect of project }
-{ other aspect of project }
-Wireframes
-Draw the layout of your project: the major sections of the game view, the chart and its legend, the game controls and about me links, etc. This doesn't have to be a fully detailed mockup; it can just be labeled boxes showing the layout of your project. See the Sample Proposal for an example.
+### Level-up pop-up
 
-Wireframe.cc is a great tool for quickly creating wireframes.
+Upgrade choices are generated using Math.random() in their individual class constructors. Weapon choices are pulled from an array using Math.random() to prevent duplicates. 
 
-Technologies, Libraries, APIs
-What technologies, libraries, and APIs will your project use? If you're building a game, you might use native browser technology like the Canvas API, or you might use a library like three.js. If you're doing data visualization, you might use d3 for rendering charts, and an API to fetch data.
+(SS)
 
-If you're still deciding between a few different libraries or APIs, you can list the ones you're considering, and the potential benefits and drawbacks of each.
+### Pause
 
-If your project needs a backend (see below), list that here as well.
+Pausing game state is resolved by assigning interval ids from all setInterval functions to class variables. On pause, clearInterval is called all interval id variables. On resume, the same variables are reassigned new setInterval functions. 
 
-Implementation Timeline
-Here you will detail what you hope to get done each day for this project. It serves as a roadmap for the upcoming week. You'll have the following days to work on this project:
+(SS)
 
-Friday Afternoon & Weekend
-Monday
-Tuesday
-Wednesday
-Thursday Morning
-It can be quite hard to estimate how long parts of your project might take. Don't worry if you end up straying from this timeline; the goal is to have a plan in place for what you'll do & in what order, and to have a tentative pace.
+Spacebar pauses the game manually. To prevent user override of natural pauses, variables are assigned a loop of addEventListener and removeEventListener. 
 
-You should also be aware that presentations will be Thursday afternoon, and deploying your project to GitHub Pages will take some time Thursday morning, so don't plan much for that morning.
+(SS)
+
+### Play Again
+
+Game state is reset to constructor values by mass reassignment of class variables. All objects except game and user (hero) are removed.
+
+(SS)
 
 
 
+## Technologies, Libraries, APIs
+ 
+DOM from Vanilla JS
+Canvas, CSS, HTML for rendering
+Sprites from various sources (credit at the bottom)
 
 
-Assets Used:
+## Implementation Timeline
+
+Friday Afternoon & Weekend: Collision detection and vector updates
+Monday: Create classes for core gameplay 
+Tuesday: User controls and sprites implementation
+Wednesday: Layout styling, additional features
+Thursday Morning: Minor tweaks on features
+
+
+## Assets Used
 
 Shuriken Sprite by DK_Happy
 https://dk-happy.itch.io/shuriken-ninja
