@@ -131,7 +131,7 @@ input {
 #health {
   height: 40px;
   width: auto;
-  color: red;
+  color: white;
   font-size: 40px;
 }
 
@@ -169,7 +169,7 @@ input {
   font-size: 150px;
   color: white;
   text-align: center;
-  font-family: "KillCrazy BB", sans-serif;
+  font-family: "Alice in Wonderland", sans-serif;
 }
 
 #game-over-pop-up #end-msg {
@@ -192,7 +192,7 @@ input {
   font-size: 50px;
   background-color: gray;
   font-weight: bold;
-  font-family: fantasy;
+  font-family: "Alice in Wonderland", sans-serif;
 }
 
 #stats {

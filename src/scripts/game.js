@@ -26,7 +26,7 @@ class Game{
     static DIM_Y = 700
     static NUM_MON = 20
     static SPAWN_RATE = 5000
-    static TIMER = 180
+    static TIMER = 5
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -270,7 +270,7 @@ class Game{
 
         if(this.hero.health > 0){
             endGame.innerText = "Victory!"
-            endMsg.innerText = "You survived the Endless Hollow"
+            endMsg.innerText = "You survived the Hollow"
         } else {
             endGame.innerText = "Game Over!"
             endMsg.innerText = "Better luck next time!"

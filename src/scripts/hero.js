@@ -281,6 +281,7 @@ class Hero extends MovingObject{
             this.health = this.health - otherObj.damage
             playerHealth.innerText = `Health: ${this.health}`
             if(this.health <= 0) {
+                playerHealth.style.color = "red"
                 this.game.gameOver()
                 // this.remove()
             }
