@@ -15,7 +15,7 @@ Canvas for background/map, viewpoint, and levelup pop-up for power-up
 Gamestate pause does not include projectile creation (each projectile has its own setInterval)
 
 Background
-A 1-2 paragraph description of your project, providing the necessary context for someone unfamiliar with your project to understand what it does.
+Enter the Hollow is a single-player rogue-like survival game which takes inspiration from Vampire Survivors. The goal of this game is to survive endless swarms of enemies within the allocated timer. To assist the user, the user will receive new abilities or upgrades after every level-up. The abilities release projectiles automatically on a time interval and deals damage to enemies on contact. Enemies on death drop experience gems. The user will control its character using W-A-S-D movement keys. Abilities will be chosen in each level-up screen using left-mouse-button.
 
 Functionality & MVPs
 Fill in this template:
