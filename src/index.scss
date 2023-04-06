@@ -29,7 +29,8 @@ progress::-webkit-progress-bar {
 }
 
 #progressbar {
-    display: block;
+    display: flex;
+    justify-content: flex-end;
     width: 1400px;
     position: absolute;
     top: 1px;

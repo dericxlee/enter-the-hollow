@@ -19,15 +19,14 @@ const allButtons = document.querySelectorAll(".button")
 const buttonOverlay = document.getElementById('button-div')
 const experienceBar = document.getElementById('exp')
 const progressLevel = document.getElementById('progress-level')
-// const hud = document.getElementById('player-hud')
 const playerSpeed = document.getElementById('speed')
 const playerMagnet = document.getElementById('magnet')
 const playerHealth = document.getElementById('health')
 
 class Hero extends MovingObject{
     static RNG = 2
-    static START_X = 500
-    static START_Y = 500
+    static START_X = 700
+    static START_Y = 350
     static RADIUS = 15
     static COLOR = "blue"
     static SPEED = 5
@@ -108,8 +107,8 @@ class Hero extends MovingObject{
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
         // this.weapons.push(new Starfall({hero: this}));
         // this.weapons.push(new Consecration({hero: this}));
-        // this.weapons.push(new Fireball({hero: this}));
-        this.weapons.push(new BladeFlurry({hero: this}))
+        this.weapons.push(new Fireball({hero: this}));
+        // this.weapons.push(new BladeFlurry({hero: this}))
         // this.weapons.push(new Bubble({hero: this}))
         // this.weapons.push(new Bone({hero: this}))
     }
@@ -142,7 +141,7 @@ class Hero extends MovingObject{
     addChoices(){
         for(let i = this.upgrades.length; i < 3; i++){
             this.upgrades.push(this.generateChoice())
-            allButtons[i].innerHTML = `${this.upgrades[i].weaponName} : ${this.upgrades[i].type}`
+            allButtons[i].innerHTML = `${this.upgrades[i].weaponName} ${this.upgrades[i].type}`
         }
     }
 
@@ -205,9 +204,9 @@ class Hero extends MovingObject{
         buttonThree.removeEventListener("click", this.onClickThree)
     }
 
-    testLog(){
-        console.log("hi")
-    }
+    // testLog(){
+    //     console.log("hi")
+    // }
 
     collideWith(otherObj){
         if (otherObj instanceof Monster){

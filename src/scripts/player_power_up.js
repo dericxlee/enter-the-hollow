@@ -1,8 +1,12 @@
+const playerSpeed = document.getElementById('speed')
+const playerMagnet = document.getElementById('magnet')
+const playerHealth = document.getElementById('health')
+
 class PlayerPowerUp {
     constructor(options){
         this.hero = options.hero
         this.id = Math.ceil(Math.random()*2)
-        this.weaponName = "General"
+        this.weaponName = ""
         this.type = this.findType()
         // this.id = 2
     }
@@ -19,29 +23,32 @@ class PlayerPowerUp {
 
     chooseHealth(){
         this.hero.health = this.hero.health + 20
-        console.log(this.hero.health, "health")
+        playerHealth.innerText = `Health: ${this.hero.health}`
+        // console.log(this.hero.health, "health")
     }
 
     chooseSpeed(){
         this.hero.speed = this.hero.speed + 1
-        console.log(this.hero.speed, "speed")
+        playerSpeed.innerText = `Speed: ${this.hero.speed}`
+        // console.log(this.hero.speed, "speed")
     }
 
     chooseMagnetism(){
         this.hero.magnetism = this.hero.magnetism + 20
-        console.log(this.hero.magnetism, "magnet")
+        playerMagnet.innerText = `Magnetic: ${this.hero.magnetism}`
+        // console.log(this.hero.magnetism, "magnet")
     }
 
     findType(){
         switch(this.id){
             case 1:
-                return "Increase Health"
+                return "Health +20"
                 break;
             case 2:
-                return "Increase Speed"
+                return "Speed +1"
                 break;
             case 3:
-                return "Increased Magnetism"
+                return "Magnetism +1"
                 break;
         }   
     }

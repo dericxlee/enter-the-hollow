@@ -15,6 +15,11 @@ const highLvl = document.getElementById('highest-lvl')
 const dmgDone = document.getElementById('damage-done')
 const endGame = document.getElementById('end-game')
 const endMsg = document.getElementById('end-msg')
+const resetButton = document.getElementById('play-again')
+const playerSpeed = document.getElementById('speed')
+const playerMagnet = document.getElementById('magnet')
+const playerHealth = document.getElementById('health')
+const progressLevel = document.getElementById('progress-level')
 
 class Game{
     static DIM_X = 1400
@@ -51,6 +56,7 @@ class Game{
 
         this.kills = 0
         this.damageDone = 0
+        this.reset = this.resetGameState.bind(this)
     }
 
     allObjects(){
@@ -270,6 +276,33 @@ class Game{
         monKills.innerText = `Enemies defeated: ${this.kills}`
         highLvl.innerText = `Level reached: ${this.hero.level}`
         dmgDone.innerText = `Damage dealt: ${this.damageDone}`
+
+        resetButton.addEventListener("click", this.reset)
+    }
+
+    resetGameState(){
+        this.hero.health = Hero.HP
+        this.hero.magnetism = Hero.MAGNET
+        this.hero.level = Hero.START_LVL
+        this.hero.speed = Hero.SPEED
+        this.hero.experience = 0
+        this.hero.experienceForLevel = Hero.EXP_REQ
+        this.hero.x = Hero.START_X
+        this.hero.y = Hero.START_Y
+        this.damageDone = 0
+        this.kills = 0
+        this.monsters = [];
+        this.addMonster()
+        this.gems = [];
+        this.timer = Game.TIMER
+        this.resumeGameState()
+        youLose.style = 'display:none'
+        progressLevel.innerText = `Level: ${this.hero.level}`
+        playerSpeed.innerText = `Speed: ${this.hero.speed}`
+        playerHealth.innerText = `Health: ${this.hero.health}`
+        playerMagnet.innerText = `Magnetic: ${this.hero.magnetism}`
+        currentTime.innerText = `${this.timer}`
+        resetButton.removeEventListener("click", this.reset)
     }
 }
 
