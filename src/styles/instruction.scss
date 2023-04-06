@@ -22,6 +22,7 @@
 
 #list-instructions {
     display: flex;
+    // justify-content: center;
     height: 400px;
 }
 
@@ -29,6 +30,7 @@
     font-size: 40px;
     font-family: fantasy;
     margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 #start-btn-div {
@@ -44,3 +46,9 @@
     font-weight: bold;
     font-family: 'Alice in Wonderland', sans-serif;                                   
 }
+
+// #instruction-ul {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }

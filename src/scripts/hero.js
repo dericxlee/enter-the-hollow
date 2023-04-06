@@ -66,8 +66,9 @@ class Hero extends MovingObject{
 
         this.sprite = new Image();
         this.sprite.src = './assets/hero.png';
-        this.spriteWidth = 96;
-        this.spriteHeight = 128;
+        this.spriteWidth = 32;
+        this.spriteHeight = 32;
+        this.frame = 0
 
         this.onClickOne = this.onClickOne.bind(this)
         this.onClickTwo = this.onClickTwo.bind(this)
@@ -91,8 +92,9 @@ class Hero extends MovingObject{
 
     draw(ctx) {
 
-        ctx.drawImage(this.sprite, 0, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
-
+        ctx.drawImage(this.sprite, this.frame * this.spriteWidth, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
+        this.frame += 1
+        if(this.frame === 3) this.frame = 0
         // ctx.fillStyle = this.color;
         // ctx.beginPath();
 

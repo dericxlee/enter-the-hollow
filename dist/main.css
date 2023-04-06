@@ -90,6 +90,7 @@ input {
   font-size: 40px;
   font-family: fantasy;
   margin-bottom: 5px;
+  margin-left: 10px;
 }
 
 #start-btn-div {
@@ -110,7 +111,7 @@ input {
   display: flex;
   position: absolute;
   bottom: 120px;
-  left: 0px;
+  left: 30px;
   height: 40px;
   width: auto;
 }
@@ -245,9 +246,19 @@ input {
   display: flex;
   position: absolute;
   height: 40px;
-  right: 40px;
+  right: 20px;
   bottom: 40px;
   z-index: 100;
+}
+
+.canvas-div {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
 }
 
 progress {

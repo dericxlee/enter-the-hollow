@@ -20,10 +20,15 @@ class Monster extends MovingObject{
 
         this.sprite = new Image();
         this.sprite.src = './assets/enemy.png';
+        this.spriteWidth = 32;
+        this.spriteHeight = 32;
+        this.frame = 0
     }
 
     draw(ctx){
-        ctx.drawImage(this.sprite, 0, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
+        ctx.drawImage(this.sprite, this.frame * this.spriteWidth, 0, 32, 32, this.x - 25, this.y - 25, 50, 50)
+        this.frame += 1
+        if(this.frame === 3) this.frame = 0
     }
 
     distFromHero(){

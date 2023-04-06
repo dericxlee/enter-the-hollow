@@ -20,10 +20,13 @@ class Boss extends Monster{
 
         this.sprite = new Image();
         this.sprite.src = './assets/boss.png';
+        this.spriteWidth = 96;
+        this.spriteHeight = 96;
+        this.frame = 0;
     }
 
     draw(ctx){
-        ctx.drawImage(this.sprite, 0, 288, 96, 96, this.x - 48, this.y - 48, 96, 96)
+        ctx.drawImage(this.sprite, this.frame * this.spriteWidth, 288, 96, 96, this.x - 48, this.y - 48, 96, 96)
         // ctx.fillStyle = this.color;
         // ctx.beginPath();
 
