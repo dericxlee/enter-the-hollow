@@ -1,0 +1,19 @@
+.pause-div {
+    display: none;
+    position: absolute;
+    top: 300px;
+    height: 50px;
+    left: 600px;
+    width: 200px;
+    z-index: 100;
+    text-align: center;
+    background-color: orange;
+}
+
+.pause-div p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Alice in Wonderland', sans-serif; 
+}

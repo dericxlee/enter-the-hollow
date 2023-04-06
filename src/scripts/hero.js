@@ -268,8 +268,8 @@ class Hero extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Monster){
-            console.log(otherObj.damage, "take dmg")
-            console.log(this.health, "my hp")
+            // console.log(otherObj.damage, "take dmg")
+            // console.log(this.health, "my hp")
             this.health = this.health - otherObj.damage
             playerHealth.innerText = `Health: ${this.health}`
             if(this.health <= 0) {

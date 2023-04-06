@@ -16,10 +16,6 @@ const dmgDone = document.getElementById('damage-done')
 const endGame = document.getElementById('end-game')
 const endMsg = document.getElementById('end-msg')
 const resetButton = document.getElementById('play-again-btn')
-// const playerSpeed = document.getElementById('speed')
-// const playerMagnet = document.getElementById('magnet')
-// const playerHealth = document.getElementById('health')
-// const progressLevel = document.getElementById('progress-level')
 
 class Game{
     static DIM_X = 1400
@@ -40,7 +36,6 @@ class Game{
         this.collisionIntervalId = null
         this.timerIntervalId = null
         this.paused = true
-        // this.resumeGameState()
     
         this.img = new Image();
         // this.img.src = './assets/grass.png';
@@ -123,7 +118,7 @@ class Game{
         this.resumeCollision()
         this.resumeTimer()
         this.paused = false
-        console.log(this.paused, "NOT PAUSED")
+        // console.log(this.paused, "NOT PAUSED")
     }
 
     resumeSpawn(){
@@ -241,7 +236,7 @@ class Game{
         this.pauseSpawn()
         this.pauseTimer()
         this.paused = true
-        console.log(this.paused, "PAUSED")
+        // console.log(this.paused, "PAUSED")
     }
 
     resumeTimer(){

@@ -2,6 +2,7 @@ import Game from "./game.js";
 
 const startBtn = document.getElementById('start-btn')
 const instructions = document.getElementById('instruction-div')
+const pauseBox = document.getElementById('pause-div')
 
 class GameView {
     static FPS = 30
@@ -11,14 +12,14 @@ class GameView {
         this.ctx = ctx;
         this.hero = this.game.hero;
         this.FPS = GameView.FPS
-        // this.render()
 
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
         this.pauseBySpace = this.pauseBySpace.bind(this)
+        this.unPauseBySpace = this.unPauseBySpace.bind(this)
 
         window.keyDown = window.addEventListener('keydown', this.pauseBySpace);
-        // window.keyDown = window.addEventListener('keydown', this.unpauseBySpace);
+        
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
         window.keyUp = window.addEventListener('keyup', this.bindKeyUp);
 
@@ -29,7 +30,6 @@ class GameView {
 
     render(){
         setInterval(() => {
-            // this.draw();
             this.game.draw(this.ctx);
         }, this.FPS);
     }
@@ -41,7 +41,6 @@ class GameView {
         if (keyName == 'd' || keyName == 'D') this.hero.xvel = (1) // * this.hero.speed)
         if (keyName == 'w' || keyName == 'W') this.hero.yvel = (-1) // * this.hero.speed)
         if (keyName == 's' || keyName == 'S') this.hero.yvel = (1) //* this.hero.speed)
-        // if (keyName == ' ') console.log("hi")
     }
 
     bindKeyUp(event){
@@ -71,11 +70,23 @@ class GameView {
     pauseBySpace(event){
         const spacekey = event.key;
         event.preventDefault()
-        if(spacekey == ' ') console.log("testing")
-        // {
-        //     this.game.pauseGameState()
-        //     this.game.pauseProjectiles()
-        // }
+        if(spacekey == ' ' && !this.game.paused){
+            this.game.pauseGameState()
+            window.keyDown = window.removeEventListener('keydown', this.pauseBySpace);
+            window.keyDown = window.addEventListener('keydown', this.unPauseBySpace);
+            pauseBox.style.display = "block"
+        }
+    }
+
+    unPauseBySpace(event){
+        const spacekey = event.key;
+        event.preventDefault()
+        if(spacekey == ' ' && this.game.paused){
+            this.game.resumeGameState()
+            window.keyDown = window.removeEventListener('keydown', this.unPauseBySpace);
+            window.keyDown = window.addEventListener('keydown', this.pauseBySpace);
+            pauseBox.style.display = "none"
+        }
     }
 
     hideInstructions(){
