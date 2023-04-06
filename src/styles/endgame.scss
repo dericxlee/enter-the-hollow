@@ -1,0 +1,45 @@
+#game-over-pop-up{
+    display: flex;
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    left: 200px;
+    top: 100px;
+    background-color: red;
+}
+
+#game-over-pop-up p{
+    font-size: 150px;
+    color: white;
+    text-align: center;
+    // font-family: fantasy;
+    font-family: 'KillCrazy BB', sans-serif;
+}
+
+#game-over-pop-up #end-msg{
+    font-size: 60px;
+}
+
+#game-over-pop-up li{
+    font-size: 50px;
+    font-family: fantasy;
+}
+
+.play-again-btn-div {
+    text-align: center;
+    border: 1px green;
+    height: 200px;
+}
+
+.play-again-btn {
+    width: 300px;
+    font-size: 50px;
+    background-color: gray;
+    font-weight: bold;
+    font-family: fantasy;
+}
+
+#stats {
+    text-decoration: underline;
+    font-weight: bold;
+}

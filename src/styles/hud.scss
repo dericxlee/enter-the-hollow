@@ -1,0 +1,30 @@
+
+#player-hud{
+    display: flex;
+    position: absolute;
+    bottom: 120px;
+    left: 0px;
+    height: 40px;
+    width: auto;
+}
+
+#speed {
+    height: 30px;
+    width: auto;
+    color: white;
+    font-size: 20px;
+}
+
+#magnet {
+    height: 30px;
+    width: auto;
+    color: white;
+    font-size: 20px;
+}
+
+#health {
+    height: 40px;
+    width: auto;
+    color: red;
+    font-size: 40px;
+}

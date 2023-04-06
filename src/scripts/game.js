@@ -9,17 +9,17 @@ import Fireball from './fireball.js';
 import Boss from './boss.js'
 
 const currentTime = document.getElementById('current-time')
-const youLose = document.getElementById('game-over')
+const gameOverPopUp = document.getElementById('game-over-pop-up')
 const monKills = document.getElementById('mon-kills')
 const highLvl = document.getElementById('highest-lvl')
 const dmgDone = document.getElementById('damage-done')
 const endGame = document.getElementById('end-game')
 const endMsg = document.getElementById('end-msg')
-const resetButton = document.getElementById('play-again')
-const playerSpeed = document.getElementById('speed')
-const playerMagnet = document.getElementById('magnet')
-const playerHealth = document.getElementById('health')
-const progressLevel = document.getElementById('progress-level')
+const resetButton = document.getElementById('play-again-btn')
+// const playerSpeed = document.getElementById('speed')
+// const playerMagnet = document.getElementById('magnet')
+// const playerHealth = document.getElementById('health')
+// const progressLevel = document.getElementById('progress-level')
 
 class Game{
     static DIM_X = 1400
@@ -265,7 +265,7 @@ class Game{
     gameOver(){
         this.pauseGameState()
         this.pauseProjectiles()
-        youLose.style = 'display:block'
+        gameOverPopUp.style = 'display:block'
 
 
         if(this.hero.health > 0){
@@ -302,7 +302,7 @@ class Game{
         this.timer = Game.TIMER
         // this.resumeGameState()
         this.hero.displayChoices()
-        youLose.style = 'display:none'
+        gameOverPopUp.style = 'display:none'
         // progressLevel.innerText = `Level: ${this.hero.level}`
         // playerSpeed.innerText = `Speed: ${this.hero.speed}`
         // playerHealth.innerText = `Health: ${this.hero.health}`

@@ -1,4 +1,12 @@
 @import './styles/reset.scss';
+@import './styles/instruction.scss';
+@import './styles/progress.scss';
+@import './styles/hud.scss';
+@import './styles/levelup.scss';
+@import './styles/endgame.scss';
+@import './styles/timer.scss';
+@import url('https://fonts.cdnfonts.com/css/horror-type');
+@import url('https://fonts.cdnfonts.com/css/killcrazy-bb');
 
 progress {
     -webkit-appearance: none;
@@ -11,22 +19,6 @@ progress::-webkit-progress-bar {
     border-color: red;
 }
 
-.button {
-    color: yellow;
-    width: 500px;
-    height: 100px;
-    font-size: 25px;
-    background-color: purple;
-}
-
-#button-div {
-    width: 500px;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 200px;
-    left: 450px;
-}
 
 #progressbar {
     display: flex;
@@ -51,64 +43,6 @@ progress::-webkit-progress-bar {
     text-align: right;
 }
 
-#timer{
-    display: flex;
-    position: absolute;
-    left: 660px;
-    top: 40px;
-    text-align: center;
-}
 
-#current-time{
-    font-size: 40px;
-    color: white;
-}
 
-#game-over{
-    display: flex;
-    position: absolute;
-    width: 1000px;
-    height: 500px;
-    left: 200px;
-    top: 100px;
-    background-color: purple;
-    // text-align: center;
-}
 
-#game-over p{
-    font-size: 100px;
-}
-
-#game-over li{
-    font-size: 100px;
-}
-
-#player-hud{
-    display: flex;
-    position: absolute;
-    bottom: 120px;
-    left: 0px;
-    height: 40px;
-    width: auto;
-}
-
-#speed {
-    height: 30px;
-    width: auto;
-    color: white;
-    font-size: 20px;
-}
-
-#magnet {
-    height: 30px;
-    width: auto;
-    color: white;
-    font-size: 20px;
-}
-
-#health {
-    height: 40px;
-    width: auto;
-    color: red;
-    font-size: 40px;
-}

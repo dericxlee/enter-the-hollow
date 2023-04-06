@@ -13,14 +13,24 @@
         <title>Hollow Hero</title>
     </header>
     <canvas id="map" width="1400px" height="700px" style="border:1px solid #000000;"></canvas>
+   
+    <div id="instruction-div" style="display:block">
+        <div id="instruction-title-div">
+            <p id="instruction-title">No Text</p>
+        </div>
+
+    </div>
+   
+   
+   
     <div id="button-div" style="display:none">
-        <button type="button" class="button" id="first-upgrade">First Upgrade</button>
-        <button type="button" class="button" id="second-upgrade" onclick="">Second Upgrade</button>
-        <button type="button" class="button" id="third-upgrade" onclick="">Third Upgrade</button>
+        <div id="level-up"><button type="button" class="button" id="first-upgrade">First Upgrade</button></div>
+        <div id="level-up"><button type="button" class="button" id="second-upgrade">Second Upgrade</button></div>
+        <div id="level-up"><button type="button" class="button" id="third-upgrade">Third Upgrade</button></div>
     </div>
 
     <div id="progressbar">
-        <span id="progress-level"></span>
+        <span id="progress-level">Hello</span>
         <progress id="exp" max="" value=""></progress>
     </div>
 
@@ -36,15 +46,19 @@
         </ul>
     </div>
 
-    <div id="game-over" style="display:none">
-        <p id="end-game">Text Here</p>
+    <div id="game-over-pop-up" style="display:none">
+        <div><p id="end-game">Text Here</p></div>
         <p id="end-msg">Text Here</p>
         <ul>
-            <li id="mon-kills"></li>
+            <li id="stats">Game Statistics:</li>
             <li id="highest-lvl"></li>
+            <li id="mon-kills"></li>
             <li id="damage-done"></li>
-            <button id="play-again">Play Again!</button>
         </ul>
+        <div class="play-again-btn-div">
+            <button class="play-again-btn" id="play-again-btn">Try Again?</button>
+        </div>
+        
     </div>
 </body>
 

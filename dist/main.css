@@ -1,6 +1,14 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+@import url(https://fonts.cdnfonts.com/css/horror-type);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
+@import url(https://fonts.cdnfonts.com/css/killcrazy-bb);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (2) ***!
+  \*****************************************************************************************************************************************/
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -47,84 +55,13 @@ input {
   border-radius: 0;
 }
 
-progress {
-  -webkit-appearance: none;
-}
-
-progress::-webkit-progress-bar {
-  background-color: white;
-  border-radius: 1px;
-  border-color: red;
-}
-
-.button {
-  color: yellow;
-  width: 500px;
-  height: 100px;
-  font-size: 25px;
-  background-color: purple;
-}
-
-#button-div {
-  width: 500px;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 200px;
-  left: 450px;
-}
-
-#progressbar {
-  display: flex;
-  justify-content: flex-end;
+#instruction-div {
+  height: 700px;
   width: 1400px;
   position: absolute;
   top: 1px;
-}
-
-#exp {
-  width: 100%;
-  height: 25px;
-  color: red;
-}
-
-#progressbar span {
-  position: absolute;
-  display: inline-block;
-  color: black;
-  font-size: 20px;
-  text-align: right;
-}
-
-#timer {
-  display: flex;
-  position: absolute;
-  left: 660px;
-  top: 40px;
-  text-align: center;
-}
-
-#current-time {
-  font-size: 40px;
-  color: white;
-}
-
-#game-over {
-  display: flex;
-  position: absolute;
-  width: 1000px;
-  height: 500px;
-  left: 200px;
-  top: 100px;
-  background-color: purple;
-}
-
-#game-over p {
-  font-size: 100px;
-}
-
-#game-over li {
-  font-size: 100px;
+  background-color: white;
+  z-index: 100;
 }
 
 #player-hud {
@@ -155,4 +92,114 @@ progress::-webkit-progress-bar {
   width: auto;
   color: red;
   font-size: 40px;
+}
+
+#button-div {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 200px;
+  left: 450px;
+}
+
+.button {
+  color: black;
+  width: 500px;
+  height: 100px;
+  font-size: 25px;
+  font-family: fantasy;
+  background-color: gray;
+  font-weight: bold;
+}
+
+#game-over-pop-up {
+  display: flex;
+  position: absolute;
+  width: 1000px;
+  height: 500px;
+  left: 200px;
+  top: 100px;
+  background-color: red;
+}
+
+#game-over-pop-up p {
+  font-size: 150px;
+  color: white;
+  text-align: center;
+  font-family: "KillCrazy BB", sans-serif;
+}
+
+#game-over-pop-up #end-msg {
+  font-size: 60px;
+}
+
+#game-over-pop-up li {
+  font-size: 50px;
+  font-family: fantasy;
+}
+
+.play-again-btn-div {
+  text-align: center;
+  border: 1px green;
+  height: 200px;
+}
+
+.play-again-btn {
+  width: 300px;
+  font-size: 50px;
+  background-color: gray;
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+#stats {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+#timer {
+  display: flex;
+  position: absolute;
+  left: 660px;
+  top: 40px;
+  text-align: center;
+}
+
+#current-time {
+  font-size: 40px;
+  color: white;
+}
+
+progress {
+  -webkit-appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: white;
+  border-radius: 1px;
+  border-color: red;
+}
+
+#progressbar {
+  display: flex;
+  justify-content: flex-end;
+  width: 1400px;
+  position: absolute;
+  top: 1px;
+}
+
+#exp {
+  width: 100%;
+  height: 25px;
+  color: red;
+}
+
+#progressbar span {
+  position: absolute;
+  display: inline-block;
+  color: black;
+  font-size: 20px;
+  text-align: right;
 }

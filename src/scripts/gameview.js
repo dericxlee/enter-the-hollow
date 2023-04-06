@@ -19,6 +19,7 @@ class GameView {
 
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
+        
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
         window.keyUp = window.addEventListener('keyup', this.bindKeyUp);
     }
