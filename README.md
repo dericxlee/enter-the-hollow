@@ -11,11 +11,9 @@ Enter the Hollow is a single-player rogue-like survival game which takes inspira
 
 All rendered objects have circle hitboxes. Collision is checked periodically on setInterval using distance comparison against the radius sum of the two objects. The only collisions that return an action are:
 
-User vs Enemy
---
--User vs Experience Gem
---
-Enemy vs Projectile
+1. User vs Enemy
+2. User vs Experience Gem
+3. Enemy vs Projectile
 
 ```javascript
     checkCollisions() {
@@ -227,26 +225,24 @@ Game state is reset to constructor values by mass reassignment of class variable
 
 ## Technologies, Libraries, APIs
  
-DOM from Vanilla JS
---
-Canvas, CSS, HTML for rendering
---
-Sprites from various sources (credit at the bottom)
+1. DOM from Vanilla JS
+2. Canvas, CSS, HTML for rendering
+3. Sprites from various sources (credit at the bottom)
 
 
 ## Implementation Timeline
 
-Friday Afternoon: Collision detection and vector updates
---
-Weekend: Create classes for core gameplay
---
-Monday: Create classes for core gameplay
---
-Tuesday: User controls and sprites implementation
---
-Wednesday: Layout styling, additional features
---
-Thursday Morning: Minor tweaks on features
+1. Friday Afternoon: Collision detection and vector updates
+
+2. Weekend: Create classes for core gameplay
+
+3. Monday: Create classes for core gameplay
+
+4. Tuesday: User controls and sprites implementation
+
+5. Wednesday: Layout styling, additional features
+
+6. Thursday Morning: Minor tweaks on features
 
 
 ## Assets Used
