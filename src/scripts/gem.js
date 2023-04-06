@@ -20,7 +20,6 @@ class Gem extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Hero){
-            // otherObj.gainExp();
             this.remove();
             return true;
         }
@@ -31,11 +30,11 @@ class Gem extends MovingObject{
         return Math.sqrt((this.hero.x - this.x)**2 + (this.hero.y - this.y)**2)
     }
 
-    updateXVel(){ //dynamic xvel to 'chase' hero
+    updateXVel(){
         return this.xvel = (this.hero.x - this.x) * (this.speed/this.distFromHero())
     }
 
-    updateYVel(){ //dynamic yvel to 'chase' hero
+    updateYVel(){ 
         return this.yvel = (this.hero.y - this.y) * (this.speed/this.distFromHero())
     }
 

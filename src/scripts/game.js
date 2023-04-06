@@ -55,9 +55,9 @@ class Game{
         return objs
     }
 
-    allMovingObjects(){
-        return [].concat(this.hero, this.monsters, this.projectiles)
-    }
+    // allMovingObjects(){
+    //     return [].concat(this.hero, this.monsters, this.projectiles)
+    // }
 
     add(obj){
         if (obj instanceof Hero) {
@@ -82,15 +82,10 @@ class Game{
     }
 
     pauseProjectiles(){
-        // if(this.hero.weapons.length){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
-            // console.log(weapon)
             weapon.pauseProjectile()
         }
-        // } else {
-        //     return false
-        // }
     }
 
     addMonster(){
@@ -119,19 +114,34 @@ class Game{
         this.resumeCollision()
         this.resumeTimer()
         this.paused = false
-        // console.log(this.paused, "NOT PAUSED")
+    }
+
+    draw(ctx) {
+        ctx.drawImage(this.img, 0, 0, Game.DIM_X, Game.DIM_Y)
+        const allObjs = this.allObjects()
+        for(let i = 0; i < allObjs.length; i++){
+            let obj = allObjs[i];
+            obj.draw(ctx);
+        }
+    }
+
+    moveObjects(){
+        this.hero.move()
+        this.monsters.forEach(mon => mon.chase())
+        this.monsters.forEach( mon => mon.move())
+        this.gems.forEach(gem => gem.chase())
+        this.gems.forEach(gem => gem.move())
+        this.projectiles.forEach( proj => proj.move())
     }
 
     resumeSpawn(){
         this.intervalId = setInterval(() => {
             this.spawnMonsters()}
         , Game.MON_TIMER)
-        // console.log(this.intervalId, "interval")
         return this.intervalId
     }
 
     pauseSpawn(){
-        // console.log("game paused")
         return clearInterval(this.intervalId)
     }
 
@@ -158,32 +168,11 @@ class Game{
         return Math.random() * Game.DIM_Y
     }
 
-    draw(ctx) {
-        ctx.drawImage(this.img, 0, 0, Game.DIM_X, Game.DIM_Y)
-        const allObjs = this.allObjects()
-        for(let i = 0; i < allObjs.length; i++){
-            let obj = allObjs[i];
-            obj.draw(ctx);
-        }
-    }
-
-    moveObjects(){
-        // console.log(this.monster.xvel, this.monster.yvel)
-        // this.checkCollision()
-        this.hero.move()
-        this.monsters.forEach(mon => mon.chase())
-        // console.log(this.monster.xvel, this.monster.yvel)
-        this.monsters.forEach( mon => mon.move())
-        this.gems.forEach(gem => gem.chase())
-        this.gems.forEach(gem => gem.move())
-        this.projectiles.forEach( proj => proj.move())
-    }
 
     resumeMovement(){
         this.moveIntervalId = setInterval(() => {
             this.moveObjects()}
         , 50)
-        // console.log(this.intervalId, "interval")
         return this.moveIntervalId
     }
 
@@ -230,6 +219,10 @@ class Game{
         return clearInterval(this.collisionIntervalId)
     }
 
+    pauseTimer(){
+        return clearInterval(this.timerIntervalId)
+    }
+
     pauseGameState(){ 
         this.pauseProjectiles()
         this.pauseCollision()
@@ -237,7 +230,6 @@ class Game{
         this.pauseSpawn()
         this.pauseTimer()
         this.paused = true
-        // console.log(this.paused, "PAUSED")
     }
 
     resumeTimer(){
@@ -245,19 +237,14 @@ class Game{
             this.timer -= 1
             currentTime.innerText = `${this.timer}`
             if(this.timer < 0) currentTime.innerText = "Endless"
-            // console.log(this.timer)
             if(this.timer % Game.BOSS_TIMER === 0) this.addBoss()
             if(this.timer === 0) this.gameOver()
         }, 1000)
     }
 
-    pauseTimer(){
-        return clearInterval(this.timerIntervalId)
-    }
 
     gameOver(){
         this.pauseGameState()
-        // this.pauseProjectiles()
         gameOverPopUp.style = 'display:block'
 
         if(this.hero.health > 0){
@@ -284,8 +271,8 @@ class Game{
     }
 
     resetGameState(){
-        this.monsterSpawn = Game.NUM_MON
         this.hero.resetHeroState()
+        this.monsterSpawn = Game.NUM_MON
         this.damageDone = 0
         this.kills = 0
         this.monsters = [];

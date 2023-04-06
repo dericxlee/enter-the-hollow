@@ -1,6 +1,3 @@
-import StaticObject from "./scripts/static_object.js";
-window.StaticObject = StaticObject;
-
 import Gem from './scripts/gem.js';
 window.Gem = Gem;
 
