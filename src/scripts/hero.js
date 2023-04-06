@@ -35,7 +35,7 @@ class Hero extends MovingObject{
     static EXP_SCALE = 1.3
     static START_LVL = 1
     static HP = 100
-    static MAGNET = 40
+    static MAGNET = 100
     
     constructor(options){
         super(options),
