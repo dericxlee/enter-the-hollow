@@ -34,6 +34,13 @@ class Hero extends MovingObject{
     static START_LVL = 1
     static HP = 100
     static MAGNET = 20
+    // static ALLWEAPON = [
+    //     new Starfall({hero: this}),
+    //     // new Consecration({hero: this}),
+    //     new Fireball({hero: this}),
+    //     new BladeFlurry({hero: this}),
+    //     new Bubble({hero: this})
+    // ]
     constructor(options){
         super(options)
         this.x = Hero.START_X,
@@ -45,6 +52,7 @@ class Hero extends MovingObject{
         this.experience = 0,
         this.experienceForLevel = Hero.EXP_REQ,
         this.level = Hero.START_LVL,
+        this.allWeapon = Hero.ALLWEAPON,
         this.weapons = [],
         this.health = Hero.HP
         this.upgrades = [];
@@ -53,6 +61,7 @@ class Hero extends MovingObject{
         this.lastXVel = 0
         this.lastYVel = 0
         this.magnetism = Hero.MAGNET
+        // this.addWeaponChoices()
 
         this.sprite = new Image();
         this.sprite.src = './assets/hero.png';
@@ -145,6 +154,13 @@ class Hero extends MovingObject{
         }
     }
 
+    addWeaponChoices(){
+        for(let i = this.upgrades.length; i < 3; i++){
+            this.upgrades.push(this.generateChoice())
+            allButtons[i].innerHTML = "Weapon"
+        }
+    }
+
     gainExp(){
         this.experience += 1
         experienceBar.max = this.experienceForLevel
@@ -157,21 +173,23 @@ class Hero extends MovingObject{
     }
 
     generateChoice(){
-        let random_number = Math.ceil(Math.random()*Hero.RNG)
-        // let random_number = 2
+        let randomNumber = Math.ceil(Math.random()*Hero.RNG)
 
-        if(random_number === 1){
+        if(randomNumber === 1){
             console.log("player up")
             return new PlayerPowerUp({hero: this});
             
-        } else if (random_number === 2){
+        } else { // adding more weight to weapon upgrades
             console.log("weapon up")
             return new WeaponPowerUp({hero: this});
-            
-        } else {
-            console.log("starfall")
-            return new Starfall({hero: this})
         }
+    }
+
+    generateWeaponChoice(){
+        let randomNum = Math.floor(Math.random() * this.allWeapon.length)
+        console.log(randomNum)
+        return this.allWeapon.length.splice(randomNum)
+        console.log(this.allWeapon.length)
     }
 
     onClickOne(){

@@ -15,6 +15,10 @@ class Weapon {
         this.damage = options.damage
     }
 
+    choose(){
+        this.hero.addWeapon()
+    }
+
     // addProjectile(){
     //     if(this.offset) return this.addRandomPosProjectile();
     //     return this.addDefinedProjectile();
