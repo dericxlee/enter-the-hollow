@@ -9,6 +9,10 @@
 /*!*****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (2) ***!
   \*****************************************************************************************************************************************/
+@import url(https://fonts.cdnfonts.com/css/alice-in-wonderland);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (3) ***!
+  \*****************************************************************************************************************************************/
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -56,12 +60,49 @@ input {
 }
 
 #instruction-div {
+  display: flex;
   height: 700px;
   width: 1400px;
   position: absolute;
   top: 1px;
-  background-color: white;
+  background-color: gray;
   z-index: 100;
+}
+
+#instruction-title-div {
+  display: block;
+  height: 180px;
+  text-align: center;
+  content: Enter the Hollow;
+  font-family: "Alice in Wonderland", sans-serif;
+}
+
+#instruction-title-div p {
+  font-size: 150px;
+}
+
+#list-instructions {
+  display: flex;
+  height: 400px;
+}
+
+#list-instructions li {
+  font-size: 50px;
+  font-family: fantasy;
+}
+
+#start-btn-div {
+  text-align: center;
+  border: 1px pink;
+  height: 100px;
+}
+
+.start-btn {
+  width: 300px;
+  font-size: 50px;
+  background-color: brown;
+  font-weight: bold;
+  font-family: "Alice in Wonderland", sans-serif;
 }
 
 #player-hud {

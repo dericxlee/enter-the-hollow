@@ -1,5 +1,8 @@
 import Game from "./game.js";
 
+const startBtn = document.getElementById('start-btn')
+const instructions = document.getElementById('instruction-div')
+
 class GameView {
     constructor(canvas, ctx){
         this.game = new Game();
@@ -19,9 +22,12 @@ class GameView {
 
         this.bindKeyDown = this.bindKeyDown.bind(this)
         this.bindKeyUp = this.bindKeyUp.bind(this)
-        
+
         window.keyDown = window.addEventListener('keydown', this.bindKeyDown);
         window.keyUp = window.addEventListener('keyup', this.bindKeyUp);
+
+        this.hideInstructions = this.hideInstructions.bind(this)
+        startBtn.addEventListener("click", this.hideInstructions)
     }
 
     start(){
@@ -70,6 +76,10 @@ class GameView {
             this.hero.lastYVel = 1
             this.hero.lastXVel = 0
         }
+    }
+
+    hideInstructions(){
+        instructions.style = 'display:none'
     }
 
 }
