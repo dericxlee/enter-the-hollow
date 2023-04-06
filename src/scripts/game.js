@@ -264,7 +264,7 @@ class Game{
         if(this.hero.health > 0){
             resetButton.innerText = "Endless Mode"
             resetButton.addEventListener("click", this.endless)
-            endGame.innerText = "Escaped!"
+            endGame.innerText = "You Survived..."
             endGame.style.color = "black"
             endMsg.innerText = "Take your chances at Endless?"
             endMsg.style.color = "black"
@@ -273,13 +273,13 @@ class Game{
         } else {
             resetButton.innerText ="Try Again?"
             resetButton.addEventListener("click", this.reset)
-            endGame.innerText = "Game Over!"
+            endGame.innerText = "Game Over"
             endMsg.innerText = "Better luck next time!"
         }
 
         monKills.innerText = `Enemies defeated: ${this.kills}`
         highLvl.innerText = `Level reached: ${this.hero.level}`
-        dmgDone.innerText = `Damage dealt: ${this.damageDone}`
+        dmgDone.innerText = `Total damage dealt: ${this.damageDone}`
 
         // resetButton.addEventListener("click", this.reset)
     }

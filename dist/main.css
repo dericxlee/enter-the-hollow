@@ -241,6 +241,15 @@ input {
   font-family: "Alice in Wonderland", sans-serif;
 }
 
+.footer-div {
+  display: flex;
+  position: absolute;
+  height: 40px;
+  right: 40px;
+  bottom: 40px;
+  z-index: 100;
+}
+
 progress {
   -webkit-appearance: none;
 }
