@@ -56,10 +56,10 @@ window.BoneProjectile = BoneProjectile;
 const canvas = document.getElementById('map')
 const ctx = canvas.getContext('2d')
 
-const gamev = new GameView(canvas, ctx)
+const newGame = new GameView(canvas, ctx)
 // gamev.render()
 // gamev.render(ctx)
-gamev.start()
+// gamev.start()
 // gamev.game.spawn()
 // gamev.game.resumeMovement()
 // gamev.game.resumeCollision()

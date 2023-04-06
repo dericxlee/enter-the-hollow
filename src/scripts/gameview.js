@@ -31,12 +31,12 @@ class GameView {
     }
 
 
-    draw(){
-        this.img.onload = () => {
-            this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
-            // console.log(this.img instanceof Image, "img")
-        };
-    }
+    // draw(){
+    //     this.img.onload = () => {
+    //         this.ctx.drawImage(this.img, 0, 0, 1000, 1000)
+    //         // console.log(this.img instanceof Image, "img")
+    //     };
+    // }
 
     bindKeyDown(event){
         const keyName = event.key;

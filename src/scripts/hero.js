@@ -33,7 +33,7 @@ class Hero extends MovingObject{
     static SPEED = 5
     static EXP_REQ = 5
     static START_LVL = 1
-    static HP = 10000
+    static HP = 50
     static MAGNET = 20
     
     constructor(options){
@@ -80,8 +80,10 @@ class Hero extends MovingObject{
         playerSpeed.innerText = `Speed: ${this.speed}`
         playerHealth.innerText = `Health: ${this.health}`
         playerMagnet.innerText = `Magnetic: ${this.magnetism}`
+    }
 
-        const allWeapons = [
+    resetWeapons(){
+        this.availableWeapons = [
             new Starfall({hero: this}),
             new Consecration({hero: this}),
             new Fireball({hero: this}),
@@ -285,6 +287,24 @@ class Hero extends MovingObject{
             return true;
         }
         return false;
+    }
+
+    resetHeroState(){
+        this.weapons = [];
+        this.resetWeapons()
+        console.log(this.availableWeapons.length, "5")
+        this.health = Hero.HP
+        this.magnetism = Hero.MAGNET
+        this.level = Hero.START_LVL
+        this.speed = Hero.SPEED
+        this.experience = 0
+        this.experienceForLevel = Hero.EXP_REQ
+        this.x = Hero.START_X
+        this.y = Hero.START_Y
+        progressLevel.innerText = `Level: ${this.level}`
+        playerSpeed.innerText = `Speed: ${this.speed}`
+        playerHealth.innerText = `Health: ${this.health}`
+        playerMagnet.innerText = `Magnetic: ${this.magnetism}`
     }
 }
 

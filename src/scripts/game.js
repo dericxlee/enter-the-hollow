@@ -264,6 +264,7 @@ class Game{
 
     gameOver(){
         this.pauseGameState()
+        this.pauseProjectiles()
         youLose.style = 'display:block'
 
 
@@ -283,26 +284,29 @@ class Game{
     }
 
     resetGameState(){
-        this.hero.health = Hero.HP
-        this.hero.magnetism = Hero.MAGNET
-        this.hero.level = Hero.START_LVL
-        this.hero.speed = Hero.SPEED
-        this.hero.experience = 0
-        this.hero.experienceForLevel = Hero.EXP_REQ
-        this.hero.x = Hero.START_X
-        this.hero.y = Hero.START_Y
+        // this.hero.health = Hero.HP
+        // this.hero.magnetism = Hero.MAGNET
+        // this.hero.level = Hero.START_LVL
+        // this.hero.speed = Hero.SPEED
+        // this.hero.experience = 0
+        // this.hero.experienceForLevel = Hero.EXP_REQ
+        // this.hero.x = Hero.START_X
+        // this.hero.y = Hero.START_Y
+        this.hero.resetHeroState()
         this.damageDone = 0
         this.kills = 0
         this.monsters = [];
         this.addMonster()
         this.gems = [];
+        this.projectiles = [];
         this.timer = Game.TIMER
-        this.resumeGameState()
+        // this.resumeGameState()
+        this.hero.displayChoices()
         youLose.style = 'display:none'
-        progressLevel.innerText = `Level: ${this.hero.level}`
-        playerSpeed.innerText = `Speed: ${this.hero.speed}`
-        playerHealth.innerText = `Health: ${this.hero.health}`
-        playerMagnet.innerText = `Magnetic: ${this.hero.magnetism}`
+        // progressLevel.innerText = `Level: ${this.hero.level}`
+        // playerSpeed.innerText = `Speed: ${this.hero.speed}`
+        // playerHealth.innerText = `Health: ${this.hero.health}`
+        // playerMagnet.innerText = `Magnetic: ${this.hero.magnetism}`
         currentTime.innerText = `${this.timer}`
         resetButton.removeEventListener("click", this.reset)
     }
