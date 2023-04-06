@@ -23,7 +23,7 @@ class Game{
     static DIM_Y = 700
     static NUM_MON = 20
     static MON_TIMER = 5000
-    static TIMER = 180
+    static TIMER = 5
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -46,6 +46,7 @@ class Game{
         this.kills = 0
         this.damageDone = 0
         this.reset = this.resetGameState.bind(this)
+        this.endless = this.endlessMode.bind(this)
         this.hero.displayChoices()
         currentTime.innerText = `${this.timer}`
     }
@@ -244,6 +245,7 @@ class Game{
         this.timerIntervalId = setInterval(()=>{
             this.timer -= 1
             currentTime.innerText = `${this.timer}`
+            if(this.timer < 0) currentTime.innerText = "Endless"
             // console.log(this.timer)
             if(this.timer % Game.BOSS_TIMER === 0) this.addBoss()
             if(this.timer === 0) this.gameOver()
@@ -260,13 +262,17 @@ class Game{
         gameOverPopUp.style = 'display:block'
 
         if(this.hero.health > 0){
-            endGame.innerText = "Victory!"
+            resetButton.innerText = "Endless Mode"
+            resetButton.addEventListener("click", this.endless)
+            endGame.innerText = "Escaped!"
             endGame.style.color = "black"
-            endMsg.innerText = "You survived the Hollow"
+            endMsg.innerText = "Take your chances at Endless?"
             endMsg.style.color = "black"
             gameOverPopUp.style.backgroundColor = "yellow"
+
         } else {
-            
+            resetButton.innerText ="Try Again?"
+            resetButton.addEventListener("click", this.reset)
             endGame.innerText = "Game Over!"
             endMsg.innerText = "Better luck next time!"
         }
@@ -275,7 +281,7 @@ class Game{
         highLvl.innerText = `Level reached: ${this.hero.level}`
         dmgDone.innerText = `Damage dealt: ${this.damageDone}`
 
-        resetButton.addEventListener("click", this.reset)
+        // resetButton.addEventListener("click", this.reset)
     }
 
     resetGameState(){
@@ -296,6 +302,14 @@ class Game{
         this.collisionIntervalId = null
         this.timerIntervalId = null
         this.hero.displayChoices()
+    }
+
+    endlessMode(){
+        this.timer = -1
+        currentTime.innerText = "Endless"
+        resetButton.removeEventListener("click", this.endless)
+        gameOverPopUp.style = 'display:none'
+        this.resumeGameState()
     }
 }
 
