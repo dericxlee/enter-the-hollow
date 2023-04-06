@@ -29,10 +29,10 @@ class MovingObject{
     // }
 
     move(){
-        let hor = this.x + this.xvel;
-        let ver = this.y + this.yvel;
-        this.x = this.game.xWrap(hor)
-        this.y = this.game.yWrap(ver)
+        this.x = this.x + this.xvel;
+        this.y = this.y + this.yvel;
+        // this.x = this.game.xWrap(hor)
+        // this.y = this.game.yWrap(ver)
     }
 
     distanceFrom(otherObj){

@@ -3,7 +3,7 @@ import Weapon from "./weapon";
 class Bubble extends Weapon{
     static FREQ = 2500
     static ECHO = 1
-    static DURATION = 2500
+    static DURATION = 5000
     static COLOR = "yellow"
     static RADIUS = 15
     static SPEED = 5

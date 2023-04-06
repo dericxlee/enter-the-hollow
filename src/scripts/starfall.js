@@ -5,12 +5,12 @@ class Starfall extends Weapon{
     static RADIUS = 20
     static X_VEL = 0
     static Y_VEL = 0
-    static FREQ = 500
+    static FREQ = 400
     static ECHO = 1
     static SPEED = 0
-    static DUR = 1000
-    static OFFSET = 100
-    static DMG = 3
+    static DUR = 800
+    static OFFSET = 150
+    static DMG = 4
     static NAME = "Starfall"
     constructor(options){
         super(options),

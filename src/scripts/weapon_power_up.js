@@ -7,12 +7,13 @@ import Fireball from "./fireball"
 
 
 class WeaponPowerUp {
+    static RNG = 4
     constructor(options){
         this.hero = options.hero
         this.weaponId = Math.floor(Math.random() * this.hero.weapons.length)
         this.weapon = this.hero.weapons[this.weaponId]
         this.weaponName = this.weapon.name
-        this.attributeId = Math.ceil(Math.random() * 4)
+        this.attributeId = Math.ceil(Math.random() * WeaponPowerUp.RNG)
         this.type = this.findType()
     }
 
@@ -30,11 +31,11 @@ class WeaponPowerUp {
                 break;
             case 3:
                 // console.log(this.weaponName, this.type, "freq")
-                this.weapon.frequency = Math.floor(this.weapon.frequency * 0.5)
+                this.weapon.frequency = Math.floor(this.weapon.frequency * 0.8)
                 break;
             case 4:
                 // console.log(this.weaponName, this.type, "dam")
-                this.weapon.damage += 1
+                this.weapon.damage += 2
                 break;
         }
         
@@ -44,16 +45,16 @@ class WeaponPowerUp {
         // console.log("working")
         switch(this.attributeId){
             case 1:
-                return "Area Modifier"
+                return "Area +20%"
                 break;
             case 2:
-                return "Multi-Cast Modifier"
+                return "Multi-Cast +1"
                 break;
             case 3:
-                return "Cast Frequency Modifier"
+                return "Cast Frequency +20%"
                 break;
             case 4:
-                return "Damage Modifier"
+                return "Damage +2"
                 break;
         }
     }

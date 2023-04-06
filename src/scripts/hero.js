@@ -31,10 +31,11 @@ class Hero extends MovingObject{
     static RADIUS = 15
     static COLOR = "blue"
     static SPEED = 5
-    static EXP_REQ = 10
+    static EXP_REQ = 8
+    static EXP_SCALE = 1.3
     static START_LVL = 1
-    static HP = 5000
-    static MAGNET = 100
+    static HP = 100
+    static MAGNET = 40
     
     constructor(options){
         super(options),
@@ -138,7 +139,7 @@ class Hero extends MovingObject{
 
             this.level += 1;
             this.displayChoices()
-            this.experienceForLevel = Math.floor(baseExpReq * 1.5)
+            this.experienceForLevel = Math.floor(baseExpReq * Hero.EXP_SCALE)
             this.experience = 0
             experienceBar.value = this.experience
             playerSpeed.innerText = `Speed: ${this.speed}`

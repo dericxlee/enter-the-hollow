@@ -23,7 +23,7 @@ class Game{
     static DIM_Y = 700
     static NUM_MON = 20
     static MON_TIMER = 5000
-    static TIMER = 5
+    static TIMER = 60
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
         this.hero = this.addHero();
@@ -103,7 +103,7 @@ class Game{
     }
 
     spawnMonsters(){
-        this.monsterSpawn += 5
+        this.monsterSpawn += 2
         return this.addMonster()
     }
 
@@ -180,17 +180,17 @@ class Game{
         return clearInterval(this.moveIntervalId)
     }
 
-    xWrap(pos){ //for testing only
-        let x = pos % Game.DIM_X;
-        if(x < 0) x += Game.DIM_X;
-        return x;
-    }
+    // xWrap(pos){ //for testing only
+    //     let x = pos % Game.DIM_X;
+    //     if(x < 0) x += Game.DIM_X;
+    //     return x;
+    // }
 
-    yWrap(pos){ //for testing only
-        let y = pos % Game.DIM_Y;
-        if(y < 0) y += Game.DIM_Y;
-        return y;
-    }
+    // yWrap(pos){ //for testing only
+    //     let y = pos % Game.DIM_Y;
+    //     if(y < 0) y += Game.DIM_Y;
+    //     return y;
+    // }
 
     checkCollisions() {
         const allObjects = this.allObjects();
@@ -260,7 +260,7 @@ class Game{
             resetButton.innerText ="Try Again?"
             resetButton.addEventListener("click", this.reset)
             endGame.innerText = "Game Over"
-            endMsg.innerText = "Better luck next time!"
+            endMsg.innerText = "Care to enter again?"
         }
 
         monKills.innerText = `Enemies defeated: ${this.kills}`

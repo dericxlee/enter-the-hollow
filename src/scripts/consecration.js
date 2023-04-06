@@ -11,7 +11,7 @@ class Consecration extends Weapon{
     static ECHO = 1
     static SPEED = 0
     static DUR = 3000
-    static DMG = 1
+    static DMG = 3
     static NAME = "Sanctify"
     // static ID = null
     constructor(options){

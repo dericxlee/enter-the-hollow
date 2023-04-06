@@ -5,8 +5,8 @@ class Boss extends Monster{
     static RADIUS = 40
     static COLOR = 'green'
     static SPEED = 3
-    static HP = 1000
-    static DMG = 100
+    static HP = 500
+    static DMG = 10
     constructor(options){
         super(options),
         this.radius = Boss.RADIUS,

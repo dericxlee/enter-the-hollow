@@ -8,8 +8,8 @@ class Fireball extends Weapon{
     static FREQ = 2000
     static ECHO = 1
     static SPEED = 10
-    static DUR = 5000
-    static DMG = 5
+    static DUR = 3500
+    static DMG = 7
     static NAME = "Fireball"
     constructor(options){
         super(options),
