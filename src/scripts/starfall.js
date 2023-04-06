@@ -11,9 +11,10 @@ class Starfall extends Weapon{
     static DUR = 1000
     static OFFSET = 100
     static DMG = 3
+    static NAME = "Starfall"
     constructor(options){
         super(options),
-        this.name = "starfall",
+        this.name = Starfall.NAME,
         this.duration = Starfall.DUR,
         this.color = Starfall.COLOR,
         this.radius = Starfall.RADIUS,
@@ -28,7 +29,7 @@ class Starfall extends Weapon{
     }
 
     addProjectile(){
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             // console.log(this.hero.game.projectiles.length, "randompos")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
@@ -46,6 +47,8 @@ class Starfall extends Weapon{
                 }));
             }
         }, this.frequency)
+
+        return this.intervalId
     }
 
     findRandomX(){

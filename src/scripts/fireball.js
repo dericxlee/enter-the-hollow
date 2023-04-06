@@ -10,9 +10,10 @@ class Fireball extends Weapon{
     static SPEED = 10
     static DUR = 5000
     static DMG = 5
+    static NAME = "Fireball"
     constructor(options){
         super(options),
-        this.name = "fireball"
+        this.name = Fireball.NAME,
         this.duration = Fireball.DUR,
         this.color = Fireball.COLOR,
         this.radius = Fireball.RADIUS,
@@ -27,7 +28,7 @@ class Fireball extends Weapon{
 
     addProjectile(){
         // console.log("attack")
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
@@ -45,6 +46,12 @@ class Fireball extends Weapon{
                 }));
             }
         }, this.frequency)
+
+        return this.intervalId
+    }
+
+    pauseProjectile(){
+        return clearInterval(this.intervalId)
     }
 }
 

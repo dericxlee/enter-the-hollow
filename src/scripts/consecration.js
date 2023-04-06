@@ -12,9 +12,11 @@ class Consecration extends Weapon{
     static SPEED = 0
     static DUR = 3000
     static DMG = 1
+    static NAME = "Consecration"
+    // static ID = null
     constructor(options){
         super(options),
-        this.name = "consecration"
+        this.name = Consecration.NAME,
         this.duration = Consecration.DUR,
         this.color = Consecration.COLOR,
         this.radius = Consecration.RADIUS,
@@ -25,11 +27,12 @@ class Consecration extends Weapon{
         this.speed = Consecration.SPEED,
         this.hero = options.hero,
         this.damage = Consecration.DMG
+        // this.intervalId = Consecration.ID
     }
 
     addProjectile(){
         // console.log("attack")
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 this.hero.game.add(new Projectile({
@@ -47,6 +50,12 @@ class Consecration extends Weapon{
                 }));
             }
         }, this.frequency)
+
+        return this.intervalId
+    }
+
+    pauseProjectile(){
+        return clearInterval(this.intervalId)
     }
 }
 

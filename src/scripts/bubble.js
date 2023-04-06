@@ -10,9 +10,10 @@ class Bubble extends Weapon{
     static X_VEL = 0
     static Y_VEL = 0
     static DMG = 3
+    static NAME = "Bubblebeam"
     constructor(options){
         super(options),
-        this.name = "bubble",
+        this.name = Bubble.NAME,
         this.frequency = Bubble.FREQ,
         this.echo = Bubble.ECHO,
         this.duration = Bubble.DURATION,
@@ -26,7 +27,7 @@ class Bubble extends Weapon{
     }
 
     addProjectile(){
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 for(let j = 0; j < 3; j++){
@@ -46,6 +47,12 @@ class Bubble extends Weapon{
                 }   
             }
         }, this.frequency)
+
+        return this.intervalId
+    }
+
+    pauseProjectile(){
+        return clearInterval(this.intervalId)
     }
 }
 

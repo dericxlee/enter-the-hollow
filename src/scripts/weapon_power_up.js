@@ -17,23 +17,23 @@ class WeaponPowerUp {
     }
 
     choose(){
-        console.log(this.hero.weapons.length)
+        // console.log(this.hero.weapons.length)
         switch(this.attributeId){
             case 1:
-                console.log(this.weapon.length)
-                console.log(this.weaponName, this.type, "rad")
+                // console.log(this.weapon.length)
+                // console.log(this.weaponName, this.type, "rad")
                 this.weapon.radius = Math.floor(this.weapon.radius * 1.2)
                 break;
             case 2:
-                console.log(this.weaponName, this.type, "echo")
+                // console.log(this.weaponName, this.type, "echo")
                 this.weapon.echo += 1
                 break;
             case 3:
-                console.log(this.weaponName, this.type, "freq")
+                // console.log(this.weaponName, this.type, "freq")
                 this.weapon.frequency = Math.floor(this.weapon.frequency * 0.5)
                 break;
             case 4:
-                console.log(this.weaponName, this.type, "dam")
+                // console.log(this.weaponName, this.type, "dam")
                 this.weapon.damage += 1
                 break;
         }
@@ -41,7 +41,7 @@ class WeaponPowerUp {
     }
 
     findType(){
-        console.log("working")
+        // console.log("working")
         switch(this.attributeId){
             case 1:
                 return "Area Modifier"

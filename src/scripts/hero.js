@@ -5,6 +5,7 @@ import WeaponPowerUp from "./weapon_power_up.js";
 import PlayerPowerUp from "./player_power_up.js";
 import Fireball from "./fireball.js";
 import BladeFlurry from "./blade_flurry.js";
+import Consecration from "./consecration.js";
 // import Bone from "./bubble.js";
 import Bubble from "./bubble.js";
 import Bone from "./bone.js";
@@ -32,17 +33,11 @@ class Hero extends MovingObject{
     static SPEED = 5
     static EXP_REQ = 5
     static START_LVL = 1
-    static HP = 100
+    static HP = 10000
     static MAGNET = 20
-    // static ALLWEAPON = [
-    //     new Starfall({hero: this}),
-    //     // new Consecration({hero: this}),
-    //     new Fireball({hero: this}),
-    //     new BladeFlurry({hero: this}),
-    //     new Bubble({hero: this})
-    // ]
+    
     constructor(options){
-        super(options)
+        super(options),
         this.x = Hero.START_X,
         this.y = Hero.START_Y,
         this.radius = Hero.RADIUS,
@@ -52,7 +47,13 @@ class Hero extends MovingObject{
         this.experience = 0,
         this.experienceForLevel = Hero.EXP_REQ,
         this.level = Hero.START_LVL,
-        this.allWeapon = Hero.ALLWEAPON,
+        this.availableWeapons = [
+            new Starfall({hero: this}),
+            new Consecration({hero: this}),
+            new Fireball({hero: this}),
+            new BladeFlurry({hero: this}),
+            new Bubble({hero: this})
+        ],
         this.weapons = [],
         this.health = Hero.HP
         this.upgrades = [];
@@ -79,6 +80,14 @@ class Hero extends MovingObject{
         playerSpeed.innerText = `Speed: ${this.speed}`
         playerHealth.innerText = `Health: ${this.health}`
         playerMagnet.innerText = `Magnetic: ${this.magnetism}`
+
+        const allWeapons = [
+            new Starfall({hero: this}),
+            new Consecration({hero: this}),
+            new Fireball({hero: this}),
+            new BladeFlurry({hero: this}),
+            new Bubble({hero: this})
+        ]
     }
 
     draw(ctx) {
@@ -116,8 +125,8 @@ class Hero extends MovingObject{
         // console.log(this.hero.weaponOne instanceof Consecration, "cons?")
         // this.weapons.push(new Starfall({hero: this}));
         // this.weapons.push(new Consecration({hero: this}));
-        this.weapons.push(new Fireball({hero: this}));
-        // this.weapons.push(new BladeFlurry({hero: this}))
+        // this.weapons.push(new Fireball({hero: this}));
+        this.weapons.push(new BladeFlurry({hero: this}))
         // this.weapons.push(new Bubble({hero: this}))
         // this.weapons.push(new Bone({hero: this}))
     }
@@ -125,15 +134,15 @@ class Hero extends MovingObject{
     levelUp(){
         let baseExpReq = this.experienceForLevel
         if(baseExpReq === this.experience){
-            console.log(this.level, "level up!")
+            // console.log(this.level, "level up!")
             this.game.pauseGameState()
-            buttonOverlay.style = 'display:block'
-            this.addChoices()
-            buttonOne.addEventListener("click", this.onClickOne)
-            buttonTwo.addEventListener("click", this.onClickTwo)
-            buttonThree.addEventListener("click", this.onClickThree)
+            // buttonOverlay.style = 'display:block'
+            // this.addChoices()
+            // buttonOne.addEventListener("click", this.onClickOne)
+            // buttonTwo.addEventListener("click", this.onClickTwo)
+            // buttonThree.addEventListener("click", this.onClickThree)
 
-            
+            this.displayChoices()
             this.level += 1;
             this.experienceForLevel = Math.floor(baseExpReq * 1.8)
             this.experience = 0
@@ -147,6 +156,23 @@ class Hero extends MovingObject{
         return false;
     }
 
+    displayChoices(){
+        if((this.level + 1) % 3 === 0) {
+            this.addWeaponChoices()
+        } else {
+            this.addChoices()
+        }
+        buttonOverlay.style = 'display:block'
+        buttonOne.addEventListener("click", this.onClickOne)
+        buttonTwo.addEventListener("click", this.onClickTwo)
+        buttonThree.addEventListener("click", this.onClickThree)
+        // if((this.level + 1) % 3 === 0) {
+        //     this.addWeaponChoices()
+        // } else {
+        //     this.addChoices()
+        // }
+    }
+
     addChoices(){
         for(let i = this.upgrades.length; i < 3; i++){
             this.upgrades.push(this.generateChoice())
@@ -156,8 +182,8 @@ class Hero extends MovingObject{
 
     addWeaponChoices(){
         for(let i = this.upgrades.length; i < 3; i++){
-            this.upgrades.push(this.generateChoice())
-            allButtons[i].innerHTML = "Weapon"
+            this.upgrades.push(this.generateWeaponChoice())
+            allButtons[i].innerHTML = `${this.upgrades[i].name}`
         }
     }
 
@@ -176,24 +202,34 @@ class Hero extends MovingObject{
         let randomNumber = Math.ceil(Math.random()*Hero.RNG)
 
         if(randomNumber === 1){
-            console.log("player up")
+            // console.log("player up")
             return new PlayerPowerUp({hero: this});
             
         } else { // adding more weight to weapon upgrades
-            console.log("weapon up")
+            // console.log("weapon up")
             return new WeaponPowerUp({hero: this});
         }
     }
 
     generateWeaponChoice(){
-        let randomNum = Math.floor(Math.random() * this.allWeapon.length)
+        let randomNum = Math.floor(Math.random() * this.availableWeapons.length)
+        let weapon = this.availableWeapons[randomNum]
         console.log(randomNum)
-        return this.allWeapon.length.splice(randomNum)
-        console.log(this.allWeapon.length)
+        this.availableWeapons.splice(randomNum, 1)
+        return weapon;
+        // console.log(this.allWeapon.length)
     }
 
     onClickOne(){
-        this.upgrades[0].choose();
+        let newWeap = this.upgrades[0] instanceof Weapon
+        // this.upgrades[0].choose();
+        if(newWeap) {
+            this.weapons.push(this.upgrades[0])
+            this.availableWeapons = this.availableWeapons.concat(this.upgrades[1], this.upgrades[2])
+        } else {
+            this.upgrades[0].choose()
+        }
+        console.log(this.availableWeapons.length)
         this.upgrades = [];
         this.game.resumeGameState();
         buttonOverlay.style = 'display:none';
@@ -201,7 +237,14 @@ class Hero extends MovingObject{
     }
 
     onClickTwo(){
-        this.upgrades[1].choose();
+        // let dummyWeap = this.upgrades
+        let newWeap = this.upgrades[1] instanceof Weapon
+        if(newWeap) {
+            this.weapons.push(this.upgrades[1])
+            this.availableWeapons = this.availableWeapons.concat(this.upgrades[0], this.upgrades[2])
+        } else {
+            this.upgrades[1].choose();
+        }
         this.upgrades = [];
         this.game.resumeGameState();
         buttonOverlay.style = 'display:none';
@@ -209,7 +252,13 @@ class Hero extends MovingObject{
     }
 
     onClickThree(){
-        this.upgrades[2].choose();
+        let newWeap = this.upgrades[2] instanceof Weapon
+        if(newWeap) {
+            this.weapons.push(this.upgrades[2])
+            this.availableWeapons = this.availableWeapons.concat(this.upgrades[0], this.upgrades[1])
+        } else {
+            this.upgrades[2].choose();
+        }
         this.upgrades = [];
         this.game.resumeGameState();
         buttonOverlay.style = 'display:none';
@@ -228,8 +277,8 @@ class Hero extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Monster){
-            console.log(otherObj.damage, "take dmg")
-            console.log(this.health, "my hp")
+            // console.log(otherObj.damage, "take dmg")
+            // console.log(this.health, "my hp")
             this.health = this.health - otherObj.damage
             playerHealth.innerText = `Health: ${this.health}`
             if(this.health <= 0) {

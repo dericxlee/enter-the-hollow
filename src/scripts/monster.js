@@ -45,7 +45,7 @@ class Monster extends MovingObject{
 
     collideWith(otherObj){
         if (otherObj instanceof Projectile){
-            console.log(otherObj.damage)
+            // console.log(otherObj.damage)
             this.health = this.health - otherObj.damage
             this.game.damageDone += otherObj.damage
             if(this.health <= 0) {

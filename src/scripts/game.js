@@ -94,10 +94,19 @@ class Game{
     //     // console.log(this.hero.weapons.length, "con")
     // }
 
-    callWeapons(){
+    resumeProjectiles(){
         for(let i = 0; i < this.hero.weapons.length; i++){
             let weapon = this.hero.weapons[i]
+            console.log(weapon)
             weapon.addProjectile()
+        }
+    }
+
+    pauseProjectiles(){
+        for(let i = 0; i < this.hero.weapons.length; i++){
+            let weapon = this.hero.weapons[i]
+            console.log(weapon)
+            weapon.pauseProjectile()
         }
     }
 
@@ -124,6 +133,7 @@ class Game{
     }
 
     resumeGameState(){
+        this.resumeProjectiles()
         this.resumeSpawn()
         this.resumeMovement()
         this.resumeCollision()
@@ -139,7 +149,7 @@ class Game{
     }
 
     pauseSpawn(){
-        console.log("game paused")
+        // console.log("game paused")
         return clearInterval(this.intervalId)
     }
 
@@ -239,7 +249,8 @@ class Game{
         return clearInterval(this.collisionIntervalId)
     }
 
-    pauseGameState(){ //does not pause draw
+    pauseGameState(){ 
+        this.pauseProjectiles()
         this.pauseCollision()
         this.pauseMovement()
         this.pauseSpawn()
@@ -250,7 +261,7 @@ class Game{
         this.timerIntervalId = setInterval(()=>{
             this.timer -= 1
             currentTime.innerText = `${this.timer}`
-            console.log(this.timer)
+            // console.log(this.timer)
             if(this.timer % 5 === 0) this.addBoss()
             if(this.timer === 0) this.gameOver()
         }, 1000)

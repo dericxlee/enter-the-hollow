@@ -12,9 +12,10 @@ class BladeFlurry extends Weapon{
     static X_VEL = 0
     static Y_VEL = 0
     static DMG = 5
+    static NAME = "Blade Flurry"
     constructor(options){
         super(options),
-        this.name = "bladeFlurry",
+        this.name = BladeFlurry.NAME,
         this.frequency = BladeFlurry.FREQ,
         this.echo = BladeFlurry.ECHO,
         this.duration = BladeFlurry.DURATION,
@@ -28,7 +29,7 @@ class BladeFlurry extends Weapon{
     }
 
     addProjectile(){
-        setInterval(() => {
+        this.intervalId = setInterval(() => {
             // console.log(this.hero.game.projectiles.length, "define")
             for(let i = 0; i < this.echo; i++){
                 for(let j = 0; j < cardinal.length; j++){
@@ -48,6 +49,8 @@ class BladeFlurry extends Weapon{
                 }   
             }
         }, this.frequency)
+
+        return this.intervalId
     }
 }
 

@@ -47,15 +47,15 @@ class Projectile extends MovingObject{
 
         // ctx.fill();
 
-        if(this.name === "fireball"){
+        if(this.name === "Fireball"){
             ctx.drawImage(this.fireball, 24, 24, 72, 72, this.x - (1.5 * this.radius), this.y - (1.5 * this.radius), 4 * this.radius, 4 * this.radius)
-        } else if (this.name === "starfall"){
+        } else if (this.name === "Starfall"){
             ctx.drawImage(this.starfall, 0, 0, 32, 32, this.x - (2 * this.radius), this.y - (2 * this.radius), 4 * this.radius, 4 * this.radius)
-        } else if (this.name === "bladeFlurry"){
+        } else if (this.name === "Blade Flurry"){
             ctx.drawImage(this.shuriken, 0, 0, 1380, 1380, this.x - (2 * this.radius), this.y - (2 * this.radius), 4 * this.radius, 4 * this.radius)
-        } else if (this.name === "consecration"){
+        } else if (this.name === "Consecration"){
             ctx.drawImage(this.consecration, 24, 24, 72, 72, this.x - (1.5 * this.radius), this.y - (1.5 * this.radius), 3 * this.radius, 3 * this.radius)
-        } else if (this.name === "bubble"){
+        } else if (this.name === "Bubblebeam"){
             ctx.drawImage(this.bubble, 0, 0, 512, 512, this.x - (1.5 * this.radius), this.y - (1.5 * this.radius), 3 * this.radius, 3 * this.radius)
         }
     }

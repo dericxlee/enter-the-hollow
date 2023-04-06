@@ -12,12 +12,15 @@ class Weapon {
         this.speed = options.speed,
         this.hero = options.hero,
         this.offset = options.offset,
-        this.damage = options.damage
+        this.damage = options.damage,
+        this.intervalId = null
+        // this.choose = this.choose.bind(this)
+
     }
 
-    choose(){
-        this.hero.addWeapon()
-    }
+    // choose(){
+    //     this.hero.weapons.push(this)
+    // }
 
     // addProjectile(){
     //     if(this.offset) return this.addRandomPosProjectile();
@@ -78,6 +81,9 @@ class Weapon {
     // distance(){
     //     dist = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
     // }
+    pauseProjectile(){
+        return clearInterval(this.intervalId)
+    }
 }
 
 export default Weapon;
