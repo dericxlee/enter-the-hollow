@@ -18,7 +18,7 @@ const endMsg = document.getElementById('end-msg')
 const resetButton = document.getElementById('play-again-btn')
 
 class Game{
-    static BOSS_TIMER = 30 //in seconds
+    static BOSS_TIMER = 30
     static DIM_X = 1400
     static DIM_Y = 700
     static NUM_MON = 20
@@ -39,7 +39,6 @@ class Game{
         this.paused = true
     
         this.img = new Image();
-        // this.img.src = './assets/grass.png';
         this.img.src = './assets/map2.jpeg'
 
         
