@@ -159,7 +159,7 @@ class Hero extends MovingObject{
         } else {
             this.addChoices()
         }
-        buttonOverlay.style = 'display:block'
+        buttonOverlay.style = 'display:flex'
         buttonOne.addEventListener("click", this.onClickOne)
         buttonTwo.addEventListener("click", this.onClickTwo)
         buttonThree.addEventListener("click", this.onClickThree)

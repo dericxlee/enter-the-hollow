@@ -13,79 +13,86 @@
     <header>
         <title>Enter the Hollow</title>
     </header>
-    <div id="canvas-div">
-        <canvas id="map" width="1400px" height="700px" style="border:1px solid #000000;"></canvas>
-    </div>
-    <div id="instruction-div" style="display:block">
-        <div id="instruction-title-div">
-            <p>Enter the Hollow</p>
+    <div id="game-view">
+        <div id="canvas-div">
+            <canvas id="map" height="700px" width="1400px"></canvas>
         </div>
-        <div id="list-instructions">
-            <ul id="instruction-ul">
-                <li>Dodge enemies using W A S D</li>
-                <li>Press spacebar to pause, unpause</li>
-                <li>Select your ability with left-mouse-click</li>
-                <li>Defend yourself against enemies</li>
-                <li>Collect gems to gain experience</li>
-                <li>See your progress to the next level on top</li>
-                <li>Level up to receive more abilities or hone them...</li>
-                <li>Abilities are limited to 3</li>
-                <li>Can you survive the timer?</li>
-                <li>Press the button when ready</li>
-            </ul>
-        </div>
-        <div id="start-btn-div">
-            <button class="start-btn"id="start-btn">Enter</button>
-        </div>
-    </div>
-   
-    <div id="pause-div" class="pause-div"><p>Game Paused!</p></div>
-   
-    <div id="button-div" style="display:none">
-        <div id="level-up"><button type="button" class="button" id="first-upgrade">First Upgrade</button></div>
-        <div id="level-up"><button type="button" class="button" id="second-upgrade">Second Upgrade</button></div>
-        <div id="level-up"><button type="button" class="button" id="third-upgrade">Third Upgrade</button></div>
-    </div>
-
-    <div id="progressbar">
-        <span id="progress-level">Hello</span>
-        <progress id="exp" max="" value=""></progress>
-    </div>
-
-    <div id="timer">
-        <span id="current-time">timer not working</span>
-    </div>
-
-    <div id="player-hud">
-        <ul>
-            <li id="speed">Speed</li>
-            <li id="magnet">Magnetism</li>
-            <li id="health">Health</li>
-        </ul>
-    </div>
-
-    <div id="game-over-pop-up" style="display:none">
-        <div><p id="end-game">Text Here</p></div>
-        <p id="end-msg">Text Here</p>
-        <ul>
-            <li id="stats">Game Statistics:</li>
-            <li id="highest-lvl"></li>
-            <li id="mon-kills"></li>
-            <li id="damage-done"></li>
-        </ul>
-        <div class="play-again-btn-div">
-            <button class="play-again-btn" id="play-again-btn">Try Again?</button>
-        </div>
+        <div id="game-hud">
+            <div id="button-div" style="display:none">
+                <div class="level-up">Level Up!</div>
+                <div id="level-up"><button type="button" class="button" id="first-upgrade">First Upgrade</button></div>
+                <div id="level-up"><button type="button" class="button" id="second-upgrade">Second Upgrade</button></div>
+                <div id="level-up"><button type="button" class="button" id="third-upgrade">Third Upgrade</button></div>
+                <div class="level-up">Click to choose!</div>
+            </div>
+            <div id="instruction-div" style="display:block">
+                <div id="instruction-title-div">
+                    <p>Enter the Hollow</p>
+                </div>
+                <div id="list-instructions">
+                    <ul id="instruction-ul">
+                        <li>Dodge enemies using W A S D</li>
+                        <li>Press spacebar to pause, unpause</li>
+                        <li>Select your ability with left-mouse-click</li>
+                        <li>Defend yourself against enemies</li>
+                        <li>Collect gems to gain experience</li>
+                        <li>See your progress to the next level on top</li>
+                        <li>Level up to receive more abilities or hone them...</li>
+                        <li>Abilities are limited to 3</li>
+                        <li>Can you survive the timer?</li>
+                        <li>Press the button when ready</li>
+                    </ul>
+                </div>
+                <div id="start-btn-div">
+                    <button class="start-btn"id="start-btn">Enter</button>
+                </div>
+            </div>
+           
+            <div id="pause-div" class="pause-div">
+                <p>Game Paused!</p>
+                <p>Press Spacebar to unpause</p>
+            </div>
+           
         
-    </div>
-
-    <div class="footer-div" id="footer-div">
-        <a href="https://dericxlee.github.io/hollow-hero/" target="_blank" rel="noopener noreferrer">
-            <img src="./assets/github.png" alt="Github Link" height="40">
-        </a>
-        <a href="" target="_blank" rel="noopener noreferrer">
-            <img src="./assets/linkedin2.png" alt="LinkedIn Link" height="40">
-        </a>
+            <div id="progressbar">
+                <span id="progress-level">level</span>
+                <progress id="exp" max="" value=""></progress>
+            </div>
+        
+            <div id="timer">
+                <span id="current-time">timer not working</span>
+            </div>
+        
+            <div id="player-hud">
+                <div id="speed">Speed</div>
+                <div id="magnet">Magnetism</div>
+                <div id="health">Health</div>
+            </div>
+        
+            <div id="game-over-pop-up">
+                <div><p id="end-game">Text Here</p></div>
+                <p id="end-msg">Text Here</p>
+                <ul>
+                    <li id="stats">Game Statistics:</li>
+                    <li id="highest-lvl"></li>
+                    <li id="mon-kills"></li>
+                    <li id="damage-done"></li>
+                </ul>
+                <div class="play-again-btn-div">
+                    <button class="play-again-btn" id="play-again-btn">Enter Again?</button>
+                </div>
+                
+            </div>
+        
+            <div class="footer-div" id="footer-div">
+                <a href="https://github.com/dericxlee/enter-the-hollow.git" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/github.png" alt="Github Link" height="40">
+                </a>
+                <a href="https://www.linkedin.com/in/deric-lee-940923106/" target="_blank" rel="noopener noreferrer">
+                    <img src="./assets/linkedin2.png" alt="LinkedIn Link" height="40">
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 

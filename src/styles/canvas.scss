@@ -1,9 +1,38 @@
-.canvas-div {
-    display: flex;
-    justify-content: center;
+#canvas-div {
+    // display: flex;
+    // justify-content: center;
+    // height: 700px;
+    // width: 1400px;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#map {
+    height: 700px;
+    width: 1400px;
+    // aspect-ratio: auto 1400 / 700;
 }
 
 body {
     display: flex;
     justify-content: center;
+}
+
+
+#game-view {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    height: 700px;
+    width: 1400px;
+}
+
+#game-hud {
+    height: 700px;
+    width: 1400px;
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+    // display: flex;
+    // flex-direction: row;
 }

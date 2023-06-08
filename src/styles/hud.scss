@@ -1,11 +1,11 @@
-
 #player-hud{
     display: flex;
     position: absolute;
-    bottom: 120px;
-    left: 30px;
-    height: 40px;
+    bottom: 5px;
+    left: 5px;
+    height: 120px;
     width: auto;
+    flex-direction: column;
 }
 
 #speed {

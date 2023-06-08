@@ -1,11 +1,13 @@
 #game-over-pop-up{
-    display: flex;
+    display: none;
     position: absolute;
     width: 1000px;
     height: 500px;
     left: 200px;
     top: 100px;
     background-color: red;
+    border: 2px solid black;
+    padding: 5px;
 }
 
 #game-over-pop-up p{
