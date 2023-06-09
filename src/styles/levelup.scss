@@ -12,7 +12,7 @@
 }
 
 .level-up {
-    height: 100px;
+    height: 99px;
     width: 390px;
     color: white;
     background-color: magenta;
@@ -28,13 +28,19 @@
 .button {
     color: white;
     width: 390px;
-    height: 100px;
+    height: 99px;
     font-size: 25px;
     font-family: fantasy;
     background-color: gray;
     font-weight: bold;
     border: 2px solid gold;
-    box-shadow: 0 0 0 2px black, 0 0 0 4px black;
+    box-shadow: 0 0 0 2px black, 0 0 0 3px black;
+    padding: 2px;
+}
+
+.button:hover {
+    border: 3px solid yellow;
+    color: yellow;
 }
 
 // #level-up {

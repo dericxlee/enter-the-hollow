@@ -18,11 +18,11 @@ const endMsg = document.getElementById('end-msg')
 const resetButton = document.getElementById('play-again-btn')
 
 class Game{
-    static BOSS_TIMER = 30
+    static BOSS_TIMER = 45
     static DIM_X = 1400
     static DIM_Y = 700
-    static NUM_MON = 20
-    static MON_TIMER = 5000
+    static NUM_MON = 50
+    static MON_TIMER = 800
     static TIMER = 60
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;
@@ -245,7 +245,7 @@ class Game{
 
     gameOver(){
         this.pauseGameState()
-        gameOverPopUp.style = 'display:block'
+        gameOverPopUp.style = 'display:flex'
 
         if(this.hero.health > 0){
             resetButton.innerText = "Endless Mode"
@@ -254,7 +254,7 @@ class Game{
             endGame.style.color = "black"
             endMsg.innerText = "Take your chances at Endless?"
             endMsg.style.color = "black"
-            gameOverPopUp.style.backgroundColor = "yellow"
+            gameOverPopUp.style.backgroundColor = "lightblue"
 
         } else {
             resetButton.innerText ="Try Again?"

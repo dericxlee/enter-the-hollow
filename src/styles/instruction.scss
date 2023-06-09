@@ -1,29 +1,66 @@
 #instruction-div {
     display: flex;
+    flex-direction: column;
     height: 700px;
     width: 100%;
     position: absolute;
     top: 1px;
-    background-color: gray;
+    background-color: lightgray;
     z-index: 99;
+    border: 5px solid black;
 }
 
 #instruction-title-div {
     display: block;
-    height: 180px;
+    margin-top: 1%;
+    height: 15%;
     text-align: center; 
-    content: Enter the Hollow ;
-    font-family: 'Alice in Wonderland', sans-serif;                                           
-}
-
-#instruction-title-div p{
-    font-size: 150px;
+    content: "Enter the Hollow";
+    font-family: 'Alice in Wonderland', sans-serif;
+    font-size: 120px;                                           
 }
 
 #list-instructions {
     display: flex;
+    flex-direction: row;
+    margin-top: 2%;
     // justify-content: center;
-    height: 400px;
+    height: 65%;
+    width: 100%;
+}
+
+#instruction-ul {
+    height: 100%;
+    width: 50%;
+}
+
+#instruction-img-container {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#instruction-img-container div {
+    height: 5%;
+    width: 100%;
+    font-size: 20px;
+    font-family: fantasy;
+    text-align: center;
+}
+
+
+#instruction-img-container img {
+    height: 40%;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: inherit;
+}
+
+.vertical-img {
+    object-fit: cover;
 }
 
 #list-instructions li{
@@ -36,15 +73,26 @@
 #start-btn-div {
     text-align: center;
     border: 1px pink;
-    height: 100px;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .start-btn {
     width: 300px;
     font-size: 50px;
-    background-color: brown;
+    background-color: gray;
     font-weight: bold;
-    font-family: 'Alice in Wonderland', sans-serif;                                   
+    font-family: 'Alice in Wonderland', sans-serif; 
+    border: 2px solid black; 
+    border-radius: 2% / 6%;
+    color: white;                                 
+}
+
+.start-btn:hover {
+    color: red;
+    border: 2px solid red;
 }
 
 // #instruction-ul {

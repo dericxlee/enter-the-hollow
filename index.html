@@ -25,23 +25,39 @@
                 <div id="level-up"><button type="button" class="button" id="third-upgrade">Third Upgrade</button></div>
                 <div class="level-up">Click to choose!</div>
             </div>
-            <div id="instruction-div" style="display:block">
-                <div id="instruction-title-div">
-                    <p>Enter the Hollow</p>
-                </div>
+            <div id="instruction-div">
+                <div id="instruction-title-div">Enter the Hollow</div>
                 <div id="list-instructions">
-                    <ul id="instruction-ul">
-                        <li>Dodge enemies using W A S D</li>
-                        <li>Press spacebar to pause, unpause</li>
-                        <li>Select your ability with left-mouse-click</li>
-                        <li>Defend yourself against enemies</li>
-                        <li>Collect gems to gain experience</li>
-                        <li>See your progress to the next level on top</li>
-                        <li>Level up to receive more abilities or hone them...</li>
-                        <li>Abilities are limited to 3</li>
-                        <li>Can you survive the timer?</li>
-                        <li>Press the button when ready</li>
-                    </ul>
+                    <div id="instruction-img-container">
+                        <div>Movement controls</div>
+                        <div>Survive the timer</div>
+                        <img src="./assets/movement.gif" alt="">
+                        <img src="https://moca.ca/wp-content/uploads/2021/10/360_controls.gif" alt="">
+                    </div>
+                    <div id="instruction-img-container">
+                        <div>Acquire powers</div>
+                        <div>Hone them further</div>
+                        <img class="vertical-img" src="./assets/levelup.png" alt="">
+                        <img class='vertical-img' src="./assets/hone.png" alt="">
+                    </div>
+                    <div id="instruction-img-container">
+                        <div>Defeat enemies</div>
+                        <div>Collect experience gems</div>
+                        <img src="./assets/gameplay.gif" alt="">
+                        <img src="./assets/gems.gif" alt="">
+                    </div>
+                    <div id="instruction-img-container">
+                        <div>Five different powers</div>
+                        <div>Will you try them all?</div>
+                        <img src="./assets/fireball.gif" alt="fireball">
+                        <img src="./assets/bladestorm.gif" alt="bladestorm">
+                    </div>
+                    <div id="instruction-img-container">
+                        <div>Need to take a break?</div>
+                        <div>Spacebar to pause</div>
+                        <img src="./assets/pause.png" alt="">
+                        <img src="https://spacebarclicker.co/data/image/options/logo.png" alt="">
+                    </div>
                 </div>
                 <div id="start-btn-div">
                     <button class="start-btn"id="start-btn">Enter</button>
@@ -70,8 +86,8 @@
             </div>
         
             <div id="game-over-pop-up">
-                <div><p id="end-game">Text Here</p></div>
-                <p id="end-msg">Text Here</p>
+                <div id="end-game">Text Here</div>
+                <div id="end-msg">Text Here</div>
                 <ul>
                     <li id="stats">Game Statistics:</li>
                     <li id="highest-lvl"></li>
