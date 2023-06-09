@@ -1,11 +1,39 @@
 # Enter the Hollow
 
+[Live Site](https://dericxlee.github.io/enter-the-hollow/)
+
 ## Background
 
 Enter the Hollow is a single-player rogue-like survival game which takes inspiration from Vampire Survivors. The goal of this game is to survive endless swarms of enemies within the allocated timer on a 2D plane. To assist the user, the user will receive new abilities or upgrades after every level-up. User abilities release projectiles automatically on a time interval and deals damage to enemies on contact. Enemies on death drop experience gems. The user will control its character using W-A-S-D movement keys. Abilities will be chosen in each level-up screen using left-mouse-button. Spacebar manually pauses and unpauses the game.
 
 
 ## Functionality & MVPs
+
+
+### Player Movement
+
+Player movement is bound by the borders of the canvas.
+
+```javascript
+    move(){
+        const hor = this.x + (this.xvel * this.speed)
+        const ver = this.y + (this.yvel * this.speed)
+
+        if(hor < 0 || hor > 1400) {
+            this.x = this.x
+        } else {
+            this.x = hor
+        };
+        
+        if(ver < 50 || ver > 700) {
+            this.y = this.y
+        } else {
+            this.y = ver
+        };
+    }
+```
+
+
 
 ### Collision Detection
 
@@ -205,6 +233,7 @@ Game state is reset to constructor values by mass reassignment of class variable
     resetHeroState(){
         this.weapons = [];
         this.resetWeapons()
+        this.resetAbilityHud();
         this.health = Hero.HP
         this.magnetism = Hero.MAGNET
         this.level = Hero.START_LVL

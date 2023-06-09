@@ -221,7 +221,7 @@ input {
   color: white;
   width: 390px;
   height: 99px;
-  font-size: 25px;
+  font-size: 24px;
   font-family: fantasy;
   background-color: gray;
   font-weight: bold;
@@ -364,6 +364,25 @@ body {
   grid-row: 1;
   grid-column: 1;
   position: relative;
+}
+
+#ability-hud {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50px;
+  left: 5px;
+  color: white;
+  row-gap: 7px;
+}
+
+#ability-hud div {
+  font-size: 30px;
+  font-family: fantasy;
+}
+
+#acquired {
+  text-decoration: underline;
 }
 
 progress {

@@ -18,11 +18,11 @@ const endMsg = document.getElementById('end-msg')
 const resetButton = document.getElementById('play-again-btn')
 
 class Game{
-    static BOSS_TIMER = 45
+    static BOSS_TIMER = 30
     static DIM_X = 1400
     static DIM_Y = 700
-    static NUM_MON = 50
-    static MON_TIMER = 800
+    static NUM_MON = 30
+    static MON_TIMER = 7500
     static TIMER = 60
     constructor(options){
         this.monsterSpawn = Game.NUM_MON;

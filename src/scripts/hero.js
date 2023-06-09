@@ -23,6 +23,8 @@ const progressLevel = document.getElementById('progress-level')
 const playerSpeed = document.getElementById('speed')
 const playerMagnet = document.getElementById('magnet')
 const playerHealth = document.getElementById('health')
+const abilities = document.getElementsByClassName('ability')
+
 
 class Hero extends MovingObject{
     static RNG = 2
@@ -111,10 +113,20 @@ class Hero extends MovingObject{
     }
 
     move(){
-        // let hor = this.x + this.xvel;
-        // let ver = this.y + this.yvel;
-        this.x = this.x + (this.xvel * this.speed)
-        this.y = this.y + (this.yvel * this.speed)
+        const hor = this.x + (this.xvel * this.speed)
+        const ver = this.y + (this.yvel * this.speed)
+
+        if(hor < 0 || hor > 1400) {
+            this.x = this.x
+        } else {
+            this.x = hor
+        };
+        
+        if(ver < 50 || ver > 700) {
+            this.y = this.y
+        } else {
+            this.y = ver
+        };
     }
     
 
@@ -126,6 +138,20 @@ class Hero extends MovingObject{
         // this.weapons.push(new Bubble({hero: this}))
         // this.weapons.push(new Bone({hero: this}))
     }
+
+    powerToHud() {
+        if(!this.weapons.length) return;
+
+        for(let i = 0; i < this.weapons.length; i++){
+            abilities[i].innerText = `${this.weapons[i].name}`
+        };
+    };
+
+    resetAbilityHud(){
+        for(let i = 0; i < abilities.length; i++){
+            abilities[i].innerText = ''
+        };
+    };
 
     levelUp(){
         let baseExpReq = this.experienceForLevel
@@ -254,6 +280,7 @@ class Hero extends MovingObject{
     }
 
     toRemoveListener(){
+        this.powerToHud()
         buttonOne.removeEventListener("click", this.onClickOne)
         buttonTwo.removeEventListener("click", this.onCLickOne)
         buttonThree.removeEventListener("click", this.onClickThree)
@@ -278,6 +305,7 @@ class Hero extends MovingObject{
     resetHeroState(){
         this.weapons = [];
         this.resetWeapons()
+        this.resetAbilityHud();
         this.health = Hero.HP
         this.magnetism = Hero.MAGNET
         this.level = Hero.START_LVL

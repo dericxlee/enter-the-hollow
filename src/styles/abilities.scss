@@ -1,0 +1,18 @@
+#ability-hud {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    color: white;
+    row-gap: 7px;
+}
+
+#ability-hud div {
+    font-size: 30px;
+    font-family: fantasy;
+}
+
+#acquired {
+    text-decoration: underline;
+}
